@@ -4,10 +4,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 public enum SolarSystems {
     
-    KORMA("A", Resource.LIFELESS, TechLevel.HI_TECH);
+    KORMA("A");
     
     private int x;
     private int y;
@@ -17,7 +18,7 @@ public enum SolarSystems {
     private ArrayList<Integer> xVals = new ArrayList<>(150);
     private ArrayList<Integer> yVals = new ArrayList<>(100);
     
-    SolarSystems(String name, Resource resource, TechLevel tech) {
+    SolarSystems(String name) {
         
         for (int i = 0; i < 150; i++) {
             xVals.add(i);
@@ -29,12 +30,15 @@ public enum SolarSystems {
         
         Collections.shuffle(xVals);
         Collections.shuffle(yVals);
+    
+        Random rng = new Random();
+        int randomInt = rng.nextInt(50) + 1;
         
         this.name = name;
         this.x = xVals.get(ordinal());
         this.y = yVals.get(ordinal());
-        this.resource = resource;
-        this.tech = tech;
+        this.resource = Resource.values()[rng.nextInt(12)];
+        this.tech = TechLevel.values()[rng.nextInt(7)];
         
     }
     
