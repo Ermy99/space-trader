@@ -19,24 +19,13 @@ public enum SolarSystems {
     private ArrayList<Integer> yVals = new ArrayList<>(100);
     
     SolarSystems(String name) {
-        
-        for (int i = 0; i < 150; i++) {
-            xVals.add(i);
-        }
-        
-        for (int i = 0; i < 100; i++) {
-            yVals.add(i);
-        }
-        
-        Collections.shuffle(xVals);
-        Collections.shuffle(yVals);
     
         Random rng = new Random();
-        int randomInt = rng.nextInt(50) + 1;
+        Coordinates coordinates = new Coordinates();
         
         this.name = name;
-        this.x = xVals.get(ordinal());
-        this.y = yVals.get(ordinal());
+        this.x = coordinates.getxVals().get(ordinal());
+        this.y = coordinates.getyVals().get(ordinal());
         this.resource = Resource.values()[rng.nextInt(12)];
         this.tech = TechLevel.values()[rng.nextInt(7)];
         
