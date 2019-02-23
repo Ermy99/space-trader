@@ -8,7 +8,16 @@ import java.util.Random;
 
 public enum SolarSystems {
     
-    KORMA("A");
+    SOMEBI("Somebi"),               //0
+    GHAVI("Ghavi"),                 //1
+    ADI("Adi"),                     //2
+    ERMIL("Ermil"),                 //3
+    TAOFI("Taofi"),                 //4
+    DEBO("Debo"),                   //5
+    WEZIHIR("Wezihir"),             //6
+    ADDAM("Addam"),                 //7
+    SHALKA("Shalka"),               //8
+    SHIBI("Shibi");                 //9
     
     private int x;
     private int y;
