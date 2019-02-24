@@ -22,6 +22,10 @@ public enum Resource {
     Resource(String resource) {
         this.resource = resource;
     }
+
+    public String toString() {
+        return resource;
+    }
     
 
     

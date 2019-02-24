@@ -37,9 +37,13 @@ public enum SolarSystems {
         this.y = coordinates.getyVals().get(ordinal());
         this.resource = Resource.values()[rng.nextInt(12)];
         this.tech = TechLevel.values()[rng.nextInt(7)];
-        
     }
-    
+
+    public String toString(){
+        String planetToString = String.format("%s at (%d, %d) with %s resources and " +
+                "%s tech level.", name, x, y, resource.toString(), tech.toString());
+        return  planetToString;
+    }
     
     
 
