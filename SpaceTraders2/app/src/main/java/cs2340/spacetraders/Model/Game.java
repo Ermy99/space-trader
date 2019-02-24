@@ -17,7 +17,7 @@ public class Game {
     public Game(Player player, GameDifficulty gameDifficulty, Universe universe) {
         this.player = player;
         this.gameDifficulty = gameDifficulty;
-        this.universe = new Universe();
+        this.universe = universe;
         Log.d("Edit",this.toString());
     }
 
