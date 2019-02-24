@@ -9,13 +9,15 @@ public class Game {
 
     public Player player;
     public GameDifficulty gameDifficulty;
+    public Universe universe;
 
     public static List<GameDifficulty> gameDifficulties = Arrays.asList(GameDifficulty.BEGINNER, GameDifficulty.EASY, GameDifficulty.NORMAL,
             GameDifficulty.HARD, GameDifficulty.IMPOSSIBLE);
 
-    public Game(Player player, GameDifficulty gameDifficulty) {
+    public Game(Player player, GameDifficulty gameDifficulty, Universe universe) {
         this.player = player;
         this.gameDifficulty = gameDifficulty;
+        this.universe = new Universe();
         Log.d("Edit",this.toString());
     }
 

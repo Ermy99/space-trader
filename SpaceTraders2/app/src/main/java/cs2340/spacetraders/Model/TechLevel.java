@@ -16,5 +16,9 @@ public enum TechLevel {
     TechLevel(String techLevel) {
         TechLevel = techLevel;
     }
+
+    public String toString() {
+        return TechLevel;
+    }
     
 }
