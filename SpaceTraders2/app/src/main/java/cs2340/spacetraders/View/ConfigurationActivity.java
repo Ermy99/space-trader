@@ -1,11 +1,9 @@
 package cs2340.spacetraders.View;
 
-import android.app.Application;
+import android.content.Intent;
 import android.os.Bundle;
 import android.arch.lifecycle.ViewModelProviders;
-import android.service.quicksettings.Tile;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -16,7 +14,6 @@ import android.widget.Toast;
 
 import cs2340.spacetraders.Model.Game;
 import cs2340.spacetraders.Model.GameDifficulty;
-import cs2340.spacetraders.Model.Player;
 import cs2340.spacetraders.R;
 import cs2340.spacetraders.ViewModel.PlayerViewModel;
 
@@ -40,8 +37,7 @@ public class ConfigurationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
+        setContentView(R.layout.activity_configuration);
         name = findViewById(R.id.player_name);
         pilotPoints = findViewById(R.id.pilot_points);
         engineeringPoints = findViewById(R.id.engineering_points);
@@ -68,39 +64,33 @@ public class ConfigurationActivity extends AppCompatActivity {
      */
     public void onAdd(View view) {
         Button okay = findViewById(R.id.okay);
-        okay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (playerViewModel.onOK(name.getText().toString(), Integer.parseInt(pilotPoints.getText().toString()),
-                        Integer.parseInt(engineeringPoints.getText().toString()),
-                        Integer.parseInt(traderPoints.getText().toString()),
-                        Integer.parseInt(fighterPoints.getText().toString()))) {
-                    playerViewModel.createPlayer(
-                            name.getText().toString(),
-                            Integer.parseInt(pilotPoints.getText().toString()),
-                            Integer.parseInt(engineeringPoints.getText().toString()),
-                            Integer.parseInt(traderPoints.getText().toString()),
-                            Integer.parseInt(fighterPoints.getText().toString()));
-                    playerViewModel.createGame(playerViewModel.getPlayer(), (GameDifficulty) difficultyLevel.getSelectedItem());
-                } else {
-                    Toast.makeText(ConfigurationActivity.this, "Invalid inputs", Toast.LENGTH_SHORT).show();
-                }
+        Intent configIntent = new Intent(ConfigurationActivity.this, GameActivity.class);
 
-            }
-        });
+        if (playerViewModel.onOK(name.getText().toString(), Integer.parseInt(pilotPoints.getText().toString()),
+                Integer.parseInt(engineeringPoints.getText().toString()),
+                Integer.parseInt(traderPoints.getText().toString()),
+                Integer.parseInt(fighterPoints.getText().toString()))) {
+            playerViewModel.createPlayer(
+                    name.getText().toString(),
+                    Integer.parseInt(pilotPoints.getText().toString()),
+                    Integer.parseInt(engineeringPoints.getText().toString()),
+                    Integer.parseInt(traderPoints.getText().toString()),
+                    Integer.parseInt(fighterPoints.getText().toString()));
+            playerViewModel.createGame(playerViewModel.getPlayer(), (GameDifficulty) difficultyLevel.getSelectedItem());
+            startActivity(configIntent);
+
+        } else {
+            Toast.makeText(ConfigurationActivity.this, "Invalid inputs", Toast.LENGTH_SHORT).show();
+        }
+
+
+
+    };
 
 //        player.setName(name.getText().toString());
 //        player.setPilotPoints(Integer.parseInt(pilotPoints.getText().toString()));
 //        player.setEngineeringPoints(Integer.parseInt(engineeringPoints.getText().toString()));
 //        player.setTraderPoints(Integer.parseInt(traderPoints.getText().toString()));
 //        player.setFighterPoints(Integer.parseInt(fighterPoints.getText().toString()));
-
-
-
-
-    }
-
-
-
 
 }
