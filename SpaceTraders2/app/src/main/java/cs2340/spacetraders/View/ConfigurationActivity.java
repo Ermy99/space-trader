@@ -83,9 +83,7 @@ public class ConfigurationActivity extends AppCompatActivity {
             Toast.makeText(ConfigurationActivity.this, "Invalid inputs", Toast.LENGTH_SHORT).show();
         }
 
-
-
-    };
+    }
 
 //        player.setName(name.getText().toString());
 //        player.setPilotPoints(Integer.parseInt(pilotPoints.getText().toString()));

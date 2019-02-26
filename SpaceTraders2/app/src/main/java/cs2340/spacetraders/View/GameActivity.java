@@ -15,6 +15,13 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-
+        Button marketButton =  findViewById(R.id.market_button);
+        marketButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent mainIntent = new Intent(GameActivity.this, MarketActivity.class);
+                startActivity(mainIntent);
+            }
+        });
     }
 }
