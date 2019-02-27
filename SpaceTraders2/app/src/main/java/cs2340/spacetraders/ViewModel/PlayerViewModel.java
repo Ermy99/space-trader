@@ -8,8 +8,10 @@ import android.widget.Toast;
 
 import cs2340.spacetraders.Model.Game;
 import cs2340.spacetraders.Model.GameDifficulty;
+import cs2340.spacetraders.Model.Market;
 import cs2340.spacetraders.Model.Model;
 import cs2340.spacetraders.Model.Player;
+import cs2340.spacetraders.Model.SolarSystems;
 import cs2340.spacetraders.Model.Universe;
 import cs2340.spacetraders.View.ConfigurationActivity;
 import android.widget.Toast;
@@ -28,7 +30,7 @@ public class PlayerViewModel extends AndroidViewModel {
 
     public void createPlayer(String name, int pilotPoints, int engineeringPoints, int traderPoints,
                              int fighterPoints) {
-        player = new Player(name, pilotPoints, engineeringPoints, traderPoints, fighterPoints);
+        player = new Player(name, pilotPoints, engineeringPoints, traderPoints, fighterPoints, SolarSystems.SOMEBI);
     }
 
     public Player getPlayer() {
@@ -36,7 +38,7 @@ public class PlayerViewModel extends AndroidViewModel {
     }
 
     public void createGame(Player player, GameDifficulty gameDifficulty) {
-        game = new Game(player, gameDifficulty, new Universe());
+        game = new Game(player, gameDifficulty, new Universe(), null);
     }
 
     public static boolean onOK(String name, int pilotPoints, int engineeringPoints, int traderPoints,

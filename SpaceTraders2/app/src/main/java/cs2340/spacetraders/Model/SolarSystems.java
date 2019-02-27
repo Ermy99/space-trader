@@ -39,6 +39,48 @@ public enum SolarSystems {
         this.tech = TechLevel.values()[rng.nextInt(7)];
     }
 
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+
+    public Resource getResource() {
+        return resource;
+    }
+
+    public void setResource(Resource resource) {
+        this.resource = resource;
+    }
+
+    public TechLevel getTech() {
+        return tech;
+    }
+
+    public void setTech(TechLevel tech) {
+        this.tech = tech;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
     public String toString(){
         String planetToString = String.format("%s at (%d, %d) with %s resources and " +
                 "%s tech level.", name, x, y, resource.toString(), tech.toString());

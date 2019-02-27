@@ -7,17 +7,27 @@ public class Player {
     private int traderPoints;
     private int fighterPoints;
     private int credits;
-    private Shiptype shiptype;
+    private Ship ship;
+    private SolarSystems solarSystems;
 
     public Player(String name, int pilotPoints, int engineeringPoints, int traderPoints,
-                  int fighterPoints) {
+                  int fighterPoints, SolarSystems solarSystems) {
         this.name = name;
         this.pilotPoints = pilotPoints;
         this.engineeringPoints = engineeringPoints;
         this.traderPoints = traderPoints;
         this.fighterPoints = fighterPoints;
         this.credits = 1000;
-        this.shiptype = Shiptype.GNAT;
+        this.ship = new Ship(10, Shiptype.GNAT);
+        this.solarSystems = solarSystems;
+    }
+
+    public SolarSystems getSolarSystems() {
+        return solarSystems;
+    }
+
+    public void setSolarSystems(SolarSystems solarSystems) {
+        this.solarSystems = solarSystems;
     }
 
     public String getName() {
@@ -66,6 +76,10 @@ public class Player {
 
     public void setCredits(int credits) {
         this.credits = credits;
+    }
+
+    public Ship getShip() {
+        return ship;
     }
 
 }

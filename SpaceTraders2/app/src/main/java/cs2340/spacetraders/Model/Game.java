@@ -10,14 +10,17 @@ public class Game {
     public Player player;
     public GameDifficulty gameDifficulty;
     public Universe universe;
+    public Market market;
+
 
     public static List<GameDifficulty> gameDifficulties = Arrays.asList(GameDifficulty.BEGINNER, GameDifficulty.EASY, GameDifficulty.NORMAL,
             GameDifficulty.HARD, GameDifficulty.IMPOSSIBLE);
 
-    public Game(Player player, GameDifficulty gameDifficulty, Universe universe) {
+    public Game(Player player, GameDifficulty gameDifficulty, Universe universe, Market market) {
         this.player = player;
         this.gameDifficulty = gameDifficulty;
         this.universe = universe;
+        this.market = new Market(player.getSolarSystems(), player);
         Log.d("Edit",this.toString());
     }
 

@@ -16,6 +16,7 @@ public class MarketActivity extends AppCompatActivity {
 
     private ArrayList<String> mNames = new ArrayList<>();
     private ArrayList<String> mImageURLs = new ArrayList<>();
+    private ArrayList<Integer> mPrices = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,4 +39,6 @@ public class MarketActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
+
+
 }
