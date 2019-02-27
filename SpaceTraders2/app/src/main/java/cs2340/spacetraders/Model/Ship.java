@@ -1,23 +1,17 @@
 package cs2340.spacetraders.Model;
 
 public class Ship {
-    Goods[] cargoSpace;
+    Cargo cargo;
     Shiptype shiptype;
     int cargoSize;
 
-    Ship(int cargoSpace, Shiptype shiptype) {
-        this.cargoSpace = new Goods[cargoSpace];
+
+    Ship(Shiptype shiptype){
         this.shiptype = shiptype;
-        this.cargoSize = cargoSpace;
+        this.cargo = new Cargo();
     }
 
-    public Goods[] getCargoSpace() {
-        return cargoSpace;
-    }
 
-    public void setCargoSpace(Goods[] cargoSpace) {
-        this.cargoSpace = cargoSpace;
-    }
 
     public Shiptype getShiptype() {
         return shiptype;
@@ -28,13 +22,48 @@ public class Ship {
     }
 
     public int getCargoSize() {
-        return cargoSize;
+        return cargo.getCargoSize();
     }
 
-    public void updateCargoSize(int change) {
-        cargoSize += change;
-    }
 
     //create instance variable for each type of good that counts how many of each
     //type there are --> create getters
+
+
+    public class Cargo {
+        Goods[] shipCargo;
+        int waterAmount;
+        int furAmount;
+        int foodAmount;
+        int oreAmount;
+        int gamesAmount;
+        int firearmsAmount;
+        int medicineAmount;
+        int machineAmount;
+        int narcoticsAmount;
+        int robotsAmount;
+
+        public Cargo() {
+            this(shiptype.getCargoSize(), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+        }
+
+        public Cargo(int shipCargoSize, int waterAmount, int furAmount, int foodAmount,
+                     int oreAmount, int gamesAmount, int firearmsAmount, int medicineAmount, int machineAmount, int narcoticsAmount, int robotsAmount) {
+            this.shipCargo = new Goods[shipCargoSize];
+            this.waterAmount = waterAmount;
+            this.furAmount = furAmount;
+            this.foodAmount = foodAmount;
+            this.oreAmount = oreAmount;
+            this.gamesAmount = gamesAmount;
+            this.firearmsAmount = firearmsAmount;
+            this.medicineAmount = medicineAmount;
+            this.machineAmount = machineAmount;
+            this.narcoticsAmount = narcoticsAmount;
+            this.robotsAmount = robotsAmount;
+        }
+
+        public int getCargoSize() {
+            return shipCargo.length;
+        }
+    }
 }
