@@ -18,7 +18,7 @@ public class Player {
         this.traderPoints = traderPoints;
         this.fighterPoints = fighterPoints;
         this.credits = 1000;
-        this.ship = new Ship(10, Shiptype.GNAT);
+        this.ship = new Ship(Shiptype.GNAT);
         this.solarSystems = solarSystems;
     }
 
