@@ -1,5 +1,11 @@
 package cs2340.spacetraders.Model;
 
 public enum Shiptype {
-    GNAT;
+    GNAT(10);
+
+    int cargoSize;
+
+    Shiptype(int cargoSize) {
+        this.cargoSize = cargoSize;
+    }
 }

@@ -34,4 +34,7 @@ public class Ship {
     public void updateCargoSize(int change) {
         cargoSize += change;
     }
+
+    //create instance variable for each type of good that counts how many of each
+    //type there are --> create getters
 }
