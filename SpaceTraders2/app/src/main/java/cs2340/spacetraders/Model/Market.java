@@ -24,7 +24,7 @@ public class Market {
     }
 
     public int goodPrice(Goods good) {
-        int price =  good.getBasePrice() + 3 * 2* (good.getPriceInc() *
+        int price =  good.getBasePrice() + 3 * 2 * (good.getPriceInc() *
                 (solarSystems.getTech().ordinal() - good.getMinTechLevelToProd()));
         return price;
     }
@@ -32,7 +32,7 @@ public class Market {
     //if the player can buy the goods
     public boolean canBuy(Goods good) {
         return player.getCredits() > goodPrice(good) &&
-                player.getShip().getCargoSpace().length + 1 <  player.getShip().getCargoSize();
+                player.getShip().getCargoSize() + 1 <  player.getShip().getCargoSize();
     }
 
     //if the player can sell the goods
