@@ -31,17 +31,10 @@ public class Market {
     }
 
     //if the player can buy the goods
-<<<<<<< HEAD
     public boolean canBuy(Goods good) {
         return player.getCredits() > goodPrice(good) &&
-                player.getShip().getCargoSize() + 1 <  player.getShip().getCargoSize();
-=======
-    public boolean canBuy(int amountToBuy, Goods good) {
-        return player.getCredits() > (amountToBuy * goodPrice(good)) &&
-                player.getShip().getCargo().getNumItems() + amountToBuy <  player.getShip().getCargoSize();
->>>>>>> 331366f245dd77ba0756ac9c56687a359b7035f6
+               player.getShip().getCargoSize() + 1 < player.getShip().getCargoSize();
     }
-
     //if the player can sell the goods
     public boolean canSell(int amountToSell, Goods good) {
         if(good == Goods.Water && amountToSell <= player.getShip().getCargo().getWaterAmount()) {
