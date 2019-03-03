@@ -25,6 +25,10 @@ public class Ship {
         return cargo.getCargoSize();
     }
 
+    public Cargo getCargo() {
+        return cargo;
+    }
+
 
     //create instance variable for each type of good that counts how many of each
     //type there are --> create getters
@@ -42,6 +46,7 @@ public class Ship {
         int machineAmount;
         int narcoticsAmount;
         int robotsAmount;
+        int numItems = 0;
 
         public Cargo() {
             this(shiptype.getCargoSize(), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
@@ -65,5 +70,56 @@ public class Ship {
         public int getCargoSize() {
             return shipCargo.length;
         }
+
+        public int getNumItems() {
+            return numItems;
+        }
+
+        public void addGoods() {
+            numItems++;
+        }
+
+        public int getWaterAmount() {
+            return waterAmount;
+        }
+
+        public int getFurAmount() {
+            return furAmount;
+        }
+
+        public int getFoodAmount() {
+            return foodAmount;
+        }
+
+        public int getOreAmount() {
+            return oreAmount;
+        }
+
+        public int getGamesAmount() {
+            return gamesAmount;
+        }
+
+        public int getFirearmsAmount() {
+            return firearmsAmount;
+        }
+
+        public int getMedicineAmount() {
+            return medicineAmount;
+        }
+
+        public int getMachineAmount() {
+            return machineAmount;
+        }
+
+        public int getNarcoticsAmount() {
+            return narcoticsAmount;
+        }
+
+        public int getRobotsAmount() {
+            return robotsAmount;
+        }
+
+
+
     }
 }
