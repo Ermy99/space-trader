@@ -9,7 +9,9 @@ import android.view.View;
 import android.widget.Button;
 
 import cs2340.spacetraders.R;
-
+/*
+The screen with the start button on it
+ */
 public class MainActivity extends AppCompatActivity {
 
 

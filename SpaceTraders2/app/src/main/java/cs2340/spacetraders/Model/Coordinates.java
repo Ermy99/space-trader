@@ -3,6 +3,7 @@ package cs2340.spacetraders.Model;
 import java.util.ArrayList;
 import java.util.Collections;
 
+
 public class Coordinates {
 
     private ArrayList<Integer> xVals = new ArrayList<>(150);

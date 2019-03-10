@@ -6,7 +6,9 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
 import cs2340.spacetraders.R;
-
+/*
+The splash screen
+ */
 public class SplashActivity extends AppCompatActivity {
     private static int SPLASH_TIME_OUT = 4000;
 

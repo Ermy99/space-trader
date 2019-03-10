@@ -7,7 +7,10 @@ import android.view.View;
 import android.widget.Button;
 
 import cs2340.spacetraders.R;
-
+/*
+Main game screen
+The screen with the four buttons on it.
+ */
 public class GameActivity extends AppCompatActivity {
 
     @Override
@@ -19,8 +22,8 @@ public class GameActivity extends AppCompatActivity {
         marketButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent mainIntent = new Intent(GameActivity.this, MarketActivity.class);
-                startActivity(mainIntent);
+                Intent marketIntent = new Intent(GameActivity.this, MarketActivity.class);
+                startActivity(marketIntent);
             }
         });
     }
