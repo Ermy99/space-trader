@@ -1,10 +1,13 @@
 package cs2340.spacetraders.Model;
 
 class ModelFacade {
-    private static final ModelFacade ourInstance = new ModelFacade();
+    private static ModelFacade singletonInstance = new ModelFacade();
 
     static ModelFacade getInstance() {
-        return ourInstance;
+        if (singletonInstance == null) {
+            singletonInstance = new ModelFacade();
+        }
+        return singletonInstance;
     }
 
     private ModelFacade() {
