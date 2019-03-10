@@ -1,25 +1,27 @@
 package cs2340.spacetraders.Model;
 
 public enum Goods {
-    Water(0, 0, 2, 30, 3),
-    Furs(0, 0, 0, 250, 10),
-    Food(1, 0, 1, 100, 5),
-    Ore(2, 2, 3, 350, 20),
-    Games(3, 1, 6, 250, -10),
-    Firearms(3, 1, 5, 1250, -75),
-    Medicine(4, 1, 6, 650, -20),
-    Machines(4, 3, 5, 900, -30),
-    Narcotics(5, 0, 5, 3500, -125),
-    Robots(6, 4, 7, 5000, -150);
+    Water("Water", 0, 0, 2, 30, 3),
+    Furs("Furs", 0, 0, 0, 250, 10),
+    Food("Foods", 1, 0, 1, 100, 5),
+    Ore("Ore", 2, 2, 3, 350, 20),
+    Games("Games", 3, 1, 6, 250, -10),
+    Firearms("Firearms", 3, 1, 5, 1250, -75),
+    Medicine("Medicine", 4, 1, 6, 650, -20),
+    Machines("Machines", 4, 3, 5, 900, -30),
+    Narcotics("Narcotics",5, 0, 5, 3500, -125),
+    Robots("Robots", 6, 4, 7, 5000, -150);
 
+    private String code;
     private int minTechLevelToProd;
     private int minTechLevelToUse;
     private int techLevel;
     private int basePrice;
     private int priceInc;
 
-    Goods(int minTechLevelToProd, int minTechLevelToUse, int techLevel,
+    Goods(String code, int minTechLevelToProd, int minTechLevelToUse, int techLevel,
           int basePrice, int priceInc) {
+        this.code = code;
         this.minTechLevelToProd = minTechLevelToProd;
         this.minTechLevelToUse = minTechLevelToUse;
         this.techLevel = techLevel;
@@ -61,12 +63,17 @@ public enum Goods {
 
     public void sell(Goods good, int quantityToSell) {
         if (canSell(good, quantityToSell)) {
-            for (CargoItem c: Game.getInstance().player.getShip().getCargo().getShipCargo()) {
+            for (CargoItem c : Game.getInstance().player.getShip().getCargo().getShipCargo()) {
                 if (c.getGood().equals(good)) {
                     c.quantity -= quantityToSell;
                 }
             }
         }
+    }
+
+    public String getCode() {
+        return code;
+
     }
 
     public int getMinTechLevelToProd() {

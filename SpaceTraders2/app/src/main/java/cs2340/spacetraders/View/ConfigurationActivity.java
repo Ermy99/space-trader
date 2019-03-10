@@ -17,7 +17,9 @@ import cs2340.spacetraders.Model.GameDifficulty;
 import cs2340.spacetraders.R;
 import cs2340.spacetraders.ViewModel.PlayerViewModel;
 
-
+/*
+Player configuration screen
+ */
 public class ConfigurationActivity extends AppCompatActivity {
 
     //need to instantiate/assign a value to the playerViewModel

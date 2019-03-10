@@ -2,19 +2,15 @@ package cs2340.spacetraders.ViewModel;
 
 import android.app.Application;
 import android.arch.lifecycle.AndroidViewModel;
-import android.arch.lifecycle.ViewModel;
 import android.support.annotation.NonNull;
-import android.widget.Toast;
 
 import cs2340.spacetraders.Model.Game;
 import cs2340.spacetraders.Model.GameDifficulty;
 import cs2340.spacetraders.Model.Market;
-import cs2340.spacetraders.Model.Model;
 import cs2340.spacetraders.Model.Player;
 import cs2340.spacetraders.Model.SolarSystems;
 import cs2340.spacetraders.Model.Universe;
 import cs2340.spacetraders.View.ConfigurationActivity;
-import android.widget.Toast;
 
 
 public class PlayerViewModel extends AndroidViewModel {
