@@ -24,42 +24,42 @@ public class Market {
         }
     }
 
-    public int goodPrice(Goods good) {
-        int price =  good.getBasePrice() + 3 * 2 * (good.getPriceInc() *
-                (solarSystems.getTech().ordinal() - good.getMinTechLevelToProd()));
-        return price;
-    }
+//    public int goodPrice(Goods good) {
+//        int price =  good.getBasePrice() + 3 * 2 * (good.getPriceInc() *
+//                (solarSystems.getTech().ordinal() - good.getMinTechLevelToProd()));
+//        return price;
+//    }
 
     //if the player can buy the goods
-    public boolean canBuy(Goods good) {
-        return player.getCredits() > goodPrice(good) &&
-               player.getShip().getCargoSize() + 1 < player.getShip().getCargoSize();
-    }
+//    public boolean canBuy(Goods good) {
+//        return player.getCredits() > goodPrice(good) &&
+//               player.getShip().getCargoSize() + 1 < player.getShip().getCargoSize();
+//    }
     //if the player can sell the goods
-    public boolean canSell(int amountToSell, Goods good) {
-        if(good == Goods.Water && amountToSell <= player.getShip().getCargo().getWaterAmount()) {
-            return true;
-        } else if (good == Goods.Furs && amountToSell <= player.getShip().getCargo().getFurAmount()) {
-            return true;
-        } else if (good == Goods.Food && amountToSell <= player.getShip().getCargo().getFoodAmount()) {
-            return true;
-        } else if (good == Goods.Ore && amountToSell <= player.getShip().getCargo().getOreAmount()) {
-            return true;
-        } else if (good == Goods.Games && amountToSell <= player.getShip().getCargo().getGamesAmount()) {
-            return true;
-        } else if (good == Goods.Firearms && amountToSell <= player.getShip().getCargo().getFirearmsAmount()) {
-            return true;
-        } else if (good == Goods.Medicine && amountToSell <= player.getShip().getCargo().getMedicineAmount()) {
-            return true;
-        } else if (good == Goods.Machines && amountToSell <= player.getShip().getCargo().getMachineAmount()){
-            return true;
-        } else if (good == Goods.Narcotics && amountToSell <= player.getShip().getCargo().getNarcoticsAmount()){
-            return true;
-        } else if (good == Goods.Robots && amountToSell <= player.getShip().getCargo().getRobotsAmount()) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+//    public boolean canSell(int amountToSell, Goods good) {
+//        if(good == Goods.Water && amountToSell <= player.getShip().getCargo().getWaterAmount()) {
+//            return true;
+//        } else if (good == Goods.Furs && amountToSell <= player.getShip().getCargo().getFurAmount()) {
+//            return true;
+//        } else if (good == Goods.Food && amountToSell <= player.getShip().getCargo().getFoodAmount()) {
+//            return true;
+//        } else if (good == Goods.Ore && amountToSell <= player.getShip().getCargo().getOreAmount()) {
+//            return true;
+//        } else if (good == Goods.Games && amountToSell <= player.getShip().getCargo().getGamesAmount()) {
+//            return true;
+//        } else if (good == Goods.Firearms && amountToSell <= player.getShip().getCargo().getFirearmsAmount()) {
+//            return true;
+//        } else if (good == Goods.Medicine && amountToSell <= player.getShip().getCargo().getMedicineAmount()) {
+//            return true;
+//        } else if (good == Goods.Machines && amountToSell <= player.getShip().getCargo().getMachineAmount()){
+//            return true;
+//        } else if (good == Goods.Narcotics && amountToSell <= player.getShip().getCargo().getNarcoticsAmount()){
+//            return true;
+//        } else if (good == Goods.Robots && amountToSell <= player.getShip().getCargo().getRobotsAmount()) {
+//            return true;
+//        } else {
+//            return false;
+//        }
+//    }
     
 }

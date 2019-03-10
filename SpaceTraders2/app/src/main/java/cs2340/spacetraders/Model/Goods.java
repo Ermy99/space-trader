@@ -27,6 +27,48 @@ public enum Goods {
         this.priceInc = priceInc;
     }
 
+
+    //returns a price for the tradegood
+    public int getPrice(int level) {
+        return basePrice + 3 * 2 * priceInc * (level - minTechLevelToProd);
+    }
+
+    public boolean canSell(Goods good, int quantityToSell) {
+
+        for (CargoItem c: Game.getInstance().player.getShip().getCargo().getShipCargo()) {
+            if (c.getGood().equals(good) && quantityToSell < c.getQuantity()) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public boolean canBuy(Goods good, int quantityToBuy) {
+        return Game.getInstance().player.getCredits() > (getPrice(Game.getInstance().player.getSolarSystems().getTech().ordinal()) * quantityToBuy) &&
+                Game.getInstance().player.getShip().getCargoSize() + 1 <  Game.getInstance().player.getShip().getCargoSize();
+    }
+
+    public void buy(Goods good, int quantityToBuy) {
+        if (canBuy(good, quantityToBuy)) {
+            for (CargoItem c: Game.getInstance().player.getShip().getCargo().getShipCargo()) {
+                if (c.getGood().equals(good)) {
+                    c.quantity += quantityToBuy;
+                }
+            }
+        }
+    }
+
+    public void sell(Goods good, int quantityToSell) {
+        if (canSell(good, quantityToSell)) {
+            for (CargoItem c: Game.getInstance().player.getShip().getCargo().getShipCargo()) {
+                if (c.getGood().equals(good)) {
+                    c.quantity -= quantityToSell;
+                }
+            }
+        }
+    }
+
     public int getMinTechLevelToProd() {
         return minTechLevelToProd;
     }

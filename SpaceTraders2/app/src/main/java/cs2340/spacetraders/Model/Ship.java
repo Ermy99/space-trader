@@ -1,14 +1,16 @@
 package cs2340.spacetraders.Model;
 
+import java.util.List;
+
 public class Ship {
     Cargo cargo;
-    Shiptype shiptype;
+    public Shiptype shiptype;
     int cargoSize;
 
 
     Ship(Shiptype shiptype){
         this.shiptype = shiptype;
-        this.cargo = new Cargo();
+        this.cargo = new Cargo(shiptype.getCargoSize());
     }
 
 
@@ -35,91 +37,35 @@ public class Ship {
 
 
     public class Cargo {
-        Goods[] shipCargo;
-        int waterAmount;
-        int furAmount;
-        int foodAmount;
-        int oreAmount;
-        int gamesAmount;
-        int firearmsAmount;
-        int medicineAmount;
-        int machineAmount;
-        int narcoticsAmount;
-        int robotsAmount;
-        int numItems = 0;
+       List<CargoItem> shipCargo;
+       int cargoSize;
 
-        public Cargo() {
-            this(shiptype.getCargoSize(), 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
-        }
 
-        public Cargo(int shipCargoSize, int waterAmount, int furAmount, int foodAmount,
-                     int oreAmount, int gamesAmount, int firearmsAmount, int medicineAmount, int machineAmount, int narcoticsAmount, int robotsAmount) {
-            this.shipCargo = new Goods[shipCargoSize];
-            this.waterAmount = waterAmount;
-            this.furAmount = furAmount;
-            this.foodAmount = foodAmount;
-            this.oreAmount = oreAmount;
-            this.gamesAmount = gamesAmount;
-            this.firearmsAmount = firearmsAmount;
-            this.medicineAmount = medicineAmount;
-            this.machineAmount = machineAmount;
-            this.narcoticsAmount = narcoticsAmount;
-            this.robotsAmount = robotsAmount;
+        public Cargo(int cargoSize) {
+            this.cargoSize = cargoSize;
+            shipCargo.add(new CargoItem(0, Goods.Water));
+            shipCargo.add(new CargoItem(0, Goods.Furs));
+            shipCargo.add(new CargoItem(0, Goods.Food));
+            shipCargo.add(new CargoItem(0, Goods.Ore));
+            shipCargo.add(new CargoItem(0, Goods.Games));
+            shipCargo.add(new CargoItem(0, Goods.Firearms));
+            shipCargo.add(new CargoItem(0, Goods.Medicine));
+            shipCargo.add(new CargoItem(0, Goods.Machines));
+            shipCargo.add(new CargoItem(0, Goods.Narcotics));
+            shipCargo.add(new CargoItem(0, Goods.Robots));
         }
 
         public int getCargoSize() {
-            return shipCargo.length;
+            int returnVal = 0;
+            for (CargoItem c: shipCargo) {
+                returnVal +=  c.getQuantity();
+            }
+            return returnVal;
         }
 
-        public int getNumItems() {
-            return numItems;
+        public List<CargoItem> getShipCargo() {
+            return shipCargo;
         }
-
-        public void addGoods() {
-            numItems++;
-        }
-
-        public int getWaterAmount() {
-            return waterAmount;
-        }
-
-        public int getFurAmount() {
-            return furAmount;
-        }
-
-        public int getFoodAmount() {
-            return foodAmount;
-        }
-
-        public int getOreAmount() {
-            return oreAmount;
-        }
-
-        public int getGamesAmount() {
-            return gamesAmount;
-        }
-
-        public int getFirearmsAmount() {
-            return firearmsAmount;
-        }
-
-        public int getMedicineAmount() {
-            return medicineAmount;
-        }
-
-        public int getMachineAmount() {
-            return machineAmount;
-        }
-
-        public int getNarcoticsAmount() {
-            return narcoticsAmount;
-        }
-
-        public int getRobotsAmount() {
-            return robotsAmount;
-        }
-
-
 
     }
 }
