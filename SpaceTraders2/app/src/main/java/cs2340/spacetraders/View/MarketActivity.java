@@ -1,15 +1,11 @@
 package cs2340.spacetraders.View;
 
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.widget.Button;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 import cs2340.spacetraders.Model.Goods;
@@ -21,6 +17,10 @@ public class MarketActivity extends AppCompatActivity {
 
 
     private GoodAdapter adapter;
+
+    /** a key for passing data */
+    public static final String GOOD_NAME = "GOOD_NAME";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,27 +47,13 @@ public class MarketActivity extends AppCompatActivity {
         adapter.setOnGoodClickListener(new GoodAdapter.OnGoodClickListener() {
             @Override
             public void onGoodClicked(Goods good) {
-                Intent intent = new Intent(MarketActivity.this, TradeActivity.class);
+                Intent intent = new Intent(MarketActivity.this, BuyActivity.class);
+                intent.putExtra(GOOD_NAME, good);
                 startActivity(intent);
             }
         });
     }
 
-
-//    private void initImageBitmaps() {
-//        //change this to get information from the enum
-//        mNames.add("Water");
-//        mNames.add("Fuel");
-//
-//        initRecyclerView();
-//    }
-
-//    private void initRecyclerView() {
-//        RecyclerView recyclerView = findViewById(R.id.recycler_view);
-//        GoodAdapter adapter = new GoodAdapter(mImageURLs, mNames, this);
-//        recyclerView.setAdapter(adapter);
-//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-//    }
 
 
 }
