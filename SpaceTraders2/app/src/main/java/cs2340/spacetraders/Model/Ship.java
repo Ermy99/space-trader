@@ -1,5 +1,6 @@
 package cs2340.spacetraders.Model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Ship {
@@ -43,6 +44,7 @@ public class Ship {
 
         public Cargo(int cargoSize) {
             this.cargoSize = cargoSize;
+            shipCargo = new ArrayList<>();
             shipCargo.add(new CargoItem(0, Goods.Water));
             shipCargo.add(new CargoItem(0, Goods.Furs));
             shipCargo.add(new CargoItem(0, Goods.Food));
