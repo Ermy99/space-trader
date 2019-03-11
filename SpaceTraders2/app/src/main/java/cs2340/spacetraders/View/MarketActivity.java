@@ -19,9 +19,7 @@ The screen with the buy and sell buttons
  */
 public class MarketActivity extends AppCompatActivity {
 
-    private ArrayList<String> mNames = new ArrayList<>();
-    private ArrayList<String> mImageURLs = new ArrayList<>();
-    private ArrayList<Integer> mPrices = new ArrayList<>();
+
     private GoodAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import cs2340.spacetraders.Model.Game;
 import cs2340.spacetraders.Model.Goods;
 import cs2340.spacetraders.R;
 
@@ -42,6 +43,7 @@ public class GoodAdapter extends RecyclerView.Adapter<GoodAdapter.GoodViewHolder
     public void onBindViewHolder(@NonNull GoodViewHolder holder, int position) {
         Goods good = goodList.get(position);
         holder.goodName.setText(good.getCode());
+       holder.goodPrice.setText(Integer.toString(good.getPrice(5)));
     }
 
     @Override
@@ -59,11 +61,13 @@ public class GoodAdapter extends RecyclerView.Adapter<GoodAdapter.GoodViewHolder
 
         //ImageView image;
         TextView goodName;
+        TextView goodPrice;
 
         public GoodViewHolder(@NonNull View itemView) {
             super(itemView);
             //image = itemView.findViewById(R.id.image);
             goodName = itemView.findViewById(R.id.good_name);
+            goodPrice = itemView.findViewById(R.id.good_price);
             //parentLayout = itemView.findViewById(R.id.parent_layout);
 
             itemView.setOnClickListener(new View.OnClickListener() {
