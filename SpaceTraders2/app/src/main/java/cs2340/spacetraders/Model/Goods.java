@@ -59,6 +59,9 @@ public enum Goods {
                 }
             }
         }
+        int playerCredits = Game.getInstance().player.getCredits();
+        Game.getInstance().player.setCredits(playerCredits -
+                getPrice(Game.getInstance().player.getSolarSystems().getTech().ordinal()));
     }
 
     public void sell(Goods good, int quantityToSell) {
