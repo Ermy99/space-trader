@@ -43,7 +43,7 @@ public class GoodAdapter extends RecyclerView.Adapter<GoodAdapter.GoodViewHolder
     public void onBindViewHolder(@NonNull GoodViewHolder holder, int position) {
         Goods good = goodList.get(position);
         holder.goodName.setText(good.getCode());
-       holder.goodPrice.setText(Integer.toString(good.getPrice(5)));
+        holder.goodPrice.setText(Integer.toString(good.getPrice(Game.getInstance().player.getSolarSystems().ordinal())));
     }
 
     @Override

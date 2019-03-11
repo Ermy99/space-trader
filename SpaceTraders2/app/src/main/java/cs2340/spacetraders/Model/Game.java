@@ -12,26 +12,16 @@ public class Game {
     public Universe universe;
     public Market market;
 
-    private static Game instance;
+    private static Game instance = new Game();
 
 
     public static List<GameDifficulty> gameDifficulties = Arrays.asList(GameDifficulty.BEGINNER, GameDifficulty.EASY, GameDifficulty.NORMAL,
             GameDifficulty.HARD, GameDifficulty.IMPOSSIBLE);
 
-    public Game(Player player, GameDifficulty gameDifficulty, Universe universe, Market market) {
-        this.player = player;
-        this.gameDifficulty = gameDifficulty;
-        this.universe = universe;
-        this.market = new Market(player.getSolarSystems(), player);
-        Log.d("Edit",this.toString());
+    public Game() {
+        //Log.d("Edit",this.toString());
     }
 
-    public static Game getInstance(Player player, GameDifficulty gameDifficulty, Universe universe, Market market) {
-        if (instance == null) {
-            instance = new Game(player, gameDifficulty, universe, market);
-        }
-        return instance;
-    }
 
     public static Game getInstance() {
         return instance;
