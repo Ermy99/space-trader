@@ -58,6 +58,7 @@ public enum Goods {
             for (CargoItem c: Game.getInstance().player.getShip().getCargo().getShipCargo()) {
                 if (c.getGood().equals(good)) {
                     //c.quantity += quantityToBuy;
+                    Log.d("Add", Integer.toString(quantityToBuy));
                     c.quantity = c.quantity + quantityToBuy;
                     Log.d("Add", c.good.getCode());
                     Log.d("Add", Integer.toString(c.quantity));

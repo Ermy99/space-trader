@@ -44,7 +44,7 @@ public class CargoActivity extends AppCompatActivity {
     @Override
     public void onResume() {
         super.onResume();
-        adapter.setCargoList((Game.getInstance().getPlayer().getShip().getCargo().getShipCargo()));
+        adapter.setCargoList((Game.getInstance().shipCargo));
 
         adapter.setonCargoItemClickListener(new CargoItemAdapter.OnCargoItemClickListener() {
             @Override

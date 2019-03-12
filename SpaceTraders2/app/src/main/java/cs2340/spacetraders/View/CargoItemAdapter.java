@@ -18,7 +18,7 @@ import cs2340.spacetraders.R;
 
 public class CargoItemAdapter extends RecyclerView.Adapter<CargoItemAdapter.CargoItemViewHolder> {
 
-    private List<CargoItem> cargoList = Game.getInstance().getPlayer().getShip().getCargo().getShipCargo();
+    private List<CargoItem> cargoList = Game.getInstance().shipCargo;
 
     private OnCargoItemClickListener listener;
 
@@ -49,8 +49,8 @@ public class CargoItemAdapter extends RecyclerView.Adapter<CargoItemAdapter.Carg
 
     @Override
     public int getItemCount() {
-        Log.d("APP","size is" + cargoList.size());
-        return cargoList.size();
+        //Log.d("APP","size is" + cargoList.size());
+        return 10;
     }
 
     public void setCargoList(List<CargoItem> cargoItems) {
