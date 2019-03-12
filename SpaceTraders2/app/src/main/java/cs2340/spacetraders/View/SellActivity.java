@@ -15,7 +15,7 @@ public class SellActivity extends AppCompatActivity {
 
     private Goods good;
     public MarketViewModel marketViewModel;
-    public static final String CARGO_NAME = "GOOD_NAME";
+    public static final String CARGO_NAME = "CARGO_NAME";
 
 
     /*
@@ -37,7 +37,7 @@ public class SellActivity extends AppCompatActivity {
     }
 
     public void onSell(View view ) {
-        marketViewModel.buyGood(good);
+        marketViewModel.buyGood(good, 5);
     }
 
 

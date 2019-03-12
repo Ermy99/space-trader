@@ -12,7 +12,7 @@
         android:padding="8dp">
 
         <TextView
-            android:id="@+id/cargo_item_quantity"
+            android:id="@+id/cargo_item_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
@@ -30,11 +30,11 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         <TextView
-            android:id="@+id/cargo_item_price"
+            android:id="@+id/cargo_item_quantity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="136dp"
-            android:layout_marginEnd="127dp"
+            android:layout_marginStart="165dp"
+            android:layout_marginEnd="98dp"
             android:layout_toStartOf="@+id/cargo_item_price"
             android:layout_toEndOf="@+id/cargo_item_name"
             android:paddingRight="10dp"
