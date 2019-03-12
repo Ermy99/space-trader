@@ -42,7 +42,7 @@ public class BuyActivity extends AppCompatActivity {
 
 
         goodName = findViewById(R.id.good_name);
-        amountSpinner = findViewById(R.id.amount_spinner);
+
 
         ArrayList<Integer> quantities = new ArrayList<>();
         quantities.add(1);
