@@ -46,7 +46,23 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".View.CargoActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
         <activity android:name=".View.BuyActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".View.SellActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

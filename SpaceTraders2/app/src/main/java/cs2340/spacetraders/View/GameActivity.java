@@ -26,5 +26,15 @@ public class GameActivity extends AppCompatActivity {
                 startActivity(marketIntent);
             }
         });
+
+        Button cargoButton =  findViewById(R.id.cargo_button);
+        cargoButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent cargoIntent = new Intent(GameActivity.this, CargoActivity.class);
+                startActivity(cargoIntent);
+            }
+        });
+
     }
 }
