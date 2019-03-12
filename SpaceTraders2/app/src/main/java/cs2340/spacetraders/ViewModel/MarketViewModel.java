@@ -15,16 +15,24 @@ public class MarketViewModel extends AndroidViewModel {
         game = Game.getInstance();
     }
 
-    public void buyGood(Goods goods) {
-        if (goods.canBuy(goods, 1)) {
-            goods.buy(goods,1);
+    public void buyGood(Goods goods, int quantity) {
+        if (goods.canBuy(goods, quantity)) {
+            goods.buy(goods, quantity);
         }
     }
 
-    public void sellGood(Goods goods) {
-        if (goods.canSell(goods, 1)) {
-            goods.sell(goods,1);
+    public boolean canBuy(Goods goods, int quantity) {
+        return goods.canBuy(goods, quantity);
+    }
+
+    public void sellGood(Goods goods, int quantity) {
+        if (goods.canSell(goods, quantity)) {
+            goods.sell(goods,quantity);
         }
+    }
+
+    public boolean canSell(Goods goods, int quantity) {
+        return goods.canSell(goods, quantity);
     }
 
 }

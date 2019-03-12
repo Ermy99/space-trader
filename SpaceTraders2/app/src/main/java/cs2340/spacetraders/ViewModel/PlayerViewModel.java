@@ -15,7 +15,7 @@ import cs2340.spacetraders.View.ConfigurationActivity;
 
 public class PlayerViewModel extends AndroidViewModel {
 
-    Game game = Game.getInstance();
+    Game game;
     Player player;
 
 
@@ -34,6 +34,7 @@ public class PlayerViewModel extends AndroidViewModel {
     }
 
     public void createGame(Player player, GameDifficulty gameDifficulty) {
+        game = Game.getInstance();
         game.setPlayer(player);
         game.setGameDifficulty(gameDifficulty);
         game.universe = new Universe();

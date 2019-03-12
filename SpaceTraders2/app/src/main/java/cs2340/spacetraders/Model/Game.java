@@ -11,8 +11,9 @@ public class Game {
     public GameDifficulty gameDifficulty;
     public Universe universe;
     public Market market;
+    public int solarSystemLevel;
 
-    private static Game instance = new Game();
+    private static final Game instance = new Game();
 
 
     public static List<GameDifficulty> gameDifficulties = Arrays.asList(GameDifficulty.BEGINNER, GameDifficulty.EASY, GameDifficulty.NORMAL,
@@ -33,6 +34,7 @@ public class Game {
 
     public void setPlayer(Player player) {
         this.player = player;
+        solarSystemLevel = player.getSolarSystems().ordinal();
     }
 
     public GameDifficulty getGameDifficulty() {
