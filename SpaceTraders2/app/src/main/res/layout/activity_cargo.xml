@@ -8,7 +8,7 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/cargo_list"
-        tools:listitem="@layout/good_item"
+        tools:listitem="@layout/cargo_item"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginStart="8dp"

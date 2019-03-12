@@ -39,6 +39,7 @@ public class CargoItemAdapter extends RecyclerView.Adapter<CargoItemAdapter.Carg
         CargoItem cargoItem = cargoList.get(position);
         Goods good = cargoItem.getGood();
         int quantity = cargoItem.getQuantity();
+        Log.d("APP", "quantity issss" + quantity);
 
         holder.cargoItemName.setText(good.getCode());
         holder.cargoItemPrice.setText(Integer.toString(good.getPrice(Game.getInstance().getPlayer().getSolarSystems().ordinal())));
@@ -54,7 +55,7 @@ public class CargoItemAdapter extends RecyclerView.Adapter<CargoItemAdapter.Carg
     }
 
     public void setCargoList(List<CargoItem> cargoItems) {
-        cargoItems = cargoItems;
+        this.cargoList = cargoItems;
         notifyDataSetChanged();
     }
 
