@@ -2,6 +2,7 @@ package cs2340.spacetraders.View;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -17,22 +18,20 @@ public class SellActivity extends AppCompatActivity {
     public MarketViewModel marketViewModel;
     public static final String CARGO_NAME = "CARGO_NAME";
 
-
-    /*
-        Views
-     */
     private TextView cargoName;
     private Spinner amountSpinner;
+    private int amountToBuy;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sell);
-
+        amountSpinner = findViewById(R.id.amount_spinner);
 
         cargoName = findViewById(R.id.cargo_item_name);
         //amountSpinner = findViewById(R.id.amount_spinner);
         good = (Goods) getIntent().getSerializableExtra(CARGO_NAME);
+        Log.d("APP", "EEEEEEEEEEwater");
         cargoName.setText(good.getCode());
     }
 
