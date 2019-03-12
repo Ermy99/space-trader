@@ -43,7 +43,7 @@ public class Ship {
 
 
         public Cargo(int cargoSize) {
-            this.cargoSize = cargoSize;
+            this.cargoSize = 15;
             shipCargo = new ArrayList<>();
             shipCargo.add(new CargoItem(0, Goods.Water));
             shipCargo.add(new CargoItem(0, Goods.Furs));

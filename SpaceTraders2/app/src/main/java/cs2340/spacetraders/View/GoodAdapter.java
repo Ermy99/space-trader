@@ -19,6 +19,8 @@ import java.util.List;
 
 import cs2340.spacetraders.Model.Game;
 import cs2340.spacetraders.Model.Goods;
+import cs2340.spacetraders.Model.Player;
+import cs2340.spacetraders.Model.SolarSystems;
 import cs2340.spacetraders.R;
 
 public class GoodAdapter extends RecyclerView.Adapter<GoodAdapter.GoodViewHolder> {
@@ -26,6 +28,8 @@ public class GoodAdapter extends RecyclerView.Adapter<GoodAdapter.GoodViewHolder
     private List<Goods> goodList = Arrays.asList(Goods.values());
 
     private OnGoodClickListener listener;
+
+    private Game game = Game.getInstance();
 
 
     @NonNull
@@ -43,7 +47,10 @@ public class GoodAdapter extends RecyclerView.Adapter<GoodAdapter.GoodViewHolder
     public void onBindViewHolder(@NonNull GoodViewHolder holder, int position) {
         Goods good = goodList.get(position);
         holder.goodName.setText(good.getCode());
-       holder.goodPrice.setText(Integer.toString(good.getPrice(5)));
+        Player player = game.getPlayer();
+        //SolarSystems solarSystems = player.getSolarSystems();
+
+        holder.goodPrice.setText(Integer.toString(good.getPrice(game.solarSystemLevel)));
     }
 
     @Override

@@ -34,7 +34,11 @@ public class PlayerViewModel extends AndroidViewModel {
     }
 
     public void createGame(Player player, GameDifficulty gameDifficulty) {
-        game = new Game(player, gameDifficulty, new Universe(), null);
+        game = Game.getInstance();
+        game.setPlayer(player);
+        game.setGameDifficulty(gameDifficulty);
+        game.universe = new Universe();
+        game.market = new Market(player.getSolarSystems(), player);
     }
 
     public static boolean onOK(String name, int pilotPoints, int engineeringPoints, int traderPoints,
