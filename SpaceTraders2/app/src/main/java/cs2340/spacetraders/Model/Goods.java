@@ -1,5 +1,7 @@
 package cs2340.spacetraders.Model;
 
+import android.util.Log;
+
 public enum Goods {
     Water("Water", 0, 0, 2, 30, 3),
     Furs("Furs", 0, 0, 0, 250, 10),
@@ -47,21 +49,27 @@ public enum Goods {
     }
 
     public boolean canBuy(Goods good, int quantityToBuy) {
-        return Game.getInstance().player.getCredits() > (getPrice(Game.getInstance().player.getSolarSystems().getTech().ordinal()) * quantityToBuy) &&
-                Game.getInstance().player.getShip().getCargoSize() + 1 <  Game.getInstance().player.getShip().getCargoSize();
+        return Game.getInstance().player.getCredits() > (good.getPrice(Game.getInstance().player.getSolarSystems().getTech().ordinal()) * quantityToBuy) &&
+                Game.getInstance().player.getShip().getCargoSize() + 1 <  Game.getInstance().player.getShip().getCargoCapacity();
     }
 
     public void buy(Goods good, int quantityToBuy) {
         if (canBuy(good, quantityToBuy)) {
             for (CargoItem c: Game.getInstance().player.getShip().getCargo().getShipCargo()) {
                 if (c.getGood().equals(good)) {
-                    c.quantity += quantityToBuy;
+                    //c.quantity += quantityToBuy;
+                    c.quantity = c.quantity + quantityToBuy;
+                    Log.d("Add", c.good.getCode());
+                    Log.d("Add", Integer.toString(c.quantity));
                 }
             }
+
+            int playerCredits = Game.getInstance().player.getCredits();
+            Game.getInstance().player.setCredits(playerCredits -
+                    (getPrice(Game.getInstance().player.getSolarSystems().getTech().ordinal()) * quantityToBuy));
+            Log.d("edit", Integer.toString(Game.getInstance().player.getCredits()));
         }
-        int playerCredits = Game.getInstance().player.getCredits();
-        Game.getInstance().player.setCredits(playerCredits -
-                getPrice(Game.getInstance().player.getSolarSystems().getTech().ordinal()));
+
     }
 
     public void sell(Goods good, int quantityToSell) {
