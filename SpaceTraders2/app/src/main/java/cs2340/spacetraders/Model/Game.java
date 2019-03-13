@@ -23,6 +23,14 @@ public class Game {
 
     public Game() {
         //Log.d("Edit",this.toString());
+        this.player = new Player(null,0,0,0,0,null);
+        this.gameDifficulty = GameDifficulty.BEGINNER;
+        this.universe = new Universe();
+        this.market = new Market(null, null);
+        this.solarSystemLevel = 1;
+        this.ship = player.getShip();
+        this.cargo = player.getShip().getCargo();
+        this.shipCargo = cargo.getShipCargo();
     }
 
 
@@ -36,10 +44,10 @@ public class Game {
 
     public void setPlayer(Player player) {
         this.player = player;
-        solarSystemLevel = player.getSolarSystems().ordinal();
-        ship = player.getShip();
-        cargo = ship.getCargo();
-        shipCargo = cargo.getShipCargo();
+        this.solarSystemLevel = player.getSolarSystems().ordinal();
+        this.ship = player.getShip();
+        this.cargo = ship.getCargo();
+        this.shipCargo = cargo.getShipCargo();
     }
 
     public GameDifficulty getGameDifficulty() {

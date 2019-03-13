@@ -32,6 +32,10 @@ public class Cargo {
             return returnVal;
         }
 
+        public int getCargoCapacity() {
+            return cargoCapacity;
+        }
+
         public List<CargoItem> getShipCargo() {
             return shipCargo;
         }

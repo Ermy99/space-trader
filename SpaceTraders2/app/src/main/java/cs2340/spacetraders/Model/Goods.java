@@ -50,7 +50,7 @@ public enum Goods {
 
     public boolean canBuy(Goods good, int quantityToBuy) {
         return Game.getInstance().player.getCredits() > (good.getPrice(Game.getInstance().player.getSolarSystems().getTech().ordinal()) * quantityToBuy) &&
-                Game.getInstance().player.getShip().getCargoSize() + 1 <  Game.getInstance().player.getShip().getCargoCapacity();
+                Game.getInstance().player.getShip().getCargo().getCargoSize() + 1 <  Game.getInstance().player.getShip().getCargo().getCargoCapacity();
     }
 
     public void buy(Goods good, int quantityToBuy) {
@@ -78,6 +78,8 @@ public enum Goods {
             for (CargoItem c : Game.getInstance().player.getShip().getCargo().getShipCargo()) {
                 if (c.getGood().equals(good)) {
                     c.quantity -= quantityToSell;
+                    int currentCredits = Game.getInstance().getPlayer().getCredits();
+                    Game.getInstance().getPlayer().setCredits(currentCredits + good.getPrice(Game.getInstance().solarSystemLevel));
                 }
             }
         }

@@ -4,15 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Ship {
-    Cargo cargo;
+    public Cargo cargo;
     public Shiptype shiptype;
-    int cargoSize;
-    int cargoCapacity;
+    //int cargoSize;
+    //int cargoCapacity;
 
 
     Ship(Shiptype shiptype){
         this.shiptype = shiptype;
-        this.cargo = new Cargo(shiptype.getCargoSize());
+        this.cargo = new Cargo(15);
     }
 
     public Shiptype getShiptype() {
@@ -27,17 +27,17 @@ public class Ship {
         cargo = new Cargo(15);
     }
 
-    public void setCargoSize() {
-        this.cargoSize = cargo.getCargoSize();
-    }
+//    public void setCargoSize() {
+//        this.cargoSize = cargo.getCargoSize();
+//    }
 
-    public int getCargoCapacity() {
-        return cargo.cargoCapacity;
-    }
+//    public int getCargoCapacity() {
+//        return cargo.cargoCapacity;
+//    }
 
-    public int getCargoSize() {
-        return cargo.getCargoSize();
-    }
+//    public int getCargoSize() {
+//        return cargo.getCargoSize();
+//    }
 
     public Cargo getCargo() {
         return cargo;

@@ -42,7 +42,7 @@ public class CargoItemAdapter extends RecyclerView.Adapter<CargoItemAdapter.Carg
         Log.d("APP", "quantity issss" + quantity);
 
         holder.cargoItemName.setText(good.getCode());
-        holder.cargoItemPrice.setText(Integer.toString(good.getPrice(Game.getInstance().getPlayer().getSolarSystems().ordinal())));
+        holder.cargoItemPrice.setText(Integer.toString(good.getPrice(Game.getInstance().solarSystemLevel)));
         holder.cargoItemQuantity.setText(Integer.toString(quantity));
 
 
