@@ -40,7 +40,7 @@ public enum Goods {
     public boolean canSell(Goods good, int quantityToSell) {
 
         for (CargoItem c: Game.getInstance().player.getShip().getCargo().getShipCargo()) {
-            if (c.getGood().equals(good) && quantityToSell < c.getQuantity()) {
+            if (c.getGood().equals(good) && quantityToSell <= c.getQuantity()) {
                 return true;
             }
         }
@@ -50,7 +50,7 @@ public enum Goods {
 
     public boolean canBuy(Goods good, int quantityToBuy) {
         return Game.getInstance().player.getCredits() > (good.getPrice(Game.getInstance().player.getSolarSystems().getTech().ordinal()) * quantityToBuy) &&
-                Game.getInstance().player.getShip().getCargo().getCargoSize() + 1 <  Game.getInstance().player.getShip().getCargo().getCargoCapacity();
+                Game.getInstance().player.getShip().getCargo().getCargoSize() + 1 <=  Game.getInstance().player.getShip().getCargo().getCargoCapacity();
     }
 
     public void buy(Goods good, int quantityToBuy) {
@@ -58,10 +58,10 @@ public enum Goods {
             for (CargoItem c: Game.getInstance().player.getShip().getCargo().getShipCargo()) {
                 if (c.getGood().equals(good)) {
                     //c.quantity += quantityToBuy;
-                    Log.d("Add", Integer.toString(quantityToBuy));
+                    //Log.d("Add", Integer.toString(quantityToBuy));
                     c.quantity = c.quantity + quantityToBuy;
-                    Log.d("Add", c.good.getCode());
-                    Log.d("Add", Integer.toString(c.quantity));
+                    //Log.d("Add", c.good.getCode());
+                   // Log.d("Add", Integer.toString(c.quantity));
                 }
             }
 

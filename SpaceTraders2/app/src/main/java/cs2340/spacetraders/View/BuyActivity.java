@@ -46,20 +46,20 @@ public class BuyActivity extends AppCompatActivity {
 
 
         ArrayList<Integer> quantities = new ArrayList<>();
-        quantities.add(1);
-        quantities.add(2);
-        quantities.add(3);
-        quantities.add(4);
-        quantities.add(5);
+        quantities.add(0,1);
+        quantities.add(1,2);
+        quantities.add(2, 3);
+        quantities.add(3,4);
+        quantities.add(4, 5);
 
         ArrayAdapter<Integer> adapterQuantities = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, quantities);
         adapterQuantities.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         amountSpinner.setAdapter(adapterQuantities);
 
         good = (Goods) getIntent().getSerializableExtra(GOOD_NAME);
-        Log.d("good", good.getCode());
+        //Log.d("good", good.getCode());
         goodName.setText(good.getCode());
-        amountToBuy = (int) amountSpinner.getSelectedItem();
+        amountToBuy = (Integer) amountSpinner.getSelectedItem();
         marketViewModel = ViewModelProviders.of(this).get(MarketViewModel.class);
 
     }
@@ -67,6 +67,7 @@ public class BuyActivity extends AppCompatActivity {
 
     public void onBuy(View view) {
         if (marketViewModel.canBuy(good, amountToBuy)) {
+            Log.d("goods bought", Integer.toString(amountToBuy));
             marketViewModel.buyGood(good, amountToBuy);
         } else {
             Toast.makeText(BuyActivity.this, "Can't buy!", Toast.LENGTH_SHORT).show();
