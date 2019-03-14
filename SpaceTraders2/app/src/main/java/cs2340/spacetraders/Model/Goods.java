@@ -2,6 +2,9 @@ package cs2340.spacetraders.Model;
 
 import android.util.Log;
 
+import java.util.Arrays;
+import java.util.List;
+
 public enum Goods {
     Water("Water", 0, 0, 2, 30, 3),
     Furs("Furs", 0, 0, 0, 250, 10),
@@ -20,6 +23,8 @@ public enum Goods {
     private int techLevel;
     private int basePrice;
     private int priceInc;
+
+    public static List<Quantity> quantities = Arrays.asList(Quantity.One, Quantity.Two, Quantity.Three, Quantity.Four, Quantity.Five);
 
     Goods(String code, int minTechLevelToProd, int minTechLevelToUse, int techLevel,
           int basePrice, int priceInc) {
@@ -50,7 +55,7 @@ public enum Goods {
 
     public boolean canBuy(Goods good, int quantityToBuy) {
         return Game.getInstance().player.getCredits() > (good.getPrice(Game.getInstance().player.getSolarSystems().getTech().ordinal()) * quantityToBuy) &&
-                Game.getInstance().player.getShip().getCargo().getCargoSize() + 1 <=  Game.getInstance().player.getShip().getCargo().getCargoCapacity();
+                Game.getInstance().player.getShip().getCargo().getCargoSize() + quantityToBuy <=  Game.getInstance().player.getShip().getCargo().getCargoCapacity();
     }
 
     public void buy(Goods good, int quantityToBuy) {
@@ -67,7 +72,7 @@ public enum Goods {
 
             int playerCredits = Game.getInstance().player.getCredits();
             Game.getInstance().player.setCredits(playerCredits -
-                    (getPrice(Game.getInstance().player.getSolarSystems().getTech().ordinal()) * quantityToBuy));
+                    good.getPrice(Game.getInstance().solarSystemLevel) * quantityToBuy);
             Log.d("edit", Integer.toString(Game.getInstance().player.getCredits()));
         }
 
