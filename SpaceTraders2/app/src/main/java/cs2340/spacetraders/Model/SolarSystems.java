@@ -86,8 +86,11 @@ public enum SolarSystems {
 
 
     public String toString(){
-        String planetToString = String.format("%s at (%d, %d) with %s resources and " +
-                "%s tech level.", name, x, y, resource.toString(), tech.toString());
+        String planetToString = String.format(
+                "%s at (%d, %d) with %s resources and " +
+                "%s tech level, with an %s government.",
+                name, x, y, resource.toString(),
+                tech.toString(), government.toString());
         return  planetToString;
     }
     
