@@ -6,6 +6,7 @@ import java.util.List;
 public class Ship {
     public Cargo cargo;
     public Shiptype shiptype;
+    public int Fuel;
     //int cargoSize;
     //int cargoCapacity;
 
@@ -41,6 +42,10 @@ public class Ship {
 
     public Cargo getCargo() {
         return cargo;
+    }
+
+    public void setFuel(int fuelChange) {
+        this.Fuel += fuelChange;
     }
 
 
