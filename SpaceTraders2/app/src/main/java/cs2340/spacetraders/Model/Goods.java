@@ -2,6 +2,9 @@ package cs2340.spacetraders.Model;
 
 import android.util.Log;
 
+import java.util.Arrays;
+import java.util.List;
+
 public enum Goods {
     Water("Water", 0, 0, 2, 30, 3),
     Furs("Furs", 0, 0, 0, 250, 10),
@@ -20,6 +23,8 @@ public enum Goods {
     private int techLevel;
     private int basePrice;
     private int priceInc;
+
+    public static List<Quantity> quantities = Arrays.asList(Quantity.One, Quantity.Two, Quantity.Three, Quantity.Four, Quantity.Five);
 
     Goods(String code, int minTechLevelToProd, int minTechLevelToUse, int techLevel,
           int basePrice, int priceInc) {
@@ -40,7 +45,7 @@ public enum Goods {
     public boolean canSell(Goods good, int quantityToSell) {
 
         for (CargoItem c: Game.getInstance().player.getShip().getCargo().getShipCargo()) {
-            if (c.getGood().equals(good) && quantityToSell < c.getQuantity()) {
+            if (c.getGood().equals(good) && quantityToSell <= c.getQuantity()) {
                 return true;
             }
         }
@@ -50,7 +55,7 @@ public enum Goods {
 
     public boolean canBuy(Goods good, int quantityToBuy) {
         return Game.getInstance().player.getCredits() > (good.getPrice(Game.getInstance().player.getSolarSystems().getTech().ordinal()) * quantityToBuy) &&
-                Game.getInstance().player.getShip().getCargo().getCargoSize() + 1 <  Game.getInstance().player.getShip().getCargo().getCargoCapacity();
+                Game.getInstance().player.getShip().getCargo().getCargoSize() + quantityToBuy <=  Game.getInstance().player.getShip().getCargo().getCargoCapacity();
     }
 
     public void buy(Goods good, int quantityToBuy) {
@@ -58,16 +63,16 @@ public enum Goods {
             for (CargoItem c: Game.getInstance().player.getShip().getCargo().getShipCargo()) {
                 if (c.getGood().equals(good)) {
                     //c.quantity += quantityToBuy;
-                    Log.d("Add", Integer.toString(quantityToBuy));
+                    //Log.d("Add", Integer.toString(quantityToBuy));
                     c.quantity = c.quantity + quantityToBuy;
-                    Log.d("Add", c.good.getCode());
-                    Log.d("Add", Integer.toString(c.quantity));
+                    //Log.d("Add", c.good.getCode());
+                   // Log.d("Add", Integer.toString(c.quantity));
                 }
             }
 
             int playerCredits = Game.getInstance().player.getCredits();
             Game.getInstance().player.setCredits(playerCredits -
-                    (getPrice(Game.getInstance().player.getSolarSystems().getTech().ordinal()) * quantityToBuy));
+                    good.getPrice(Game.getInstance().solarSystemLevel) * quantityToBuy);
             Log.d("edit", Integer.toString(Game.getInstance().player.getCredits()));
         }
 
