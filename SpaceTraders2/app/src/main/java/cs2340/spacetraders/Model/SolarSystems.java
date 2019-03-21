@@ -87,30 +87,31 @@ public enum SolarSystems {
 
     public boolean canTravel(SolarSystems solarSystems) {
         Game game = Game.getInstance();
-        setDistance(solarSystems);
+        int Distance = Distance(solarSystems);
         SolarSystems currentLocation = game.getPlayer().getSolarSystems();
 
-        return this.distance < game.getPlayer().getFuel();
+        return Distance < game.getPlayer().getFuel();
     }
 
-    public void setDistance(SolarSystems solarSystems) {
+    public int Distance(SolarSystems solarSystems) {
         Game game = Game.getInstance();
         SolarSystems desiredLocation = solarSystems;
         SolarSystems currentLocation = game.getPlayer().getSolarSystems();
-        this.distance = Math.pow((Math.pow((desiredLocation.x - currentLocation.x), 2) + Math.pow((desiredLocation.y - currentLocation.y),2)), 0.5);;
+        return (int) Math.round(Math.pow((Math.pow((desiredLocation.x - currentLocation.x), 2)
+                + Math.pow((desiredLocation.y - currentLocation.y),2)), 0.5));
     }
 
     public void changeLocation (SolarSystems solarSystems) {
         if (canTravel(solarSystems)) {
-            Game.getInstance().getPlayer().setSolarSystems(solarSystems);
-            int fuelToTravel = getDistance();
+            int fuelToTravel = Distance(solarSystems);
             int currentFuel = Game.getInstance().getPlayer().getFuel();
             Game.getInstance().getPlayer().setFuel(currentFuel - fuelToTravel);
+            Game.getInstance().getPlayer().setSolarSystems(solarSystems);
         }
     }
 
-    public int getDistance() {
-        return (int) Math.round(distance);
+    public int getDistance(SolarSystems solarSystems) {
+        return Distance(solarSystems);
     }
 
 

@@ -83,6 +83,7 @@ public class CargoItemAdapter extends RecyclerView.Adapter<CargoItemAdapter.Carg
 
                     if (listener != null && position != RecyclerView.NO_POSITION) {
                         listener.onCargoItemClicked(cargoList.get(position));
+                        notifyDataSetChanged();
                     }
                 }
             });
