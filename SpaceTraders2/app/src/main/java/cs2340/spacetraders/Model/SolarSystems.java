@@ -103,7 +103,14 @@ public enum SolarSystems {
     public void changeLocation (SolarSystems solarSystems) {
         if (canTravel(solarSystems)) {
             Game.getInstance().getPlayer().setSolarSystems(solarSystems);
+            int fuelToTravel = getDistance();
+            int currentFuel = Game.getInstance().getPlayer().getFuel();
+            Game.getInstance().getPlayer().setFuel(currentFuel - fuelToTravel);
         }
+    }
+
+    public int getDistance() {
+        return (int) Math.round(distance);
     }
 
 

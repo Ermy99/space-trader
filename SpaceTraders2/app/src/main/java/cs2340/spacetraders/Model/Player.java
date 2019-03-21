@@ -84,7 +84,7 @@ public class Player {
     }
 
     public void setFuel(int fuel) {
-        this.Fuel += fuel;
+        this.Fuel = fuel;
     }
 
     public int getFuel() {

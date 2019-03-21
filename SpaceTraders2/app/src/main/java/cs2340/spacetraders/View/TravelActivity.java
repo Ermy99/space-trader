@@ -6,11 +6,13 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import java.util.Arrays;
 
+import cs2340.spacetraders.Model.Game;
 import cs2340.spacetraders.Model.Goods;
 import cs2340.spacetraders.Model.SolarSystems;
 import cs2340.spacetraders.R;
@@ -49,14 +51,14 @@ public class TravelActivity extends AppCompatActivity {
 
     }
 
-    public void onTravel(View view) {
-        SolarSystems solarSystems;
-        if (travelViewModel.canTravel(solarSystems)) {
-            travelViewModel.travel(solarSystems);
-        } else {
-            Toast.makeText(TravelActivity.this, "You don't have enough fuel to travel there!", Toast.LENGTH_SHORT).show();
-        }
-    }
+//    public void onTravel(View view) {
+//        SolarSystems solarSystems;
+//        if (travelViewModel.canTravel(solarSystems)) {
+//            travelViewModel.travel(solarSystems);
+//        } else {
+//            Toast.makeText(TravelActivity.this, "You don't have enough fuel to travel there!", Toast.LENGTH_SHORT).show();
+//        }
+//    }
 
     @Override
     public void onResume() {
@@ -66,7 +68,14 @@ public class TravelActivity extends AppCompatActivity {
         adapter.setOnSolarSystemClickListener(new SolarSystemAdapter.OnSolarSystemClickListener() {
             @Override
             public void onSolarSystemClicked(SolarSystems solarSystem) {
+                if (travelViewModel.canTravel(solarSystem)) {
+                    travelViewModel.travel(solarSystem);
+                    Log.d("current location", Game.getInstance().getPlayer().getSolarSystems().toString());
+                    Log.d("fuel", Integer.toString(Game.getInstance().getPlayer().getFuel()));
 
+                } else {
+                    Toast.makeText(TravelActivity.this, "You don't have enough fuel to travel there!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
     }
