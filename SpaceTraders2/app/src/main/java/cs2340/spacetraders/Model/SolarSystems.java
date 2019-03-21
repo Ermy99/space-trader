@@ -27,6 +27,7 @@ public enum SolarSystems {
     private String name;
     private ArrayList<Integer> xVals = new ArrayList<>(150);
     private ArrayList<Integer> yVals = new ArrayList<>(100);
+    Double distance;
     
     
     SolarSystems(String name) {
@@ -82,6 +83,27 @@ public enum SolarSystems {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public boolean canTravel(SolarSystems solarSystems) {
+        Game game = Game.getInstance();
+        setDistance(solarSystems);
+        SolarSystems currentLocation = game.getPlayer().getSolarSystems();
+
+        return this.distance < game.getPlayer().getFuel();
+    }
+
+    public void setDistance(SolarSystems solarSystems) {
+        Game game = Game.getInstance();
+        SolarSystems desiredLocation = solarSystems;
+        SolarSystems currentLocation = game.getPlayer().getSolarSystems();
+        this.distance = Math.pow((Math.pow((desiredLocation.x - currentLocation.x), 2) + Math.pow((desiredLocation.y - currentLocation.y),2)), 0.5);;
+    }
+
+    public void changeLocation (SolarSystems solarSystems) {
+        if (canTravel(solarSystems)) {
+            Game.getInstance().getPlayer().setSolarSystems(solarSystems);
+        }
     }
 
 

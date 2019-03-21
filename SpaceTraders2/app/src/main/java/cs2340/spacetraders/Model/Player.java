@@ -9,7 +9,7 @@ public class Player {
     private int credits;
     private Ship ship;
     private SolarSystems solarSystems;
-    private int Fuel;
+    private int Fuel = 1000;
 
     public Player(String name, int pilotPoints, int engineeringPoints, int traderPoints,
                   int fighterPoints, SolarSystems solarSystems) {
