@@ -36,9 +36,7 @@ public class SellActivity extends AppCompatActivity {
         //amountSpinner = findViewById(R.id.amount_spinner);
 
         cargoName = findViewById(R.id.cargo_item_name);
-        //amountSpinner = findViewById(R.id.sell_spinner);
         good = (Goods) getIntent().getSerializableExtra(CARGO_NAME);
-        //Log.d("APP", "EEEEEEEEEEwater");
         cargoName.setText(good.getCode());
 
         ArrayList<Integer> quantities = new ArrayList<>();
