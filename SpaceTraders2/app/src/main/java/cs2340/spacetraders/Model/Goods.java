@@ -24,8 +24,6 @@ public enum Goods {
     private int basePrice;
     private int priceInc;
 
-    public static List<Quantity> quantities = Arrays.asList(Quantity.One, Quantity.Two, Quantity.Three, Quantity.Four, Quantity.Five);
-
     Goods(String code, int minTechLevelToProd, int minTechLevelToUse, int techLevel,
           int basePrice, int priceInc) {
         this.code = code;
@@ -39,7 +37,7 @@ public enum Goods {
 
     //returns a price for the tradegood
     public int getPrice(int level) {
-        return basePrice + 3 * 2 * priceInc * (level - minTechLevelToProd);
+        return Math.abs(basePrice + 3 * 2 * priceInc * (level - minTechLevelToProd));
     }
 
     public boolean canSell(Goods good, int quantityToSell) {

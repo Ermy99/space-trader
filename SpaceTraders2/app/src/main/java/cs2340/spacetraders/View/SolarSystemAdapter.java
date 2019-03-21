@@ -43,7 +43,7 @@ public class SolarSystemAdapter extends RecyclerView.Adapter<SolarSystemAdapter.
         Player player = game.getPlayer();
         //SolarSystems solarSystems = player.getSolarSystems();
 
-        holder.solarSystemDistance.setText(Integer.toString(solarSystem.getDistance())); //fix logic
+        holder.solarSystemDistance.setText(Integer.toString(solarSystem.getDistance(solarSystem))); //fix logic
     }
 
     @Override
@@ -78,6 +78,7 @@ public class SolarSystemAdapter extends RecyclerView.Adapter<SolarSystemAdapter.
 
                     if (listener != null && position != RecyclerView.NO_POSITION) {
                         listener.onSolarSystemClicked(solarSystemList.get(position));
+                        notifyDataSetChanged();
                     }
                 }
             });
