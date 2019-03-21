@@ -15,7 +15,6 @@ The screen with the buy and sell buttons
  */
 public class MarketActivity extends AppCompatActivity {
 
-
     private GoodAdapter adapter;
 
     /** a key for passing data */
@@ -25,7 +24,6 @@ public class MarketActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_market);
-        //initImageBitmaps();
         /*
          Set up our recycler view by grabbing the layout for a single item
          */
@@ -37,22 +35,22 @@ public class MarketActivity extends AppCompatActivity {
         adapter = new GoodAdapter();
         recyclerView.setAdapter(adapter);
 
-    }
+        }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        adapter.setGoodList(Arrays.asList(Goods.values()));
+        @Override
+        public void onResume() {
+            super.onResume();
+            adapter.setGoodList(Arrays.asList(Goods.values()));
 
-        adapter.setOnGoodClickListener(new GoodAdapter.OnGoodClickListener() {
-            @Override
-            public void onGoodClicked(Goods good) {
-                Intent intent = new Intent(MarketActivity.this, BuyActivity.class);
-                intent.putExtra(GOOD_NAME, good);
-                startActivity(intent);
-            }
-        });
-    }
+            adapter.setOnGoodClickListener(new GoodAdapter.OnGoodClickListener() {
+                @Override
+                public void onGoodClicked(Goods good) {
+                    Intent intent = new Intent(MarketActivity.this, BuyActivity.class);
+                    intent.putExtra(GOOD_NAME, good);
+                    startActivity(intent);
+                }
+            });
+        }
 
 
 

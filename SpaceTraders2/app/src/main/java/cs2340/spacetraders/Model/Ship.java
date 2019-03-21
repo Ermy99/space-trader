@@ -20,6 +20,7 @@ public class Ship {
         return shiptype;
     }
 
+
     public void setShiptype(Shiptype shiptype) {
         this.shiptype = shiptype;
     }
@@ -47,6 +48,7 @@ public class Ship {
     public void setFuel(int fuelChange) {
         this.Fuel += fuelChange;
     }
+
 
 
     //create instance variable for each type of good that counts how many of each

@@ -12,12 +12,17 @@ public enum Shiptype {
     TERMITE("Termite", 60, 13),
     WASP("Wasp", 35, 14);
 
+    String name;
     int cargoSize;
     int parsecs;
 
     Shiptype(String name, int cargoSize, int parsecs) {
         this.cargoSize = cargoSize;
         this.parsecs = parsecs;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public int getCargoSize() {
