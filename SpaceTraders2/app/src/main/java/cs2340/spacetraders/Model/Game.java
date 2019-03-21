@@ -7,13 +7,15 @@ import java.util.List;
 
 public class Game {
 
+    private static final Game instance = new Game();
     public Player player;
     public GameDifficulty gameDifficulty;
     public Universe universe;
     public Market market;
     public int solarSystemLevel;
-
-    private static final Game instance = new Game();
+    public Ship ship;
+    public Cargo cargo;
+    public List<CargoItem> shipCargo;
 
 
     public static List<GameDifficulty> gameDifficulties = Arrays.asList(GameDifficulty.BEGINNER, GameDifficulty.EASY, GameDifficulty.NORMAL,
@@ -21,6 +23,14 @@ public class Game {
 
     public Game() {
         //Log.d("Edit",this.toString());
+        this.player = new Player(null,0,0,0,0,null);
+        this.gameDifficulty = GameDifficulty.BEGINNER;
+        this.universe = new Universe();
+        this.market = new Market(null, null);
+        this.solarSystemLevel = 1;
+        this.ship = player.getShip();
+        this.cargo = player.getShip().getCargo();
+        this.shipCargo = cargo.getShipCargo();
     }
 
 
@@ -34,7 +44,10 @@ public class Game {
 
     public void setPlayer(Player player) {
         this.player = player;
-        solarSystemLevel = player.getSolarSystems().ordinal();
+        this.solarSystemLevel = player.getSolarSystems().ordinal();
+        this.ship = player.getShip();
+        this.cargo = ship.getCargo();
+        this.shipCargo = cargo.getShipCargo();
     }
 
     public GameDifficulty getGameDifficulty() {

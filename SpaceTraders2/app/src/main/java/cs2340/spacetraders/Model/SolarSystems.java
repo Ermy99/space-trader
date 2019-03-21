@@ -23,9 +23,11 @@ public enum SolarSystems {
     private int y;
     private Resource resource;
     private TechLevel tech;
+    private PoliticalSystem government;
     private String name;
     private ArrayList<Integer> xVals = new ArrayList<>(150);
     private ArrayList<Integer> yVals = new ArrayList<>(100);
+    
     
     SolarSystems(String name) {
     
@@ -35,8 +37,10 @@ public enum SolarSystems {
         this.name = name;
         this.x = coordinates.getxVals().get(ordinal());
         this.y = coordinates.getyVals().get(ordinal());
-        this.resource = Resource.values()[rng.nextInt(12)];
-        this.tech = TechLevel.values()[rng.nextInt(7)];
+        this.resource = Resource.values()[rng.nextInt(13)];
+        this.tech = TechLevel.values()[rng.nextInt(8)];
+        this.government = PoliticalSystem.values()[rng.nextInt(17)];
+        
     }
 
 
@@ -82,8 +86,11 @@ public enum SolarSystems {
 
 
     public String toString(){
-        String planetToString = String.format("%s at (%d, %d) with %s resources and " +
-                "%s tech level.", name, x, y, resource.toString(), tech.toString());
+        String planetToString = String.format(
+                "%s at (%d, %d) with %s resources and " +
+                "%s tech level, with an %s government.",
+                name, x, y, resource.toString(),
+                tech.toString(), government.toString());
         return  planetToString;
     }
     

@@ -9,6 +9,7 @@ public class Player {
     private int credits;
     private Ship ship;
     private SolarSystems solarSystems;
+    private int Fuel;
 
     public Player(String name, int pilotPoints, int engineeringPoints, int traderPoints,
                   int fighterPoints, SolarSystems solarSystems) {
@@ -80,6 +81,14 @@ public class Player {
 
     public Ship getShip() {
         return ship;
+    }
+
+    public void setFuel(int fuel) {
+        this.Fuel += fuel;
+    }
+
+    public int getFuel() {
+        return Fuel;
     }
 
 }
