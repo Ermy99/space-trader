@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.TextView;
 
 import java.util.Arrays;
@@ -47,6 +48,7 @@ public class StatusActivity extends AppCompatActivity {
         points.setText(Integer.toString(Game.getInstance().getPlayer().getCredits()));
         location.setText(Integer.toString(Game.getInstance().getPlayer().getCredits()));
         ship.setText(Game.getInstance().getPlayer().getShip().getShiptype().getName());
+        Log.d("APP", "jjbhjjhbnh" + Game.getInstance().getPlayer().getShip().getShiptype().getName());
         cargoSpace.setText(Integer.toString(Game.getInstance().getPlayer().getShip().getCargo().getCargoCapacity()));
         fuel.setText(Integer.toString(Game.getInstance().getPlayer().getFuel()));
 
