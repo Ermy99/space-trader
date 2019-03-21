@@ -18,6 +18,24 @@ public class GameActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
+        Button statusButton =  findViewById(R.id.status_button);
+        statusButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent statusIntent = new Intent(GameActivity.this, StatusActivity.class);
+                startActivity(statusIntent);
+            }
+        });
+
+        Button travelButton =  findViewById(R.id.travel_button);
+        travelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent travelIntent = new Intent(GameActivity.this, TravelActivity.class);
+                startActivity(travelIntent);
+            }
+        });
+
         Button marketButton =  findViewById(R.id.market_button);
         marketButton.setOnClickListener(new View.OnClickListener() {
             @Override
