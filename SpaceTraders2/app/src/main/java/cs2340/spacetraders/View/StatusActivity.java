@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import java.util.Arrays;
 
+import cs2340.spacetraders.Model.Game;
 import cs2340.spacetraders.Model.Goods;
 import cs2340.spacetraders.R;
 import cs2340.spacetraders.ViewModel.MarketViewModel;
@@ -34,6 +35,7 @@ public class StatusActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_status);
 
+
         playerName = findViewById(R.id.player_name);
         location = findViewById(R.id.location);
         points = findViewById(R.id.points);
@@ -41,12 +43,12 @@ public class StatusActivity extends AppCompatActivity {
         cargoSpace = findViewById(R.id.cargo_space);
         fuel = findViewById(R.id.fuel);
 
-        playerName.setText(playerViewModel.getPlayer().getName());
-        points.setText(Integer.toString(playerViewModel.getPlayer().getCredits()));
-        location.setText(Integer.toString(playerViewModel.getPlayer().getCredits()));
-        ship.setText(playerViewModel.getPlayer().getShip().getShiptype().getName());
-        cargoSpace.setText(Integer.toString(playerViewModel.getPlayer().getShip().getCargo().getCargoCapacity()));
-        fuel.setText(Integer.toString(playerViewModel.getPlayer().getFuel()));
+        playerName.setText(Game.getInstance().getPlayer().getName());
+        points.setText(Integer.toString(Game.getInstance().getPlayer().getCredits()));
+        location.setText(Integer.toString(Game.getInstance().getPlayer().getCredits()));
+        ship.setText(Game.getInstance().getPlayer().getShip().getShiptype().getName());
+        cargoSpace.setText(Integer.toString(Game.getInstance().getPlayer().getShip().getCargo().getCargoCapacity()));
+        fuel.setText(Integer.toString(Game.getInstance().getPlayer().getFuel()));
 
 
 
