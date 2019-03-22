@@ -46,9 +46,9 @@ public class StatusActivity extends AppCompatActivity {
 
         playerName.setText(Game.getInstance().getPlayer().getName());
         points.setText(Integer.toString(Game.getInstance().getPlayer().getCredits()));
-        location.setText(Integer.toString(Game.getInstance().getPlayer().getCredits()));
+        location.setText(Game.getInstance().getPlayer().getSolarSystems().getName());
         ship.setText(Game.getInstance().getPlayer().getShip().getShiptype().getName());
-        Log.d("APP", "jjbhjjhbnh" + Game.getInstance().getPlayer().getShip().getShiptype().getName());
+        //Log.d("APP", "jjbhjjhbnh" + Game.getInstance().getPlayer().getShip().getShiptype().getName());
         cargoSpace.setText(Integer.toString(Game.getInstance().getPlayer().getShip().getCargo().getCargoCapacity()));
         fuel.setText(Integer.toString(Game.getInstance().getPlayer().getFuel()));
 
