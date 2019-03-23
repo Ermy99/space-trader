@@ -17,6 +17,7 @@ public enum Shiptype {
     int parsecs;
 
     Shiptype(String name, int cargoSize, int parsecs) {
+        this.name = name;
         this.cargoSize = cargoSize;
         this.parsecs = parsecs;
     }
