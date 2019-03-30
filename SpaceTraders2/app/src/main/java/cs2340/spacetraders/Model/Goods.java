@@ -88,6 +88,13 @@ public enum Goods {
         }
     }
 
+    public static void pirateAttack() {
+        List<CargoItem> cargo = Game.getInstance().player.getShip().getCargo().getShipCargo();
+        for (CargoItem c: cargo) {
+            c.setQuantity(0);
+        }
+    }
+
     public String getCode() {
         return code;
 

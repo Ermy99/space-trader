@@ -16,4 +16,8 @@ public class CargoItem {
     public Goods getGood() {
         return good;
     }
+
+    public void setQuantity(int n) {
+        this.quantity = n;
+    }
 }
