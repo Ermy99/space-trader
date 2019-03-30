@@ -51,14 +51,6 @@ public class TravelActivity extends AppCompatActivity {
 
     }
 
-//    public void onTravel(View view) {
-//        SolarSystems solarSystems;
-//        if (travelViewModel.canTravel(solarSystems)) {
-//            travelViewModel.travel(solarSystems);
-//        } else {
-//            Toast.makeText(TravelActivity.this, "You don't have enough fuel to travel there!", Toast.LENGTH_SHORT).show();
-//        }
-//    }
 
     @Override
     public void onResume() {
@@ -68,6 +60,13 @@ public class TravelActivity extends AppCompatActivity {
         adapter.setOnSolarSystemClickListener(new SolarSystemAdapter.OnSolarSystemClickListener() {
             @Override
             public void onSolarSystemClicked(SolarSystems solarSystem) {
+                int n = travelViewModel.randomEvent();
+                if (n == 0) {
+                    //this is a pirateAttack
+                } else if (n == 1) {
+                    //this is a magician event
+                }
+                
                 if (travelViewModel.canTravel(solarSystem)) {
                     travelViewModel.travel(solarSystem);
                     Log.d("current location", Game.getInstance().getPlayer().getSolarSystems().toString());

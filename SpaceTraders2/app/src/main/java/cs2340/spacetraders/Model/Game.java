@@ -11,8 +11,8 @@ public class Game {
     public Player player;
     public GameDifficulty gameDifficulty;
     public Universe universe;
-    public Market market;
     public int solarSystemLevel;
+    public SolarSystems location;
     public Ship ship;
     public Cargo cargo;
     public List<CargoItem> shipCargo;
@@ -26,10 +26,10 @@ public class Game {
         this.player = new Player(null,0,0,0,0,null);
         this.gameDifficulty = GameDifficulty.BEGINNER;
         this.universe = new Universe();
-        this.market = new Market(null, null);
         this.solarSystemLevel = 1;
         this.ship = player.getShip();
         this.cargo = player.getShip().getCargo();
+        this.location = player.getSolarSystems();
         this.shipCargo = cargo.getShipCargo();
     }
 
