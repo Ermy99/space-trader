@@ -3,6 +3,7 @@ package cs2340.spacetraders.View;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,6 +18,7 @@ import cs2340.spacetraders.Model.Goods;
 import cs2340.spacetraders.Model.SolarSystems;
 import cs2340.spacetraders.R;
 import cs2340.spacetraders.ViewModel.MarketViewModel;
+import cs2340.spacetraders.ViewModel.PlayerViewModel;
 import cs2340.spacetraders.ViewModel.TravelViewModel;
 
 /*
@@ -49,6 +51,7 @@ public class TravelActivity extends AppCompatActivity {
 
         travelViewModel = ViewModelProviders.of(this).get(TravelViewModel.class);
 
+
     }
 
 
@@ -60,11 +63,22 @@ public class TravelActivity extends AppCompatActivity {
         adapter.setOnSolarSystemClickListener(new SolarSystemAdapter.OnSolarSystemClickListener() {
             @Override
             public void onSolarSystemClicked(SolarSystems solarSystem) {
+
                 int n = travelViewModel.randomEvent();
+                AlertDialog.Builder builder = new AlertDialog.Builder(TravelActivity.this);
                 if (n == 0) {
                     //this is a pirateAttack
+                    Log.d("ATTACK", "PIRATE");
+                    builder.setTitle("Random Encounter");
+                    builder.setMessage("Arrr! You have encountered a pirate! They took all your things :)");
+                    builder.show();
+
                 } else if (n == 1) {
                     //this is a magician event
+                    Log.d("ATTACK", "MAGICIAN");
+                    builder.setTitle("Random Encounter");
+                    builder.setMessage("Oh woow! A magician just gave you some points!!");
+                    builder.show();
                 }
                 
                 if (travelViewModel.canTravel(solarSystem)) {
