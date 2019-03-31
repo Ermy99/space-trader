@@ -26,6 +26,7 @@ public class TravelActivity extends AppCompatActivity {
 
 
     private SolarSystemAdapter adapter;
+    public PlayerViewModel playerViewModel;
     public TravelViewModel travelViewModel;
 
     /** a key for passing data */
@@ -48,6 +49,8 @@ public class TravelActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         travelViewModel = ViewModelProviders.of(this).get(TravelViewModel.class);
+        playerViewModel = ViewModelProviders.of(this).get(PlayerViewModel.class);
+
 
     }
 
@@ -63,6 +66,7 @@ public class TravelActivity extends AppCompatActivity {
                 int n = travelViewModel.randomEvent();
                 if (n == 0) {
                     //this is a pirateAttack
+                    playerViewModel.
                 } else if (n == 1) {
                     //this is a magician event
                 }
