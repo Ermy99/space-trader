@@ -14,6 +14,7 @@ import java.util.List;
 import cs2340.spacetraders.Model.CargoItem;
 import cs2340.spacetraders.Model.Game;
 import cs2340.spacetraders.Model.Goods;
+import cs2340.spacetraders.Model.Player;
 import cs2340.spacetraders.R;
 
 public class CargoItemAdapter extends RecyclerView.Adapter<CargoItemAdapter.CargoItemViewHolder> {
@@ -42,7 +43,8 @@ public class CargoItemAdapter extends RecyclerView.Adapter<CargoItemAdapter.Carg
         Log.d("APP", "quantity issss" + quantity);
 
         holder.cargoItemName.setText(good.getCode());
-        holder.cargoItemPrice.setText(Integer.toString(good.getPrice(Game.getInstance().solarSystemLevel)));
+        Player player = Game.getInstance().getPlayer();
+        holder.cargoItemPrice.setText(Integer.toString(good.getPrice(player.getSolarSystems().getTech().ordinal())));
         holder.cargoItemQuantity.setText(Integer.toString(quantity));
 
 
