@@ -60,6 +60,7 @@ public class GoodAdapter extends RecyclerView.Adapter<GoodAdapter.GoodViewHolder
     }
 
     public void setGoodList(List<Goods> goods) {
+        notifyDataSetChanged();
         goodList = goods;
         notifyDataSetChanged();
     }
