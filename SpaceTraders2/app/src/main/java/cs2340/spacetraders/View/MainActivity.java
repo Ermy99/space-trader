@@ -127,10 +127,10 @@ public class MainActivity extends AppCompatActivity {
     
                     Log.d("MY APPLICATION", holder.mItem.toString());
                     Context context = v.getContext();
-                    Intent intent = new Intent(MainActivity.this, StudentDetailActivity.class);
-                    intent.putExtra(StudentDetailFragment.ARG_ITEM_ID, holder.mItem.toString());
+                    //Intent intent = new Intent(MainActivity.this, StudentDetailActivity.class);
+                    //intent.putExtra(StudentDetailFragment.ARG_ITEM_ID, holder.mItem.toString());
 
-                    context.startActivity(intent);
+                    //context.startActivity(intent);
     
                 }
             });
