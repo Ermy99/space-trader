@@ -18,8 +18,12 @@ public class Game {
     public List<CargoItem> shipCargo;
 
 
-    public static List<GameDifficulty> gameDifficulties = Arrays.asList(GameDifficulty.BEGINNER, GameDifficulty.EASY, GameDifficulty.NORMAL,
-            GameDifficulty.HARD, GameDifficulty.IMPOSSIBLE);
+    public static List<GameDifficulty> gameDifficulties = Arrays.asList(
+            GameDifficulty.BEGINNER,
+            GameDifficulty.EASY,
+            GameDifficulty.NORMAL,
+            GameDifficulty.HARD,
+            GameDifficulty.IMPOSSIBLE);
 
     public Game() {
         //Log.d("Edit",this.toString());
