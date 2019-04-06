@@ -1,6 +1,8 @@
 package cs2340.spacetraders.Model;
 
-public enum PoliticalSystem {
+import java.io.Serializable;
+
+public enum PoliticalSystem implements Serializable {
 
     ANARCHY("Anarchy"),                     //0
     CAPITALIST("Capitalist State"),         //1
@@ -20,7 +22,7 @@ public enum PoliticalSystem {
     TECHNOCRATIC("Technocratic"),           //15
     THEOCRATIC("Theocratic");               //16
     
-    private String govName;
+    private final String govName;
     
     PoliticalSystem(String govName) {
         this.govName = govName;

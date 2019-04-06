@@ -5,36 +5,21 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-
-import cs2340.spacetraders.Model.Game;
-import cs2340.spacetraders.Model.GameDifficulty;
 import cs2340.spacetraders.Model.Goods;
 import cs2340.spacetraders.R;
 import cs2340.spacetraders.ViewModel.MarketViewModel;
-import cs2340.spacetraders.ViewModel.PlayerViewModel;
 
 public class BuyActivity extends AppCompatActivity {
 
     private Goods good;
     public MarketViewModel marketViewModel;
     public static final String GOOD_NAME = "GOOD_NAME";
-    public Game game = Game.getInstance();
+    // --Commented out by Inspection (4/5/2019 8:23 PM):public Game game = Game.getInstance();
 
-
-    /*
-        Views
-     */
-    private TextView goodName;
-    private Spinner amountSpinner;
-    private int amountToBuy;
-    private EditText amount;
 
 
     @Override
@@ -43,7 +28,10 @@ public class BuyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_buy);
 
 
-        goodName = findViewById(R.id.good_name);
+        /*
+        Views
+     */
+        TextView goodName = findViewById(R.id.good_name);
         //amountSpinner = findViewById(R.id.amount_spinner);
 
 
@@ -69,8 +57,8 @@ public class BuyActivity extends AppCompatActivity {
 
 
     public void onBuy(View view) {
-        amount = findViewById(R.id.amount_to_buy);
-        amountToBuy = Integer.parseInt(amount.getText().toString());
+        EditText amount = findViewById(R.id.amount_to_buy);
+        int amountToBuy = Integer.parseInt(amount.getText().toString());
         if (marketViewModel.canBuy(good, amountToBuy)) {
             Log.d("goods bought", Integer.toString(amountToBuy));
             marketViewModel.buyGood(good, amountToBuy);

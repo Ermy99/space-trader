@@ -1,6 +1,8 @@
 package cs2340.spacetraders.Model;
 
-public enum Shiptype {
+import java.io.Serializable;
+
+public enum Shiptype implements Serializable {
     FLEA("Flea", 10, 20),
     GNAT("Gnat", 15, 14),
     FIREFLY("Firefly", 20, 17),
@@ -12,9 +14,9 @@ public enum Shiptype {
     TERMITE("Termite", 60, 13),
     WASP("Wasp", 35, 14);
 
-    String name;
-    int cargoSize;
-    int parsecs;
+    final String name;
+    final int cargoSize;
+    final int parsecs;
 
     Shiptype(String name, int cargoSize, int parsecs) {
         this.name = name;

@@ -1,13 +1,15 @@
 package cs2340.spacetraders.Model;
 
-public class Player {
-    private String name;
-    private int pilotPoints;
-    private int engineeringPoints;
-    private int traderPoints;
-    private int fighterPoints;
+import java.io.Serializable;
+
+public class Player implements Serializable {
+    private final String name;
+    private final int pilotPoints;
+    private final int engineeringPoints;
+    private final int traderPoints;
+    private final int fighterPoints;
     private int credits;
-    private Ship ship;
+    private final Ship ship;
     private SolarSystems solarSystems;
     private int Fuel = 1000;
 
@@ -19,7 +21,7 @@ public class Player {
         this.traderPoints = traderPoints;
         this.fighterPoints = fighterPoints;
         this.credits = 1000;
-        this.ship = new Ship(Shiptype.GNAT);
+        this.ship = new Ship();
         this.solarSystems = solarSystems;
     }
 
@@ -35,41 +37,51 @@ public class Player {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+// --Commented out by Inspection START (4/5/2019 8:25 PM):
+//    public void setName(String name) {
+//        this.name = name;
+//    }
+// --Commented out by Inspection STOP (4/5/2019 8:25 PM)
 
     public int getPilotPoints() {
         return pilotPoints;
     }
 
-    public void setPilotPoints(int pilotPoints) {
-        this.pilotPoints = pilotPoints;
-    }
+// --Commented out by Inspection START (4/5/2019 8:25 PM):
+//    public void setPilotPoints(int pilotPoints) {
+//        this.pilotPoints = pilotPoints;
+//    }
+// --Commented out by Inspection STOP (4/5/2019 8:25 PM)
 
     public int getEngineeringPoints() {
         return engineeringPoints;
     }
 
-    public void setEngineeringPoints(int engineeringPoints) {
-        this.engineeringPoints = engineeringPoints;
-    }
+// --Commented out by Inspection START (4/5/2019 8:25 PM):
+//    public void setEngineeringPoints(int engineeringPoints) {
+//        this.engineeringPoints = engineeringPoints;
+//    }
+// --Commented out by Inspection STOP (4/5/2019 8:25 PM)
 
     public int getTraderPoints() {
         return traderPoints;
     }
 
-    public void setTraderPoints(int traderPoints) {
-        this.traderPoints = traderPoints;
-    }
+// --Commented out by Inspection START (4/5/2019 8:25 PM):
+//    public void setTraderPoints(int traderPoints) {
+//        this.traderPoints = traderPoints;
+//    }
+// --Commented out by Inspection STOP (4/5/2019 8:25 PM)
 
     public int getFighterPoints() {
         return fighterPoints;
     }
 
-    public void setFighterPoints(int fighterPoints) {
-        this.fighterPoints = fighterPoints;
-    }
+// --Commented out by Inspection START (4/5/2019 8:25 PM):
+//    public void setFighterPoints(int fighterPoints) {
+//        this.fighterPoints = fighterPoints;
+//    }
+// --Commented out by Inspection STOP (4/5/2019 8:25 PM)
 
     public int getCredits() {
         return credits;

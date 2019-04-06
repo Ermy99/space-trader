@@ -16,6 +16,7 @@ import cs2340.spacetraders.Model.Game;
 import cs2340.spacetraders.Model.GameDifficulty;
 import cs2340.spacetraders.R;
 import cs2340.spacetraders.ViewModel.PlayerViewModel;
+import cs2340.spacetraders.ViewModel.TravelViewModel;
 
 /*
 Player configuration screen
@@ -38,24 +39,34 @@ public class ConfigurationActivity extends AppCompatActivity {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    setContentView(R.layout.activity_configuration);
-    name = findViewById(R.id.player_name);
-    pilotPoints = findViewById(R.id.pilot_points);
-    engineeringPoints = findViewById(R.id.engineering_points);
-    traderPoints = findViewById(R.id.trade_points);
-    fighterPoints= findViewById(R.id.fighter_points);
-    difficultyLevel = findViewById(R.id.difficulty);
 
-    ArrayAdapter<GameDifficulty> adapterGameDifficulty = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, Game.gameDifficulties);
-    adapterGameDifficulty.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-    difficultyLevel.setAdapter(adapterGameDifficulty);
-
-    playerViewModel = ViewModelProviders.of(this).get(PlayerViewModel.class);
+      super.onCreate(savedInstanceState);
+      setContentView(R.layout.activity_configuration);
+      name = findViewById(R.id.player_name);
+      pilotPoints = findViewById(R.id.pilot_points);
+      engineeringPoints = findViewById(R.id.engineering_points);
+      traderPoints = findViewById(R.id.trade_points);
+      fighterPoints= findViewById(R.id.fighter_points);
+      difficultyLevel = findViewById(R.id.difficulty);
+      ArrayAdapter<GameDifficulty> adapterGameDifficulty = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, Game.gameDifficulties);
+      adapterGameDifficulty.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+      difficultyLevel.setAdapter(adapterGameDifficulty);
+     // playerViewModel = ViewModelProviders.of(this).get(PlayerViewModel.class);
 
 //        PlayerViewModel.onOK(name.getText().toString(), Integer.parseInt(pilotPoints.getText().toString()),
 //                Integer.parseInt(engineeringPoints.getText().toString()), Integer.parseInt(traderPoints.getText().toString()),
 //                Integer.parseInt(fighterPoints.getText().toString()));
+
+      Button loadGame = findViewById(R.id.loadGame_button);
+      loadGame.setOnClickListener(new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+              playerViewModel = new PlayerViewModel(getApplication());
+              playerViewModel.loadSavedGame();
+              Intent configIntent = new Intent(ConfigurationActivity.this, GameActivity.class);
+              startActivity(configIntent);
+          }
+      });
 
 
   }
@@ -65,10 +76,11 @@ public class ConfigurationActivity extends AppCompatActivity {
    * @param view the button that was pressed
    */
   public void onAdd(View view) {
-    Button okay = findViewById(R.id.okay);
-    Intent configIntent = new Intent(ConfigurationActivity.this, GameActivity.class);
+      Button okay = findViewById(R.id.okay);
+      Intent configIntent = new Intent(ConfigurationActivity.this, GameActivity.class);
+      playerViewModel = ViewModelProviders.of(this).get(PlayerViewModel.class);
 
-    if (playerViewModel.onOK(name.getText().toString(), Integer.parseInt(pilotPoints.getText().toString()),
+      if (PlayerViewModel.onOK(name.getText().toString(), Integer.parseInt(pilotPoints.getText().toString()),
             Integer.parseInt(engineeringPoints.getText().toString()),
             Integer.parseInt(traderPoints.getText().toString()),
             Integer.parseInt(fighterPoints.getText().toString()))) {
@@ -81,9 +93,9 @@ public class ConfigurationActivity extends AppCompatActivity {
       playerViewModel.createGame(playerViewModel.getPlayer(), (GameDifficulty) difficultyLevel.getSelectedItem());
       startActivity(configIntent);
 
-    } else {
-      Toast.makeText(ConfigurationActivity.this, "Invalid inputs", Toast.LENGTH_SHORT).show();
-    }
+      } else {
+          Toast.makeText(ConfigurationActivity.this, "Invalid inputs", Toast.LENGTH_SHORT).show();
+      }
 
   }
 

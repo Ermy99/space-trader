@@ -11,7 +11,7 @@ import cs2340.spacetraders.Model.Player;
 import cs2340.spacetraders.Model.SolarSystems;
 
 public class TravelViewModel extends AndroidViewModel {
-    Game game;
+    final Game game;
 
     public TravelViewModel(Application application) {
         super(application);

@@ -1,21 +1,33 @@
 package cs2340.spacetraders.View;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
 import cs2340.spacetraders.R;
+import cs2340.spacetraders.ViewModel.PlayerViewModel;
+import cs2340.spacetraders.ViewModel.TravelViewModel;
+
 /*
 Main game screen
 The screen with the four buttons on it.
  */
 public class GameActivity extends AppCompatActivity {
+    private Button saveButton;
+    public static final String SHARED_PREFS = "sharedPrefs";
+    public static final String GAME = "game";
+    PlayerViewModel playerViewModel;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        playerViewModel = ViewModelProviders.of(this).get(PlayerViewModel.class);
         setContentView(R.layout.activity_game);
 
         Button statusButton =  findViewById(R.id.status_button);
@@ -54,5 +66,13 @@ public class GameActivity extends AppCompatActivity {
             }
         });
 
+        saveButton = findViewById(R.id.save_button);
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                playerViewModel.saveGame();
+            }
+        });
     }
+
 }

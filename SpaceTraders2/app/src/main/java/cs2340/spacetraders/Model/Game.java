@@ -1,35 +1,37 @@
 package cs2340.spacetraders.Model;
 
-import android.util.Log;
+import android.annotation.SuppressLint;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 
-public class Game {
 
-    private static final Game instance = new Game();
+public class Game implements Serializable {
+
+    private static Game instance = new Game();
     public Player player;
-    public GameDifficulty gameDifficulty;
-    public Universe universe;
+    // --Commented out by Inspection (4/5/2019 8:23 PM):public GameDifficulty gameDifficulty;
+    // --Commented out by Inspection (4/5/2019 8:22 PM):public Universe universe;
     public int solarSystemLevel;
-    public SolarSystems location;
     public Ship ship;
     public Cargo cargo;
     public List<CargoItem> shipCargo;
 
 
-    public static List<GameDifficulty> gameDifficulties = Arrays.asList(GameDifficulty.BEGINNER, GameDifficulty.EASY, GameDifficulty.NORMAL,
-            GameDifficulty.HARD, GameDifficulty.IMPOSSIBLE);
+    public static final List<GameDifficulty> gameDifficulties = Arrays.asList(GameDifficulty.BEGINNER,
+            GameDifficulty.EASY, GameDifficulty.NORMAL, GameDifficulty.HARD,
+            GameDifficulty.IMPOSSIBLE);
 
     public Game() {
         //Log.d("Edit",this.toString());
         this.player = new Player(null,0,0,0,0,null);
-        this.gameDifficulty = GameDifficulty.BEGINNER;
-        this.universe = new Universe();
+        //this.gameDifficulty = GameDifficulty.BEGINNER;
+        //this.universe = new Universe();
         this.solarSystemLevel = 1;
         this.ship = player.getShip();
         this.cargo = player.getShip().getCargo();
-        this.location = player.getSolarSystems();
+        //this.location = player.getSolarSystems();
         this.shipCargo = cargo.getShipCargo();
     }
 
@@ -50,14 +52,12 @@ public class Game {
         this.shipCargo = cargo.getShipCargo();
     }
 
-    public GameDifficulty getGameDifficulty() {
-        return gameDifficulty;
+    public void setGame(Game g) {
+        this.instance = g;
     }
 
-    public void setGameDifficulty(GameDifficulty gameDifficulty) {
-        this.gameDifficulty = gameDifficulty;
-    }
 
+    @SuppressLint("DefaultLocale")
     @Override
     public String toString() {
         return String.format("In this game, the player is %s with %d pilot points," +

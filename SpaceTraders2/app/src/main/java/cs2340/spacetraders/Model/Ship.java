@@ -1,18 +1,17 @@
 package cs2340.spacetraders.Model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.Serializable;
 
-public class Ship {
-    public Cargo cargo;
+public class Ship implements Serializable {
+    public final Cargo cargo;
     public Shiptype shiptype;
     public int Fuel;
     //int cargoSize;
     //int cargoCapacity;
 
 
-    Ship(Shiptype shiptype){
-        this.shiptype = shiptype;
+    Ship(){
+        this.shiptype = Shiptype.GNAT;
         this.cargo = new Cargo(15);
     }
 
@@ -25,9 +24,11 @@ public class Ship {
         this.shiptype = shiptype;
     }
 
-    public void setCargo() {
-        cargo = new Cargo(15);
-    }
+// --Commented out by Inspection START (4/5/2019 8:26 PM):
+//    public void setCargo() {
+//        cargo = new Cargo(15);
+//    }
+// --Commented out by Inspection STOP (4/5/2019 8:26 PM)
 
 //    public void setCargoSize() {
 //        this.cargoSize = cargo.getCargoSize();

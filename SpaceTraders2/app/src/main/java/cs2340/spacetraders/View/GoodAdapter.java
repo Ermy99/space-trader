@@ -1,26 +1,17 @@
 package cs2340.spacetraders.View;
 
-import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import com.bumptech.glide.Glide;
-
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import cs2340.spacetraders.Model.Game;
 import cs2340.spacetraders.Model.Goods;
-import cs2340.spacetraders.Model.Player;
-import cs2340.spacetraders.Model.SolarSystems;
 import cs2340.spacetraders.R;
 
 public class GoodAdapter extends RecyclerView.Adapter<GoodAdapter.GoodViewHolder> {
@@ -29,7 +20,7 @@ public class GoodAdapter extends RecyclerView.Adapter<GoodAdapter.GoodViewHolder
 
     private OnGoodClickListener listener;
 
-    private Game game = Game.getInstance();
+    private final Game game = Game.getInstance();
 
 
     @NonNull
@@ -47,7 +38,7 @@ public class GoodAdapter extends RecyclerView.Adapter<GoodAdapter.GoodViewHolder
     public void onBindViewHolder(@NonNull GoodViewHolder holder, int position) {
         Goods good = goodList.get(position);
         holder.goodName.setText(good.getCode());
-        Player player = game.getPlayer();
+        //Player player = game.getPlayer();
         //SolarSystems solarSystems = player.getSolarSystems();
 
         holder.goodPrice.setText(Integer.toString(good.getPrice(game.getPlayer().getSolarSystems().getTech().ordinal())));
@@ -68,8 +59,8 @@ public class GoodAdapter extends RecyclerView.Adapter<GoodAdapter.GoodViewHolder
     class GoodViewHolder extends RecyclerView.ViewHolder {
 
         //ImageView image;
-        TextView goodName;
-        TextView goodPrice;
+        final TextView goodName;
+        final TextView goodPrice;
 
         public GoodViewHolder(@NonNull View itemView) {
             super(itemView);

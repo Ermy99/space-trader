@@ -2,10 +2,10 @@ package cs2340.spacetraders.Model;
 
 import android.util.Log;
 
-import java.util.Arrays;
+import java.io.Serializable;
 import java.util.List;
 
-public enum Goods {
+public enum Goods implements Serializable {
     Water("Water", 0, 0, 2, 30, 3),
     Furs("Furs", 0, 0, 0, 250, 10),
     Food("Foods", 1, 0, 1, 100, 5),
@@ -17,19 +17,17 @@ public enum Goods {
     Narcotics("Narcotics",5, 0, 5, 3500, -125),
     Robots("Robots", 6, 4, 7, 5000, -150);
 
-    private String code;
-    private int minTechLevelToProd;
-    private int minTechLevelToUse;
-    private int techLevel;
-    private int basePrice;
-    private int priceInc;
+    private final String code;
+    private final int minTechLevelToProd;
+    private final int basePrice;
+    private final int priceInc;
 
     Goods(String code, int minTechLevelToProd, int minTechLevelToUse, int techLevel,
           int basePrice, int priceInc) {
         this.code = code;
         this.minTechLevelToProd = minTechLevelToProd;
-        this.minTechLevelToUse = minTechLevelToUse;
-        this.techLevel = techLevel;
+        int minTechLevelToUse1 = minTechLevelToUse;
+        int techLevel1 = techLevel;
         this.basePrice = basePrice;
         this.priceInc = priceInc;
     }
@@ -100,45 +98,65 @@ public enum Goods {
 
     }
 
-    public int getMinTechLevelToProd() {
-        return minTechLevelToProd;
-    }
+// --Commented out by Inspection START (4/5/2019 8:24 PM):
+//    public int getMinTechLevelToProd() {
+//        return minTechLevelToProd;
+//    }
+// --Commented out by Inspection STOP (4/5/2019 8:24 PM)
 
-    public void setMinTechLevelToProd(int minTechLevelToProd) {
-        this.minTechLevelToProd = minTechLevelToProd;
-    }
+// --Commented out by Inspection START (4/5/2019 8:24 PM):
+//    public void setMinTechLevelToProd(int minTechLevelToProd) {
+//        this.minTechLevelToProd = minTechLevelToProd;
+//    }
+// --Commented out by Inspection STOP (4/5/2019 8:24 PM)
 
-    public int getMinTechLevelToUse() {
-        return minTechLevelToUse;
-    }
+// --Commented out by Inspection START (4/5/2019 8:24 PM):
+//    public int getMinTechLevelToUse() {
+//        return minTechLevelToUse;
+//    }
+// --Commented out by Inspection STOP (4/5/2019 8:24 PM)
 
-    public void setMinTechLevelToUse(int minTechLevelToUse) {
-        this.minTechLevelToUse = minTechLevelToUse;
-    }
+// --Commented out by Inspection START (4/5/2019 8:24 PM):
+//    public void setMinTechLevelToUse(int minTechLevelToUse) {
+//        this.minTechLevelToUse = minTechLevelToUse;
+//    }
+// --Commented out by Inspection STOP (4/5/2019 8:24 PM)
 
-    public int getTechLevel() {
-        return techLevel;
-    }
+// --Commented out by Inspection START (4/5/2019 8:24 PM):
+//    public int getTechLevel() {
+//        return techLevel;
+//    }
+// --Commented out by Inspection STOP (4/5/2019 8:24 PM)
 
-    public void setTechLevel(int techLevel) {
-        this.techLevel = techLevel;
-    }
+// --Commented out by Inspection START (4/5/2019 8:24 PM):
+//    public void setTechLevel(int techLevel) {
+//        this.techLevel = techLevel;
+//    }
+// --Commented out by Inspection STOP (4/5/2019 8:24 PM)
 
-    public int getBasePrice() {
-        return basePrice;
-    }
+// --Commented out by Inspection START (4/5/2019 8:24 PM):
+//    public int getBasePrice() {
+//        return basePrice;
+//    }
+// --Commented out by Inspection STOP (4/5/2019 8:24 PM)
 
-    public void setBasePrice(int basePrice) {
-        this.basePrice = basePrice;
-    }
+// --Commented out by Inspection START (4/5/2019 8:24 PM):
+//    public void setBasePrice(int basePrice) {
+//        this.basePrice = basePrice;
+//    }
+// --Commented out by Inspection STOP (4/5/2019 8:24 PM)
 
-    public int getPriceInc() {
-        return priceInc;
-    }
+// --Commented out by Inspection START (4/5/2019 8:24 PM):
+//    public int getPriceInc() {
+//        return priceInc;
+//    }
+// --Commented out by Inspection STOP (4/5/2019 8:24 PM)
 
-    public void setPriceInc(int priceInc) {
-        this.priceInc = priceInc;
-    }
+// --Commented out by Inspection START (4/5/2019 8:24 PM):
+//    public void setPriceInc(int priceInc) {
+//        this.priceInc = priceInc;
+//    }
+// --Commented out by Inspection STOP (4/5/2019 8:24 PM)
 
 
 }

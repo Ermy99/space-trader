@@ -2,13 +2,10 @@ package cs2340.spacetraders.View;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import java.util.Arrays;
 import java.util.List;
 
 import cs2340.spacetraders.Model.CargoItem;
@@ -40,8 +37,6 @@ public class CargoItemAdapter extends RecyclerView.Adapter<CargoItemAdapter.Carg
         CargoItem cargoItem = cargoList.get(position);
         Goods good = cargoItem.getGood();
         int quantity = cargoItem.getQuantity();
-        Log.d("APP", "quantity issss" + quantity);
-
         holder.cargoItemName.setText(good.getCode());
         Player player = Game.getInstance().getPlayer();
         holder.cargoItemPrice.setText(Integer.toString(good.getPrice(player.getSolarSystems().getTech().ordinal())));
@@ -64,9 +59,9 @@ public class CargoItemAdapter extends RecyclerView.Adapter<CargoItemAdapter.Carg
     class CargoItemViewHolder extends RecyclerView.ViewHolder {
 
         //ImageView image;
-        TextView cargoItemName;
-        TextView cargoItemQuantity;
-        TextView cargoItemPrice;
+        final TextView cargoItemName;
+        final TextView cargoItemQuantity;
+        final TextView cargoItemPrice;
 
         public CargoItemViewHolder(@NonNull View itemView) {
             super(itemView);

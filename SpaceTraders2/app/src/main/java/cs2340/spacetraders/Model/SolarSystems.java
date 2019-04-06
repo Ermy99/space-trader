@@ -1,12 +1,12 @@
 package cs2340.spacetraders.Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+
 import java.util.Random;
 
-public enum SolarSystems {
+@SuppressWarnings("ALL")
+public enum SolarSystems implements Serializable {
     
     SOMEBI("Somebi"),               //0
     GHAVI("Ghavi"),                 //1

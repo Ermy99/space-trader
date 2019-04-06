@@ -1,12 +1,13 @@
 package cs2340.spacetraders.Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Cargo {
+public class Cargo implements Serializable {
 
-        List<CargoItem> shipCargo;
-        int cargoCapacity;
+        private final List<CargoItem> shipCargo;
+        private final int cargoCapacity;
 
 
         public Cargo(int cargoCapacity) {

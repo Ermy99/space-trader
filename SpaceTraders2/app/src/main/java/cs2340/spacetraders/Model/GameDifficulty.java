@@ -1,6 +1,9 @@
 package cs2340.spacetraders.Model;
 
-public enum GameDifficulty {
+
+import java.io.Serializable;
+
+public enum GameDifficulty implements Serializable {
     BEGINNER("Beginner"),
     EASY("Easy"),
     NORMAL("Normal"),
@@ -8,15 +11,17 @@ public enum GameDifficulty {
     IMPOSSIBLE("Impossible");
 
 
-    private String gameDifficulty;
+    private final String gameDifficulty;
 
     GameDifficulty(String gameDifficulty) {
         this.gameDifficulty = gameDifficulty;
     }
 
-    public String getGameDifficulty() {
-        return gameDifficulty;
-    }
+// --Commented out by Inspection START (4/5/2019 8:23 PM):
+//    public String getGameDifficulty() {
+//        return gameDifficulty;
+//    }
+// --Commented out by Inspection STOP (4/5/2019 8:23 PM)
 
     @Override
     public String toString() {

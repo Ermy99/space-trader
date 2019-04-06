@@ -2,10 +2,11 @@ package cs2340.spacetraders.Model;
 
 import android.util.Log;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Universe {
+public class Universe implements Serializable {
     List<SolarSystems> solarSystems;
 
     public Universe() {

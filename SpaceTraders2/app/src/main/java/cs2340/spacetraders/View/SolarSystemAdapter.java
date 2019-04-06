@@ -22,7 +22,7 @@ public class SolarSystemAdapter extends RecyclerView.Adapter<SolarSystemAdapter.
 
     private OnSolarSystemClickListener listener;
 
-    private Game game = Game.getInstance();
+    private final Game game = Game.getInstance();
 
 
     @NonNull
@@ -60,8 +60,8 @@ public class SolarSystemAdapter extends RecyclerView.Adapter<SolarSystemAdapter.
     class SolarSystemViewHolder extends RecyclerView.ViewHolder {
 
         //ImageView image;
-        TextView solarSystemName;
-        TextView solarSystemDistance;
+        final TextView solarSystemName;
+        final TextView solarSystemDistance;
 
         public SolarSystemViewHolder(@NonNull View itemView) {
             super(itemView);

@@ -1,8 +1,10 @@
 package cs2340.spacetraders.Model;
 
-public class CargoItem {
+import java.io.Serializable;
+
+public class CargoItem implements Serializable {
     public int quantity;
-    public Goods good;
+    public final Goods good;
 
     public CargoItem(int quantity, Goods good) {
         this.good = good;

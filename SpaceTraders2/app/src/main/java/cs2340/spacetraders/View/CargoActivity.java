@@ -5,12 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-
-import java.util.Arrays;
-
 import cs2340.spacetraders.Model.CargoItem;
 import cs2340.spacetraders.Model.Game;
-import cs2340.spacetraders.Model.Goods;
 import cs2340.spacetraders.R;
 /*
 The screen with the buy and sell buttons

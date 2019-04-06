@@ -1,6 +1,8 @@
 package cs2340.spacetraders.Model;
 
-public enum Resource {
+import java.io.Serializable;
+
+public enum Resource implements Serializable {
     
     NO_SPECIAL_RESOURCES("No special resources"),   //0
     MINERAL_RICH("Mineral-rich"),                   //1
@@ -17,7 +19,7 @@ public enum Resource {
     WARLIKE("Warlike");                             //12
     
     
-    private String resource;
+    private final String resource;
     
     Resource(String resource) {
         this.resource = resource;
