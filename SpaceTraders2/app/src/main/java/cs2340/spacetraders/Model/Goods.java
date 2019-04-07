@@ -56,7 +56,7 @@ public enum Goods {
     /**
      * getPrice method - returns the price of the good.
      *
-     * @param
+     * @param level the level of the good
      * @return the price of the good
      */
     public int getPrice(int level) {

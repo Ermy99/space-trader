@@ -71,19 +71,40 @@ public class Ship implements Serializable {
     public Cargo getCargo() {
         return cargo;
     }
-
+    
+    /**
+     * getCargoCapacity method - returns the cargo's capacity.
+     *
+     * @return the capacity of the cargo
+     */
     public int getCargoCapacity() {
         return cargo.getCargoCapacity();
     }
-
+    
+    /**
+     * getCargoSize method - returns the size of the cargo.
+     *
+     * @return the number of items inside the ship's cargo
+     */
     public int getCargoSize() {
         return cargo.getCargoSize();
     }
-
+    
+    /**
+     * getShipCargo method - returns the cargo in the form of
+     *                       a List<CargoItem>().
+     *
+     * @return a list of the items in the cargo
+     */
     public List<CargoItem> getShipCargo() {
         return cargo.getShipCargo();
     }
-
+    
+    /**
+     * setFuel method - sets a new value for the fuel in the ship
+     *
+     * @param fuelChange fuel to be added to the ship
+     */
     public void setFuel(int fuelChange) {
         this.Fuel += fuelChange;
     }

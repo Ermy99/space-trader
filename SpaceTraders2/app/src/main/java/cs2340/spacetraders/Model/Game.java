@@ -82,32 +82,68 @@ public class Game implements Serializable {
         this.cargo = ship.getCargo();
         this.shipCargo = cargo.getShipCargo();
     }
-
+    
+    /**
+     * getCredits method - returns the number of credits
+     *                     belonging to the player.
+     *
+     * @return player's number of credits
+     */
     public int getCredits() {
         return player.getCredits();
     }
-
+    
+    /**
+     * getSolarSystemName method - returns the solar system name
+     *
+     * @return solar system name
+     */
     public String getSolarSystemName() {
         return player.solarSystems.getName();
     }
-
+    
+    /**
+     * getShipName method - returns the ship name
+     *
+     * @return ship name
+     */
     public String getShipName() {
         return player.shipType.getName();
     }
-
+    
+    /**
+     * getCargoCapacity method - returns the cargo capacity
+     *
+     * @return player's cargo capacity
+     */
     public int getCargoCapacity() {
         return player.getCargoCapacity();
     }
-
+    
+    /**
+     * getCargoSize method - returns the cargo size
+     *
+     * @return number of items player has inside the cargo
+     */
     public int getCargoSize() {
         return player.getCargoSize();
     }
-
+    
+    /**
+     * getTech method - returns the tech level of the solar system.
+     *
+     * @return solar system's tech level
+     */
     public int getTech() {
         TechLevel techLevel = player.solarSystems.getTech();
         return techLevel.ordinal();
     }
-
+    
+    /**
+     * getSolarSystemsName method - returns the solar system's name.
+     *
+     * @return player's location solar system
+     */
     public String getSolarSystemsName() {
         return player.getSolarSystemName();
     }

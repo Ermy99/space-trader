@@ -17,6 +17,11 @@ import static org.junit.Assert.*;
 
 @RunWith(AndroidJUnit4.class)
 public class ExampleInstrumentedTest {
+    
+    /**
+     * useAppContext method - context of the app under test.
+     *
+     */
     @Test
     public void useAppContext() {
         // Context of the app under test.

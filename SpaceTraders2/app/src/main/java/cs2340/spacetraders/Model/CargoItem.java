@@ -51,15 +51,24 @@ public class CargoItem implements Serializable {
      *
      * @param n the new quantity of a cargo item
      */
-
     public void setQuantity(int n) {
         this.quantity = n;
     }
-
+    
+    /**
+     * getGoodCode method - returns the name of the good
+     *
+     * @return name of the good
+     */
     public String getGoodCode() {
         return good.getCode();
     }
-
+    
+    /**
+     * getGoodPrice method - returns the price of the good
+     *
+     * @return price of the good
+     */
     public int getGoodPrice() {
         Game game = Game.getInstance();
         return good.getPrice(game.getTech());

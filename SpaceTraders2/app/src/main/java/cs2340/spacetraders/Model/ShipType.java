@@ -38,11 +38,21 @@ public enum ShipType {
     public String getName() {
         return name;
     }
-
+    
+    /**
+     * getCargoSize method - returns the size of the cargo.
+     *
+     * @return number of items inside the cargo
+     */
     public int getCargoSize() {
         return cargoSize;
     }
-
+    
+    /**
+     * getParsecs method - returns the number of parsecs the ship can travel.
+     *
+     * @return number of parsecs the ship can travel
+     */
     public int getParsecs() {
         return parsecs;
     }

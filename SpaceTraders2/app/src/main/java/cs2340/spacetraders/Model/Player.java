@@ -54,7 +54,12 @@ public class Player implements Serializable {
     public SolarSystems getSolarSystems() {
         return solarSystems;
     }
-
+    
+    /**
+     * getSolarSystemName method - returns the name of the solar system
+     *
+     * @return name of the solar system
+     */
     public String getSolarSystemName() {
         return solarSystems.getName();
     }
@@ -78,19 +83,40 @@ public class Player implements Serializable {
     public String getName() {
         return name;
     }
-
+    
+    /**
+     * getShipCargo method - returns the entire ship cargo object
+     *
+     * @return the player's cargo object
+     */
     public List<CargoItem> getShipCargo() {
         return ship.getShipCargo();
     }
-
+    
+    /**
+     * getCargo method - returns the cargo of the player.
+     *
+     * @return the player's cargo
+     */
     public Cargo getCargo() {
         return ship.getCargo();
     }
-
+    
+    /**
+     * getCargoCapacity method - returns the player's cargo capacity.
+     *
+     * @return the player's cargo capacity
+     */
     public int getCargoCapacity() {
         return ship.getCargoCapacity();
     }
-
+    
+    /**
+     * getCargoSize method - returns the number of items
+     *                       inside the ship's cargo.
+     *
+     * @return the size of the cargo
+     */
     public int getCargoSize() {
         return ship.getCargoSize();
     }
