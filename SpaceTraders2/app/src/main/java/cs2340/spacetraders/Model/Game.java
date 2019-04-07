@@ -13,9 +13,11 @@ public class Game implements Serializable {
     public Player player;
     // --Commented out by Inspection (4/5/2019 8:23 PM):public GameDifficulty gameDifficulty;
     // --Commented out by Inspection (4/5/2019 8:22 PM):public Universe universe;
+
+    private SolarSystems solarSystems;
     public int solarSystemLevel;
-    public Ship ship;
-    public Cargo cargo;
+    private Ship ship;
+    private Cargo cargo;
     public List<CargoItem> shipCargo;
 
 
@@ -30,7 +32,7 @@ public class Game implements Serializable {
         //this.universe = new Universe();
         this.solarSystemLevel = 1;
         this.ship = player.getShip();
-        this.cargo = player.getShip().getCargo();
+        this.cargo = player.getCargo();
         //this.location = player.getSolarSystems();
         this.shipCargo = cargo.getShipCargo();
     }
@@ -46,14 +48,44 @@ public class Game implements Serializable {
 
     public void setPlayer(Player player) {
         this.player = player;
-        this.solarSystemLevel = player.getSolarSystems().ordinal();
+        this.solarSystems = player.solarSystems;
+        this.solarSystemLevel = solarSystems.ordinal();
         this.ship = player.getShip();
         this.cargo = ship.getCargo();
         this.shipCargo = cargo.getShipCargo();
     }
 
+    public int getCredits() {
+        return player.getCredits();
+    }
+
+    public String getSolarSystemName() {
+        return player.solarSystems.getName();
+    }
+
+    public String getShipName() {
+        return player.shiptype.getName();
+    }
+
+    public int getCargoCapacity() {
+        return player.getCargoCapacity();
+    }
+
+    public int getCargoSize() {
+        return player.getCargoSize();
+    }
+
+    public int getTech() {
+        TechLevel techLevel = player.solarSystems.getTech();
+        return techLevel.ordinal();
+    }
+
+    public String getSolarSystemsName() {
+        return player.getSolarSystemName();
+    }
+
     public void setGame(Game g) {
-        this.instance = g;
+        instance = g;
     }
 
 

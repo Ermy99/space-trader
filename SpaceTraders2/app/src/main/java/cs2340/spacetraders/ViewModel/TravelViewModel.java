@@ -11,7 +11,7 @@ import cs2340.spacetraders.Model.Player;
 import cs2340.spacetraders.Model.SolarSystems;
 
 public class TravelViewModel extends AndroidViewModel {
-    final Game game;
+    private final Game game;
 
     public TravelViewModel(Application application) {
         super(application);
@@ -35,8 +35,8 @@ public class TravelViewModel extends AndroidViewModel {
             Goods.pirateAttack();
         } else if (randNum == 1) {
             //this is the Magician event where you get more credits
-            Player player = Game.getInstance().getPlayer();
-            int credits = player.getCredits();
+            Player player = Game.getInstance().player;
+            int credits = Game.getInstance().getCredits();
             player.setCredits(credits + rand.nextInt(1000));
         }
         return randNum;

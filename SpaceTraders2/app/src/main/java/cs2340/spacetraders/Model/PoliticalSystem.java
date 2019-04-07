@@ -2,7 +2,7 @@ package cs2340.spacetraders.Model;
 
 import java.io.Serializable;
 
-public enum PoliticalSystem implements Serializable {
+public enum PoliticalSystem {
 
     ANARCHY("Anarchy"),                     //0
     CAPITALIST("Capitalist State"),         //1

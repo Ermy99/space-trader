@@ -3,7 +3,7 @@ package cs2340.spacetraders.Model;
 
 import java.io.Serializable;
 
-public enum GameDifficulty implements Serializable {
+public enum GameDifficulty {
     BEGINNER("Beginner"),
     EASY("Easy"),
     NORMAL("Normal"),

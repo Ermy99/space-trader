@@ -2,7 +2,7 @@ package cs2340.spacetraders.Model;
 
 import java.io.Serializable;
 
-public enum TechLevel implements Serializable {
+public enum TechLevel {
     
     PREAGRICULTURAL("Pre-Agricultural"),        //0
     AGRICULTURAL("Agricultural"),               //1

@@ -21,6 +21,7 @@ public class StatusActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_status);
 
+        Game game = Game.getInstance();
 
         TextView playerName = findViewById(R.id.player_name);
         TextView location = findViewById(R.id.location);
@@ -29,13 +30,13 @@ public class StatusActivity extends AppCompatActivity {
         TextView cargoSpace = findViewById(R.id.cargo_space);
         TextView fuel = findViewById(R.id.fuel);
 
-        playerName.setText(Game.getInstance().getPlayer().getName());
-        points.setText(Integer.toString(Game.getInstance().getPlayer().getCredits()));
-        location.setText(Game.getInstance().getPlayer().getSolarSystems().getName());
-        ship.setText(Game.getInstance().getPlayer().getShip().getShiptype().getName());
-        cargoSpace.setText(Integer.toString(Game.getInstance().getPlayer().getShip().getCargo().getCargoCapacity()
-                - Game.getInstance().getPlayer().getShip().getCargo().getCargoSize()));
-        fuel.setText(Integer.toString(Game.getInstance().getPlayer().getFuel()));
+        playerName.setText(game.player.getName());
+        points.setText(Integer.toString(game.getCredits()));
+        location.setText(game.getSolarSystemName());
+        ship.setText(game.getShipName());
+        cargoSpace.setText(Integer.toString(game.getCargoCapacity()
+                - game.getCargoSize()));
+        fuel.setText(Integer.toString(game.player.getFuel()));
 
 
 

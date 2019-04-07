@@ -41,7 +41,7 @@ public class GoodAdapter extends RecyclerView.Adapter<GoodAdapter.GoodViewHolder
         //Player player = game.getPlayer();
         //SolarSystems solarSystems = player.getSolarSystems();
 
-        holder.goodPrice.setText(Integer.toString(good.getPrice(game.getPlayer().getSolarSystems().getTech().ordinal())));
+        holder.goodPrice.setText(Integer.toString(good.getPrice(game.getTech())));
     }
 
     @Override
@@ -62,7 +62,7 @@ public class GoodAdapter extends RecyclerView.Adapter<GoodAdapter.GoodViewHolder
         final TextView goodName;
         final TextView goodPrice;
 
-        public GoodViewHolder(@NonNull View itemView) {
+        GoodViewHolder(@NonNull View itemView) {
             super(itemView);
             //image = itemView.findViewById(R.id.image);
             goodName = itemView.findViewById(R.id.good_name);
@@ -75,7 +75,7 @@ public class GoodAdapter extends RecyclerView.Adapter<GoodAdapter.GoodViewHolder
                 public void onClick(View view) {
                     int position = getAdapterPosition();
                     notifyDataSetChanged();
-                    if (listener != null && position != RecyclerView.NO_POSITION) {
+                    if ((listener != null) && (position != RecyclerView.NO_POSITION)) {
                         notifyDataSetChanged();
                         listener.onGoodClicked(goodList.get(position));
                     }

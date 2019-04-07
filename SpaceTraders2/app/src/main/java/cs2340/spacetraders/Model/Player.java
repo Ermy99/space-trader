@@ -1,6 +1,7 @@
 package cs2340.spacetraders.Model;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Player implements Serializable {
     private final String name;
@@ -10,7 +11,8 @@ public class Player implements Serializable {
     private final int fighterPoints;
     private int credits;
     private final Ship ship;
-    private SolarSystems solarSystems;
+    final Shiptype shiptype;
+    SolarSystems solarSystems;
     private int Fuel = 1000;
 
     public Player(String name, int pilotPoints, int engineeringPoints, int traderPoints,
@@ -22,11 +24,16 @@ public class Player implements Serializable {
         this.fighterPoints = fighterPoints;
         this.credits = 1000;
         this.ship = new Ship();
+        this.shiptype = ship.shiptype;
         this.solarSystems = solarSystems;
     }
 
     public SolarSystems getSolarSystems() {
         return solarSystems;
+    }
+
+    public String getSolarSystemName() {
+        return solarSystems.getName();
     }
 
     public void setSolarSystems(SolarSystems solarSystems) {
@@ -35,6 +42,22 @@ public class Player implements Serializable {
 
     public String getName() {
         return name;
+    }
+
+    public List<CargoItem> getShipCargo() {
+        return ship.getShipCargo();
+    }
+
+    public Cargo getCargo() {
+        return ship.getCargo();
+    }
+
+    public int getCargoCapacity() {
+        return ship.getCargoCapacity();
+    }
+
+    public int getCargoSize() {
+        return ship.getCargoSize();
     }
 
 // --Commented out by Inspection START (4/5/2019 8:25 PM):

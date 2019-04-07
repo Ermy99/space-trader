@@ -37,9 +37,10 @@ public class CargoItemAdapter extends RecyclerView.Adapter<CargoItemAdapter.Carg
         CargoItem cargoItem = cargoList.get(position);
         Goods good = cargoItem.getGood();
         int quantity = cargoItem.getQuantity();
-        holder.cargoItemName.setText(good.getCode());
-        Player player = Game.getInstance().getPlayer();
-        holder.cargoItemPrice.setText(Integer.toString(good.getPrice(player.getSolarSystems().getTech().ordinal())));
+        holder.cargoItemName.setText(cargoItem.getGoodCode());
+        Player player = Game.getInstance().player;
+        Game game = Game.getInstance();
+        holder.cargoItemPrice.setText(Integer.toString(cargoItem.getGoodPrice()));
         holder.cargoItemQuantity.setText(Integer.toString(quantity));
 
 
@@ -63,7 +64,7 @@ public class CargoItemAdapter extends RecyclerView.Adapter<CargoItemAdapter.Carg
         final TextView cargoItemQuantity;
         final TextView cargoItemPrice;
 
-        public CargoItemViewHolder(@NonNull View itemView) {
+        CargoItemViewHolder(@NonNull View itemView) {
             super(itemView);
             //image = itemView.findViewById(R.id.image);
             cargoItemName = itemView.findViewById(R.id.cargo_item_name);
@@ -78,7 +79,7 @@ public class CargoItemAdapter extends RecyclerView.Adapter<CargoItemAdapter.Carg
                 public void onClick(View view) {
                     int position = getAdapterPosition();
 
-                    if (listener != null && position != RecyclerView.NO_POSITION) {
+                    if ((listener != null) && (position != RecyclerView.NO_POSITION)) {
                         listener.onCargoItemClicked(cargoList.get(position));
                         notifyDataSetChanged();
                     }

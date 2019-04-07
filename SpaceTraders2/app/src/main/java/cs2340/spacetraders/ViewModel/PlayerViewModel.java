@@ -15,13 +15,12 @@ import cs2340.spacetraders.Model.Game;
 import cs2340.spacetraders.Model.GameDifficulty;
 import cs2340.spacetraders.Model.Player;
 import cs2340.spacetraders.Model.SolarSystems;
-import cs2340.spacetraders.Model.Universe;
 
 
 public class PlayerViewModel extends AndroidViewModel {
 
-    Game game;
-    Player player;
+    private Game game;
+    private Player player;
 
 
     public PlayerViewModel(@NonNull Application application) {
@@ -45,7 +44,7 @@ public class PlayerViewModel extends AndroidViewModel {
         //game.universe = new Universe();
     }
 
-    public boolean saveGame() {
+    public void saveGame() {
         boolean success = true;
         try {
             Log.d("APP" , "saving game");
@@ -58,29 +57,27 @@ public class PlayerViewModel extends AndroidViewModel {
             success = false;
         }
 
-        return success;
     }
 
-    public boolean loadSavedGame() {
+    public void loadSavedGame() {
         boolean success = true;
         try {
             FileInputStream file = getApplication().openFileInput("spacetradersgame.ser");
             ObjectInputStream objectInputStream = new ObjectInputStream(file);
-            Game game = (Game) objectInputStream.readObject();
             objectInputStream.close();
-            Game.getInstance().setGame(game);
+            Game game = Game.getInstance();
+            game.setGame((Game) objectInputStream.readObject());
         } catch (Exception e){
             success = false;
             Log.d("APP", "No game was loaded");
 
         }
-        return success;
     }
 
     public static boolean onOK(CharSequence name, int pilotPoints, int engineeringPoints, int traderPoints,
                                int fighterPoints) {
         int totalpoints = pilotPoints + engineeringPoints + traderPoints + fighterPoints;
-        return name != null && name.length() > 0 && totalpoints == 16;
+        return (name != null) && (name.length() > 0) && (totalpoints == 16);
     }
 
 

@@ -20,7 +20,7 @@ public class GameActivity extends AppCompatActivity {
     private Button saveButton;
     public static final String SHARED_PREFS = "sharedPrefs";
     public static final String GAME = "game";
-    PlayerViewModel playerViewModel;
+    private PlayerViewModel playerViewModel;
 
 
     @Override

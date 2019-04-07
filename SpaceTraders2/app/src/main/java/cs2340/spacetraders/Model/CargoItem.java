@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class CargoItem implements Serializable {
     public int quantity;
-    public final Goods good;
+    private final Goods good;
 
     public CargoItem(int quantity, Goods good) {
         this.good = good;
@@ -17,6 +17,15 @@ public class CargoItem implements Serializable {
 
     public Goods getGood() {
         return good;
+    }
+
+    public String getGoodCode() {
+        return good.getCode();
+    }
+
+    public int getGoodPrice() {
+        Game game = Game.getInstance();
+        return good.getPrice(game.getTech());
     }
 
     public void setQuantity(int n) {

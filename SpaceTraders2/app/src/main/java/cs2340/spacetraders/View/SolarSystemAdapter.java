@@ -63,7 +63,7 @@ public class SolarSystemAdapter extends RecyclerView.Adapter<SolarSystemAdapter.
         final TextView solarSystemName;
         final TextView solarSystemDistance;
 
-        public SolarSystemViewHolder(@NonNull View itemView) {
+        SolarSystemViewHolder(@NonNull View itemView) {
             super(itemView);
             //image = itemView.findViewById(R.id.image);
             solarSystemName = itemView.findViewById(R.id.solar_system_name);
@@ -76,7 +76,7 @@ public class SolarSystemAdapter extends RecyclerView.Adapter<SolarSystemAdapter.
                 public void onClick(View view) {
                     int position = getAdapterPosition();
 
-                    if (listener != null && position != RecyclerView.NO_POSITION) {
+                    if ((listener != null) && (position != RecyclerView.NO_POSITION)) {
                         listener.onSolarSystemClicked(solarSystemList.get(position));
                         notifyDataSetChanged();
                     }

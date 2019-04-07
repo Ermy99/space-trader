@@ -1,11 +1,12 @@
 package cs2340.spacetraders.Model;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Ship implements Serializable {
-    public final Cargo cargo;
+    private final Cargo cargo;
     public Shiptype shiptype;
-    public int Fuel;
+    private int Fuel;
     //int cargoSize;
     //int cargoCapacity;
 
@@ -44,6 +45,18 @@ public class Ship implements Serializable {
 
     public Cargo getCargo() {
         return cargo;
+    }
+
+    public int getCargoCapacity() {
+        return cargo.getCargoCapacity();
+    }
+
+    public int getCargoSize() {
+        return cargo.getCargoSize();
+    }
+
+    public List<CargoItem> getShipCargo() {
+        return cargo.getShipCargo();
     }
 
     public void setFuel(int fuelChange) {

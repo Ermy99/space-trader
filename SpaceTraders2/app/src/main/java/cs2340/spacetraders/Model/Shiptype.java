@@ -2,7 +2,7 @@ package cs2340.spacetraders.Model;
 
 import java.io.Serializable;
 
-public enum Shiptype implements Serializable {
+public enum Shiptype {
     FLEA("Flea", 10, 20),
     GNAT("Gnat", 15, 14),
     FIREFLY("Firefly", 20, 17),

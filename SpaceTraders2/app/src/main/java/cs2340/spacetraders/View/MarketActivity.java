@@ -18,7 +18,7 @@ public class MarketActivity extends AppCompatActivity {
     private GoodAdapter adapter;
 
     /** a key for passing data */
-    public static final String GOOD_NAME = "GOOD_NAME";
+    private static final String GOOD_NAME = "GOOD_NAME";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
