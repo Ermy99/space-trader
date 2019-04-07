@@ -12,7 +12,7 @@ import java.io.Serializable;
  */
 public class Ship implements Serializable {
     public final Cargo cargo;
-    public shipType shipType;
+    public ShipType shipType;
     public int Fuel;
     //int cargoSize;
     //int cargoCapacity;
@@ -31,7 +31,7 @@ public class Ship implements Serializable {
      *
      * @return the player's ship type
      */
-    public shipType getshipType() {
+    public ShipType getshipType() {
         return shipType;
     }
     
@@ -40,7 +40,7 @@ public class Ship implements Serializable {
      *
      * @param shipType the new shipType to provide the player.
      */
-    public void setshipType(shipType shipType) {
+    public void setshipType(ShipType shipType) {
         this.shipType = shipType;
     }
 
