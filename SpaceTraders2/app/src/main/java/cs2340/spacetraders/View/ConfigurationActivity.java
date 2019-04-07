@@ -16,7 +16,6 @@ import cs2340.spacetraders.Model.Game;
 import cs2340.spacetraders.Model.GameDifficulty;
 import cs2340.spacetraders.R;
 import cs2340.spacetraders.ViewModel.PlayerViewModel;
-import cs2340.spacetraders.ViewModel.TravelViewModel;
 
 /*
 Player configuration screen

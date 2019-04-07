@@ -15,7 +15,6 @@ import cs2340.spacetraders.Model.Game;
 import cs2340.spacetraders.Model.GameDifficulty;
 import cs2340.spacetraders.Model.Player;
 import cs2340.spacetraders.Model.SolarSystems;
-import cs2340.spacetraders.Model.Universe;
 
 
 public class PlayerViewModel extends AndroidViewModel {
