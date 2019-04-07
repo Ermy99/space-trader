@@ -2,6 +2,7 @@ package cs2340.spacetraders.Model;
 
 import java.io.Serializable;
 import java.util.List;
+
 /**
  * Ship.java
  * Represents the player's ship.
@@ -11,7 +12,7 @@ import java.util.List;
  * @version 1.0
  */
 public class Ship implements Serializable {
-    public final Cargo cargo;
+    private final Cargo cargo;
     public ShipType shipType;
     public int Fuel;
     //int cargoSize;

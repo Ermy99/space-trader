@@ -3,6 +3,7 @@ package cs2340.spacetraders.Model;
 
 import java.io.Serializable;
 
+public enum GameDifficulty {
 /**
  * GameDifficulty.java
  * Enum for game difficulties.
@@ -12,7 +13,6 @@ import java.io.Serializable;
  * @version 1.0
  */
 public enum GameDifficulty implements Serializable {
-public enum GameDifficulty {
     BEGINNER("Beginner"),
     EASY("Easy"),
     NORMAL("Normal"),

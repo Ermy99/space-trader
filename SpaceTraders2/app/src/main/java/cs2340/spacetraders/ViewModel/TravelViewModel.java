@@ -65,8 +65,8 @@ public class TravelViewModel extends AndroidViewModel {
             Goods.pirateAttack();
         } else if (randNum == 1) {
             //this is the Magician event where you get more credits
-            Player player = Game.getInstance().player;
-            int credits = Game.getInstance().getCredits();
+            Player player = Game.getInstance().getPlayer();
+            int credits = player.getCredits();
             player.setCredits(credits + rand.nextInt(1000));
         }
         return randNum;

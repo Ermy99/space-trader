@@ -13,8 +13,7 @@ import java.util.List;
  *          Aditya Tapshalkar, Chisomebi Obed
  * @version 1.0
  */
-
-public enum Goods {
+public enum Goods implements Serializable {
     Water("Water", 0, 0, 2, 30, 3),
     Furs("Furs", 0, 0, 0, 250, 10),
     Food("Foods", 1, 0, 1, 100, 5),
@@ -32,7 +31,7 @@ public enum Goods {
     private final int techLevel;
     private final int basePrice;
     private final int priceInc;
-
+    
     /**
      * Goods constructor - creates a good based on tech level
      *
@@ -52,8 +51,8 @@ public enum Goods {
         this.basePrice = basePrice;
         this.priceInc = priceInc;
     }
-
-
+    
+    
     /**
      * getPrice method - returns the price of the good.
      *
@@ -63,7 +62,7 @@ public enum Goods {
     public int getPrice(int level) {
         return Math.abs(basePrice + (3 * 2 * priceInc * (level - minTechLevelToProd)));
     }
-
+    
     /**
      * canSell method - determines if you can sell a number of goods given the
      *                  player's cargo.
@@ -83,7 +82,7 @@ public enum Goods {
 
         return false;
     }
-
+    
     /**
      * canBuy method - determines whether the player can buy a number of goods
      *                 based on the player's number of credits
@@ -145,7 +144,7 @@ public enum Goods {
             }
         }
     }
-
+    
     /**
      * pirateAttack method - executes action of pirate plundering the player's
      *                       cargo.
@@ -158,7 +157,7 @@ public enum Goods {
             c.setQuantity(0);
         }
     }
-
+    
     /**
      * getCode method - returns the name of the good
      *

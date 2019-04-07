@@ -21,6 +21,7 @@ public class CargoItem implements Serializable {
      * @param quantity the number of cargo items to create and store
      * @param good the type of good to create.
      */
+
     public CargoItem(int quantity, Goods good) {
         this.good = good;
         this.quantity = quantity;
@@ -51,6 +52,10 @@ public class CargoItem implements Serializable {
      * @param n the new quantity of a cargo item
      */
 
+    public void setQuantity(int n) {
+        this.quantity = n;
+    }
+
     public String getGoodCode() {
         return good.getCode();
     }
@@ -60,7 +65,5 @@ public class CargoItem implements Serializable {
         return good.getPrice(game.getTech());
     }
 
-    public void setQuantity(int n) {
-        this.quantity = n;
-    }
+
 }

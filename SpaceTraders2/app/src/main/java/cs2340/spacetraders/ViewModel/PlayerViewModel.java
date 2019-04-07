@@ -25,15 +25,15 @@ import cs2340.spacetraders.Model.SolarSystems;
  * @version 1.0
  */
 public class PlayerViewModel extends AndroidViewModel {
-
-    Game game;
-    Player player;
+    private Game game;
+    private Player player;
 
     /**
      * PlayerViewModel Constructor - creates a new PlayerViewModel
      *
      * @param application the application passed in
      */
+>>>>>>>>> Temporary merge branch 2
     public PlayerViewModel(@NonNull Application application) {
         super(application);
 
@@ -66,7 +66,7 @@ public class PlayerViewModel extends AndroidViewModel {
     public Player getPlayer() {
         return player;
     }
-
+    
     /**
      * createGame method - creates a game from the player info and
      *                     game difficulty.
@@ -139,12 +139,10 @@ public class PlayerViewModel extends AndroidViewModel {
                                int traderPoints,
                                int fighterPoints) {
 
-        int totalpoints = pilotPoints
-                          + engineeringPoints
-                          + traderPoints
-                          + fighterPoints;
+        int totalpoints = pilotPoints + engineeringPoints + traderPoints + fighterPoints;
+        return (name != null) && (name.length() > 0) && (totalpoints == 16);
 
-        return name != null && name.length() > 0 && totalpoints == 16;
+
     }
 
 

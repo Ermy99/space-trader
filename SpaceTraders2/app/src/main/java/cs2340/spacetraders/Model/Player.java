@@ -12,6 +12,7 @@ import java.util.List;
  * @version 1.0
  */
 public class Player implements Serializable {
+    
     private final String name;
     private final int pilotPoints;
     private final int engineeringPoints;
@@ -19,8 +20,7 @@ public class Player implements Serializable {
     private final int fighterPoints;
     private int credits;
     private final Ship ship;
-    final Shiptype shiptype;
-    SolarSystems solarSystems;
+    private SolarSystems solarSystems;
     private int Fuel = 1000;
 
     /**
@@ -42,7 +42,6 @@ public class Player implements Serializable {
         this.fighterPoints = fighterPoints;
         this.credits = 1000;
         this.ship = new Ship();
-        this.shiptype = ship.shiptype;
         this.solarSystems = solarSystems;
     }
 

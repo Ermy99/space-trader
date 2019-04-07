@@ -1,7 +1,5 @@
 package cs2340.spacetraders.Model;
 
-import java.io.Serializable;
-
 /**
  * ShipType.java
  * Enum of various ship types player can purchase in the game.
@@ -44,7 +42,7 @@ public enum ShipType {
     public int getCargoSize() {
         return cargoSize;
     }
-    
+
     public int getParsecs() {
         return parsecs;
     }

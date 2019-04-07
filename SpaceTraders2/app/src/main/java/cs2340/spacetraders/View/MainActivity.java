@@ -41,11 +41,11 @@ public class MainActivity extends AppCompatActivity {
         
         game = new Game();
         adapter = new SimpleItemRecyclerViewAdapter(
-                game.player.getName(),
-                game.player.getPilotPoints(),
-                game.player.getEngineeringPoints(),
-                game.player.getFighterPoints(),
-                game.player.getTraderPoints()
+                game.getPlayer().getName(),
+                game.getPlayer().getPilotPoints(),
+                game.getPlayer().getEngineeringPoints(),
+                game.getPlayer().getFighterPoints(),
+                game.getPlayer().getTraderPoints()
         );
 
         //This code sets up our button at bottom of screen to start game
@@ -77,10 +77,10 @@ public class MainActivity extends AppCompatActivity {
         inflater.inflate(R.menu.main_menu, menu);
         return true;
     }
-    
+
     public class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
-    
+
         private String name;
         private int pilotPoints;
         private int engineeringPoints;
@@ -89,6 +89,9 @@ public class MainActivity extends AppCompatActivity {
     
         private final List<Object> list;
     
+<<<<<<<<< Temporary merge branch 1
+        SimpleItemRecyclerViewAdapter(String name, int pilotPoints, int engineeringPoints, int fighterPoints, int traderPoints) {
+=========
         /**
          * SimpleItemRecyclerViewAdapter Constructor - creates a recycler-view
          *                                             adapter using user
@@ -105,6 +108,7 @@ public class MainActivity extends AppCompatActivity {
                                              int engineeringPoints,
                                              int fighterPoints,
                                              int traderPoints) {
+>>>>>>>>> Temporary merge branch 2
         
             list = new ArrayList<Object>();
             list.add(name);
@@ -174,17 +178,26 @@ public class MainActivity extends AppCompatActivity {
         }
     
         public class ViewHolder extends RecyclerView.ViewHolder {
+<<<<<<<<< Temporary merge branch 1
+            final View mView;
+            final TextView mIdView;
+            final TextView mContentView;
+            Object mItem;
+        
+            ViewHolder(View view) {
+=========
             public final View mView;
             public final TextView mIdView;
             public final TextView mContentView;
             public Object mItem;
-
+    
             /**
              * ViewHolder Constructor - constructing a new view
              *
              * @param view the current screen on the phone
              */
             public ViewHolder(View view) {
+>>>>>>>>> Temporary merge branch 2
                 super(view);
                 mView = view;
                 mIdView = (TextView) view.findViewById(R.id.id);

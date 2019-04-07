@@ -119,8 +119,9 @@ public class Game implements Serializable {
      *
      * @param g the new game object to replace the existing instance of game
      */
+>>>>>>>>> Temporary merge branch 2
     public void setGame(Game g) {
-        instance = g;
+        this.instance = g;
     }
 
 
