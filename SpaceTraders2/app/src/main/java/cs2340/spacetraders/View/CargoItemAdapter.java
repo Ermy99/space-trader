@@ -14,6 +14,14 @@ import cs2340.spacetraders.Model.Goods;
 import cs2340.spacetraders.Model.Player;
 import cs2340.spacetraders.R;
 
+/**
+ * CargoItemAdapter.java
+ * Adapter for CargoItems
+ *
+ * @author  Sanghavi Gaddam, Ermelinda Izihirwe, Taofikat Bishi,
+ *          Aditya Tapshalkar, Chisomebi Obed
+ * @version 1.0
+ */
 public class CargoItemAdapter extends RecyclerView.Adapter<CargoItemAdapter.CargoItemViewHolder> {
 
     private List<CargoItem> cargoList = Game.getInstance().shipCargo;

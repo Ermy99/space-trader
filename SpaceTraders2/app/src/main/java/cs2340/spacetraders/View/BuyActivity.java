@@ -13,6 +13,14 @@ import cs2340.spacetraders.Model.Goods;
 import cs2340.spacetraders.R;
 import cs2340.spacetraders.ViewModel.MarketViewModel;
 
+/**
+ * BuyActivity.java
+ * Represents the 'buy' screen in Activity
+ *
+ * @author  Sanghavi Gaddam, Ermelinda Izihirwe, Taofikat Bishi,
+ *          Aditya Tapshalkar, Chisomebi Obed
+ * @version 1.0
+ */
 public class BuyActivity extends AppCompatActivity {
 
     private Goods good;
@@ -54,8 +62,13 @@ public class BuyActivity extends AppCompatActivity {
         marketViewModel = ViewModelProviders.of(this).get(MarketViewModel.class);
 
     }
-
-
+    
+    /**
+     * onBuy method - Method called when attempting to buy an item, then buys
+     *                the item if player canBuy
+     *
+     * @param view The 'buy' screen
+     */
     public void onBuy(View view) {
         EditText amount = findViewById(R.id.amount_to_buy);
         int amountToBuy = Integer.parseInt(amount.getText().toString());

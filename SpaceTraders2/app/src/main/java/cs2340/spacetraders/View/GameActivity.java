@@ -10,9 +10,13 @@ import android.widget.Button;
 import cs2340.spacetraders.R;
 import cs2340.spacetraders.ViewModel.PlayerViewModel;
 
-/*
-Main game screen
-The screen with the four buttons on it.
+/**
+ * GameActivity.java
+ * Main screen with status, travel, market, and cargo buttons.
+ *
+ * @author  Sanghavi Gaddam, Ermelinda Izihirwe, Taofikat Bishi,
+ *          Aditya Tapshalkar, Chisomebi Obed
+ * @version 1.0
  */
 public class GameActivity extends AppCompatActivity {
     private Button saveButton;

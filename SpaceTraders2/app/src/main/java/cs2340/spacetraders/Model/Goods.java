@@ -5,6 +5,14 @@ import android.util.Log;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * Goods.java
+ * Enum for the goods present in the game.
+ *
+ * @author  Sanghavi Gaddam, Ermelinda Izihirwe, Taofikat Bishi,
+ *          Aditya Tapshalkar, Chisomebi Obed
+ * @version 1.0
+ */
 public enum Goods implements Serializable {
     Water("Water", 0, 0, 2, 30, 3),
     Furs("Furs", 0, 0, 0, 250, 10),

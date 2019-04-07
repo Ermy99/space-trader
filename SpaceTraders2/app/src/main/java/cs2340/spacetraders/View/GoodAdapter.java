@@ -14,7 +14,16 @@ import cs2340.spacetraders.Model.Game;
 import cs2340.spacetraders.Model.Goods;
 import cs2340.spacetraders.R;
 
-public class GoodAdapter extends RecyclerView.Adapter<GoodAdapter.GoodViewHolder> {
+/**
+ * GoodAdapter.java
+ * Adapter for goods.
+ *
+ * @author  Sanghavi Gaddam, Ermelinda Izihirwe, Taofikat Bishi,
+ *          Aditya Tapshalkar, Chisomebi Obed
+ * @version 1.0
+ */
+public class GoodAdapter extends
+        RecyclerView.Adapter<GoodAdapter.GoodViewHolder> {
 
     private List<Goods> goodList = Arrays.asList(Goods.values());
 
@@ -49,7 +58,12 @@ public class GoodAdapter extends RecyclerView.Adapter<GoodAdapter.GoodViewHolder
         Log.d("APP","size is" + goodList.size());
         return goodList.size();
     }
-
+    
+    /**
+     * setGoodList method - modifies existing goods list with new goods list
+     *
+     * @param goods the new list of goods
+     */
     public void setGoodList(List<Goods> goods) {
         notifyDataSetChanged();
         goodList = goods;
@@ -83,11 +97,21 @@ public class GoodAdapter extends RecyclerView.Adapter<GoodAdapter.GoodViewHolder
             });
         }
     }
-
+    
+    /**
+     * onGoodClickListener interface - interface for the listener
+     *
+     */
     public interface OnGoodClickListener {
         void onGoodClicked(Goods good);
     }
-
+    
+    /**
+     * setOnGoodClickListener method - sets a new listener replacing the
+     *                                 existing listener.
+     *
+     * @param listener the new listener to replace the old listener
+     */
     public void setOnGoodClickListener(OnGoodClickListener listener) {
         this.listener = listener;
     }
