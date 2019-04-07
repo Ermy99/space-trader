@@ -8,8 +8,13 @@ import cs2340.spacetraders.Model.Game;
 import cs2340.spacetraders.R;
 import cs2340.spacetraders.ViewModel.PlayerViewModel;
 
-/*
-The screen with the buy and sell buttons
+/**
+ * StatusActivity.java
+ * Displays player's statistics.
+ *
+ * @author  Sanghavi Gaddam, Ermelinda Izihirwe, Taofikat Bishi,
+ *          Aditya Tapshalkar, Chisomebi Obed
+ * @version 1.0
  */
 public class StatusActivity extends AppCompatActivity {
 

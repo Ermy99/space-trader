@@ -16,8 +16,13 @@ import cs2340.spacetraders.Model.SolarSystems;
 import cs2340.spacetraders.R;
 import cs2340.spacetraders.ViewModel.TravelViewModel;
 
-/*
-The screen with the buy and sell buttons
+/**
+ * TravelActivity.java
+ * Creates a screen where the player can choose a new destination.
+ *
+ * @author  Sanghavi Gaddam, Ermelinda Izihirwe, Taofikat Bishi,
+ *          Aditya Tapshalkar, Chisomebi Obed
+ * @version 1.0
  */
 public class TravelActivity extends AppCompatActivity {
 

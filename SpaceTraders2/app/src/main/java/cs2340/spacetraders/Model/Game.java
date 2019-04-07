@@ -6,7 +6,14 @@ import java.io.Serializable;
 import java.util.Arrays;
 import java.util.List;
 
-
+/**
+ * Game.java
+ * Represents the actual game.
+ *
+ * @author  Sanghavi Gaddam, Ermelinda Izihirwe, Taofikat Bishi,
+ *          Aditya Tapshalkar, Chisomebi Obed
+ * @version 1.0
+ */
 public class Game implements Serializable {
 
     private static Game instance = new Game();
@@ -25,6 +32,10 @@ public class Game implements Serializable {
             GameDifficulty.EASY, GameDifficulty.NORMAL, GameDifficulty.HARD,
             GameDifficulty.IMPOSSIBLE);
 
+    /**
+     * Game constructor - creates a new game from the inputted user config.
+     *
+     */
     public Game() {
         //Log.d("Edit",this.toString());
         this.player = new Player(null,0,0,0,0,null);
@@ -37,15 +48,32 @@ public class Game implements Serializable {
         this.shipCargo = cargo.getShipCargo();
     }
 
-
+    /**
+     * getInstance method - Game is a singleton, so game will call on an
+     *                      already existing instance of the Game class.
+     *
+     * @return the already-existing instance of Game
+     */
     public static Game getInstance() {
         return instance;
     }
 
+    /**
+     * getPlayer method - returns the player object associated with the game.
+     *
+     * @return the player object
+     */
     public Player getPlayer() {
         return player;
     }
 
+    /**
+     * setPlayer method - sets a new player to be associated with
+     *                    the game object, and associates new statistics with
+     *                    the player object
+     *
+     * @param player the new player object to be associated with the game class
+     */
     public void setPlayer(Player player) {
         this.player = player;
         this.solarSystems = player.solarSystems;
@@ -84,6 +112,13 @@ public class Game implements Serializable {
         return player.getSolarSystemName();
     }
 
+
+    /**
+     * setGame method - sets the instance of a game to the original instance
+     *                  of the game.
+     *
+     * @param g the new game object to replace the existing instance of game
+     */
     public void setGame(Game g) {
         instance = g;
     }

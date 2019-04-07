@@ -8,12 +8,17 @@ import android.support.v7.widget.RecyclerView;
 import cs2340.spacetraders.Model.CargoItem;
 import cs2340.spacetraders.Model.Game;
 import cs2340.spacetraders.R;
-/*
-The screen with the buy and sell buttons
+
+/**
+ * CargoActivity.java
+ * Represents the screen with 'buy' and 'sell' buttons.
+ *
+ * @author  Sanghavi Gaddam, Ermelinda Izihirwe, Taofikat Bishi,
+ *          Aditya Tapshalkar, Chisomebi Obed
+ * @version 1.0
  */
 public class CargoActivity extends AppCompatActivity {
-
-
+    
     private CargoItemAdapter adapter;
 
     /** a key for passing data */
@@ -24,9 +29,11 @@ public class CargoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cargo);
         //initImageBitmaps();
+        
         /*
          Set up our recycler view by grabbing the layout for a single item
          */
+        
         RecyclerView recyclerView = findViewById(R.id.cargo_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
@@ -51,7 +58,4 @@ public class CargoActivity extends AppCompatActivity {
             }
         });
     }
-
-
-
 }

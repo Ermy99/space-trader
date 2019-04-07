@@ -16,6 +16,14 @@ import cs2340.spacetraders.Model.Player;
 import cs2340.spacetraders.Model.SolarSystems;
 import cs2340.spacetraders.R;
 
+/**
+ * SolarSystemAdapter.java
+ * Adapter for the solar systems.
+ *
+ * @author  Sanghavi Gaddam, Ermelinda Izihirwe, Taofikat Bishi,
+ *          Aditya Tapshalkar, Chisomebi Obed
+ * @version 1.0
+ */
 public class SolarSystemAdapter extends RecyclerView.Adapter<SolarSystemAdapter.SolarSystemViewHolder> {
 
     private List<SolarSystems> solarSystemList = Arrays.asList(SolarSystems.values());
@@ -51,7 +59,12 @@ public class SolarSystemAdapter extends RecyclerView.Adapter<SolarSystemAdapter.
         Log.d("APP","size is" + solarSystemList.size());
         return solarSystemList.size();
     }
-
+    
+    /**
+     * setSolarSystemList method - creates a new list of solar systems
+     *
+     * @param solarSystems the new list of solar systems
+     */
     public void setSolarSystemList(List<SolarSystems> solarSystems) {
         solarSystemList = solarSystems;
         notifyDataSetChanged();
@@ -84,11 +97,29 @@ public class SolarSystemAdapter extends RecyclerView.Adapter<SolarSystemAdapter.
             });
         }
     }
-
+    
+    /**
+     * OnSolarSystemClickListener interface - creates interface for
+     *                                        solar system.
+     *
+     */
     public interface OnSolarSystemClickListener {
+    
+        /**
+         * onSolarSystemClicked method - abstract listener method.
+         *
+         * @param solarSystem the solar system that is clicked
+         */
         void onSolarSystemClicked(SolarSystems solarSystem);
+    
     }
-
+    
+    /**
+     * setOnSolarSystemClickListener method - listens to which solar system
+     *                                        is clicked.
+     *
+     * @param listener the click listener
+     */
     public void setOnSolarSystemClickListener(OnSolarSystemClickListener listener) {
         this.listener = listener;
     }

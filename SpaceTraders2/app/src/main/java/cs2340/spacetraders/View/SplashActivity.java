@@ -6,8 +6,13 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
 import cs2340.spacetraders.R;
-/*
-The splash screen
+/**
+ * SplashActivity.java
+ * Represents the splash screen upon launching the app.
+ *
+ * @author  Sanghavi Gaddam, Ermelinda Izihirwe, Taofikat Bishi,
+ *          Aditya Tapshalkar, Chisomebi Obed
+ * @version 1.0
  */
 public class SplashActivity extends AppCompatActivity {
 

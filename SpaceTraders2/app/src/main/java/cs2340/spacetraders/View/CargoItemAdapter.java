@@ -14,6 +14,14 @@ import cs2340.spacetraders.Model.Goods;
 import cs2340.spacetraders.Model.Player;
 import cs2340.spacetraders.R;
 
+/**
+ * CargoItemAdapter.java
+ * Adapter for CargoItems
+ *
+ * @author  Sanghavi Gaddam, Ermelinda Izihirwe, Taofikat Bishi,
+ *          Aditya Tapshalkar, Chisomebi Obed
+ * @version 1.0
+ */
 public class CargoItemAdapter extends RecyclerView.Adapter<CargoItemAdapter.CargoItemViewHolder> {
 
     private List<CargoItem> cargoList = Game.getInstance().shipCargo;
@@ -51,7 +59,13 @@ public class CargoItemAdapter extends RecyclerView.Adapter<CargoItemAdapter.Carg
         //Log.d("APP","size is" + cargoList.size());
         return 10;
     }
-
+    
+    /**
+     * setCargoList method - replaces existing cargo list with new list of
+     *                       cargo items.
+     *
+     * @param cargoItems the new list to replace existing cargo items list
+     */
     public void setCargoList(List<CargoItem> cargoItems) {
         this.cargoList = cargoItems;
         notifyDataSetChanged();
@@ -87,11 +101,27 @@ public class CargoItemAdapter extends RecyclerView.Adapter<CargoItemAdapter.Carg
             });
         }
     }
-
+    
+    /**
+     * OnCargoItemClickListener interface - interface for cargo items list
+     *
+     */
     public interface OnCargoItemClickListener {
+    
+        /**
+         * onCargoItemClicked method - abstract method for cargo items list
+         *
+         * @param cargoItem the cargo item that is clicked from the list
+         */
         void onCargoItemClicked(CargoItem cargoItem);
+    
     }
-
+    
+    /**
+     * setonCargoItemClickListener method - click listener for cargo items
+     *
+     * @param listener click listener for cargo items
+     */
     public void setonCargoItemClickListener(OnCargoItemClickListener listener) {
         this.listener = listener;
     }

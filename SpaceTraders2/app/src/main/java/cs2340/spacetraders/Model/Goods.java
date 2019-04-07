@@ -5,6 +5,15 @@ import android.util.Log;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * Goods.java
+ * Enum for the goods present in the game.
+ *
+ * @author  Sanghavi Gaddam, Ermelinda Izihirwe, Taofikat Bishi,
+ *          Aditya Tapshalkar, Chisomebi Obed
+ * @version 1.0
+ */
+
 public enum Goods {
     Water("Water", 0, 0, 2, 30, 3),
     Furs("Furs", 0, 0, 0, 250, 10),
@@ -24,6 +33,16 @@ public enum Goods {
     private final int basePrice;
     private final int priceInc;
 
+    /**
+     * Goods constructor - creates a good based on tech level
+     *
+     * @param code the name of the good
+     * @param minTechLevelToProd minimum tech level to produce the good
+     * @param minTechLevelToUse minimum tech level to use the good
+     * @param techLevel the current tech level
+     * @param basePrice the base price of the good
+     * @param priceInc price increase of the good
+     */
     Goods(String code, int minTechLevelToProd, int minTechLevelToUse, int techLevel,
           int basePrice, int priceInc) {
         this.code = code;
@@ -35,11 +54,24 @@ public enum Goods {
     }
 
 
-    //returns a price for the tradegood
+    /**
+     * getPrice method - returns the price of the good.
+     *
+     * @param
+     * @return the price of the good
+     */
     public int getPrice(int level) {
         return Math.abs(basePrice + (3 * 2 * priceInc * (level - minTechLevelToProd)));
     }
 
+    /**
+     * canSell method - determines if you can sell a number of goods given the
+     *                  player's cargo.
+     *
+     * @param good the good to sell
+     * @param quantityToSell the quantity of the good to sell
+     * @return whether the player can or cannot sell the good(s)
+     */
     public boolean canSell(Goods good, int quantityToSell) {
         Game game = Game.getInstance();
         for (CargoItem c: game.player.getShipCargo()) {
@@ -52,12 +84,26 @@ public enum Goods {
         return false;
     }
 
+    /**
+     * canBuy method - determines whether the player can buy a number of goods
+     *                 based on the player's number of credits
+     *
+     * @param good the good to buy
+     * @param quantityToBuy the quantity of the good to buy
+     * @return whether the player can or cannot buy the good(s)
+     */
     public boolean canBuy(Goods good, int quantityToBuy) {
         Game game = Game.getInstance();
         return (Game.getInstance().player.getCredits() > (good.getPrice(game.getTech()) * quantityToBuy)) &&
                 ((game.getCargoSize() + quantityToBuy) <= game.getCargoCapacity());
     }
 
+    /**
+     * buy method - executes the action of buying a number of goods.
+     *
+     * @param good the good to buy
+     * @param quantityToBuy the number of goods to buy
+     */
     public void buy(Goods good, int quantityToBuy) {
         Game game = Game.getInstance();
         if (canBuy(good, quantityToBuy)) {
@@ -80,6 +126,12 @@ public enum Goods {
 
     }
 
+    /**
+     * sell method - executes the action of selling a number of goods.
+     *
+     * @param good the good to sell
+     * @param quantityToSell the number of goods to sell
+     */
     public void sell(Goods good, int quantityToSell) {
         Game game = Game.getInstance();
         if (canSell(good, quantityToSell)) {
@@ -94,6 +146,11 @@ public enum Goods {
         }
     }
 
+    /**
+     * pirateAttack method - executes action of pirate plundering the player's
+     *                       cargo.
+     *
+     */
     public static void pirateAttack() {
         Game game = Game.getInstance();
         List<CargoItem> cargo = game.player.getShipCargo();
@@ -102,6 +159,11 @@ public enum Goods {
         }
     }
 
+    /**
+     * getCode method - returns the name of the good
+     *
+     * @return the name of the good
+     */
     public String getCode() {
         return code;
 

@@ -2,7 +2,15 @@ package cs2340.spacetraders.Model;
 
 import java.io.Serializable;
 
-public enum Resource {
+/**
+ * Resource.java
+ * Enum of resources of the solar systems.
+ *
+ * @author  Sanghavi Gaddam, Ermelinda Izihirwe, Taofikat Bishi,
+ *          Aditya Tapshalkar, Chisomebi Obed
+ * @version 1.0
+ */
+public enum Resource implements Serializable {
     
     NO_SPECIAL_RESOURCES("No special resources"),   //0
     MINERAL_RICH("Mineral-rich"),                   //1
