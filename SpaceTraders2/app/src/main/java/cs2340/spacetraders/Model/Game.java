@@ -29,7 +29,11 @@ public class Game implements Serializable {
     public static final List<GameDifficulty> gameDifficulties = Arrays.asList(GameDifficulty.BEGINNER,
             GameDifficulty.EASY, GameDifficulty.NORMAL, GameDifficulty.HARD,
             GameDifficulty.IMPOSSIBLE);
-
+    
+    /**
+     * Game constructor - creates a new game from the inputted user config.
+     *
+     */
     public Game() {
         //Log.d("Edit",this.toString());
         this.player = new Player(null,0,0,0,0,null);

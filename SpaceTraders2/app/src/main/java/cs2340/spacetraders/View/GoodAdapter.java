@@ -103,7 +103,15 @@ public class GoodAdapter extends
      *
      */
     public interface OnGoodClickListener {
+    
+        /**
+         * onGoodClicked method - abstract method to be implemented in class.
+         *
+          * @param good the good that is clicked
+         */
         void onGoodClicked(Goods good);
+    
+    
     }
     
     /**

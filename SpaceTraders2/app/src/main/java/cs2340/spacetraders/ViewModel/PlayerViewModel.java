@@ -16,34 +16,76 @@ import cs2340.spacetraders.Model.GameDifficulty;
 import cs2340.spacetraders.Model.Player;
 import cs2340.spacetraders.Model.SolarSystems;
 
-
+/**
+ * PlayerViewModel.java
+ * Conveys Player view data to the model.
+ *
+ * @author  Sanghavi Gaddam, Ermelinda Izihirwe, Taofikat Bishi,
+ *          Aditya Tapshalkar, Chisomebi Obed
+ * @version 1.0
+ */
 public class PlayerViewModel extends AndroidViewModel {
 
     Game game;
     Player player;
-
-
+    
+    /**
+     * PlayerViewModel Constructor - creates a new PlayerViewModel
+     *
+     * @param application the application passed in
+     */
     public PlayerViewModel(@NonNull Application application) {
         super(application);
 
     }
-
-    public void createPlayer(String name, int pilotPoints, int engineeringPoints, int traderPoints,
+    
+    /**
+     * createPlayer method - creates a new player from the configuration data.
+     *
+     * @param name the player's name
+     * @param pilotPoints the player's pilot points
+     * @param engineeringPoints the player's engineering points
+     * @param traderPoints the player's trader points
+     * @param fighterPoints the player's fighter points
+     */
+    public void createPlayer(String name,
+                             int pilotPoints,
+                             int engineeringPoints,
+                             int traderPoints,
                              int fighterPoints) {
-        player = new Player(name, pilotPoints, engineeringPoints, traderPoints, fighterPoints, SolarSystems.SOMEBI);
+        
+        player = new Player(name, pilotPoints, engineeringPoints,
+                traderPoints, fighterPoints, SolarSystems.SOMEBI);
     }
-
+    
+    /**
+     * getPlayer method - returns the player.
+     *
+     * @return the player
+     */
     public Player getPlayer() {
         return player;
     }
-
+    
+    /**
+     * createGame method - creates a game from the player info and
+     *                     game difficulty.
+     *
+     * @param player the player
+     * @param gameDifficulty the game difficulty entered
+     */
     public void createGame(Player player, GameDifficulty gameDifficulty) {
         game = Game.getInstance();
         game.setPlayer(player);
         //game.setGameDifficulty(gameDifficulty);
         //game.universe = new Universe();
     }
-
+    
+    /**
+     * saveGame method - saves the game.
+     *
+     * @return whether the game is saved
+     */
     public boolean saveGame() {
         boolean success = true;
         try {
@@ -59,7 +101,12 @@ public class PlayerViewModel extends AndroidViewModel {
 
         return success;
     }
-
+    
+    /**
+     * loadSavedGame method - loads the saved game.
+     *
+     * @return whether the game loaded correctly.
+     */
     public boolean loadSavedGame() {
         boolean success = true;
         try {
@@ -75,10 +122,28 @@ public class PlayerViewModel extends AndroidViewModel {
         }
         return success;
     }
-
-    public static boolean onOK(CharSequence name, int pilotPoints, int engineeringPoints, int traderPoints,
+    
+    /**
+     * onOK method - saves configuration data to Player object.
+     *
+     * @param name the player's name
+     * @param pilotPoints the player's pilot points
+     * @param engineeringPoints the player's engineering points
+     * @param traderPoints the player's trader points
+     * @param fighterPoints the player's fighter points
+     * @return whether the inputted data is valid
+     */
+    public static boolean onOK(CharSequence name,
+                               int pilotPoints,
+                               int engineeringPoints,
+                               int traderPoints,
                                int fighterPoints) {
-        int totalpoints = pilotPoints + engineeringPoints + traderPoints + fighterPoints;
+        
+        int totalpoints = pilotPoints
+                          + engineeringPoints
+                          + traderPoints
+                          + fighterPoints;
+        
         return name != null && name.length() > 0 && totalpoints == 16;
     }
 

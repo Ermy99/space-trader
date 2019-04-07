@@ -2,26 +2,46 @@ package cs2340.spacetraders.Model;
 
 import java.io.Serializable;
 
+/**
+ * Ship.java
+ * Represents the player's ship.
+ *
+ * @author  Sanghavi Gaddam, Ermelinda Izihirwe, Taofikat Bishi,
+ *          Aditya Tapshalkar, Chisomebi Obed
+ * @version 1.0
+ */
 public class Ship implements Serializable {
     public final Cargo cargo;
-    public Shiptype shiptype;
+    public shipType shipType;
     public int Fuel;
     //int cargoSize;
     //int cargoCapacity;
-
-
-    Ship(){
-        this.shiptype = Shiptype.GNAT;
+    
+    /**
+     * Ship constructor - creates a default ship when the game starts up.
+     *
+     */
+    Ship() {
+        this.shipType = shipType.GNAT;
         this.cargo = new Cargo(15);
     }
-
-    public Shiptype getShiptype() {
-        return shiptype;
+    
+    /**
+     * getshipType method - returns the ship type that the player has.
+     *
+     * @return the player's ship type
+     */
+    public shipType getshipType() {
+        return shipType;
     }
-
-
-    public void setShiptype(Shiptype shiptype) {
-        this.shiptype = shiptype;
+    
+    /**
+     * setshipType method - sets a new ship as the player's ship.
+     *
+     * @param shipType the new shipType to provide the player.
+     */
+    public void setshipType(shipType shipType) {
+        this.shipType = shipType;
     }
 
 // --Commented out by Inspection START (4/5/2019 8:26 PM):
@@ -41,13 +61,14 @@ public class Ship implements Serializable {
 //    public int getCargoSize() {
 //        return cargo.getCargoSize();
 //    }
-
+    
+    /**
+     * getCargo method - returns the cargo object of the ship.
+     *
+     * @return the ship's cargo
+     */
     public Cargo getCargo() {
         return cargo;
-    }
-
-    public void setFuel(int fuelChange) {
-        this.Fuel += fuelChange;
     }
 
 
