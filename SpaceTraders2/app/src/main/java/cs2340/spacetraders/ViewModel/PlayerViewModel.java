@@ -64,9 +64,9 @@ public class PlayerViewModel extends AndroidViewModel {
         try {
             FileInputStream file = getApplication().openFileInput("spacetradersgame.ser");
             ObjectInputStream objectInputStream = new ObjectInputStream(file);
+            Game game = (Game) objectInputStream.readObject();
             objectInputStream.close();
-            Game game = Game.getInstance();
-            game.setGame((Game) objectInputStream.readObject());
+            Game.getInstance().setGame(game);
         } catch (Exception e){
             success = false;
             Log.d("APP", "No game was loaded");
