@@ -2,32 +2,54 @@ package cs2340.spacetraders.Model;
 
 import java.io.Serializable;
 
+/**
+ * CargoItem.java
+ * Represents a cargo item in the cargo
+ *
+ * @author  Sanghavi Gaddam, Ermelinda Izihirwe, Taofikat Bishi,
+ *          Aditya Tapshalkar, Chisomebi Obed
+ * @version 1.0
+ */
 public class CargoItem implements Serializable {
+    
     public int quantity;
-    private final Goods good;
-
+    public final Goods good;
+    
+    /**
+     * CargoItem constructor - Creates a cargo item object.
+     *
+     * @param quantity the number of cargo items to create and store
+     * @param good the type of good to create.
+     */
     public CargoItem(int quantity, Goods good) {
         this.good = good;
         this.quantity = quantity;
     }
-
+    
+    /**
+     * getQuantity method - returns the quantity of the cargo good.
+     *
+     * @return the quantity of cargo good in the cargo
+     */
     public int getQuantity() {
         return quantity;
     }
-
+    
+    /**
+     * getGood method - returns the actual good
+     *
+     * @return the good itself in the cargo
+     */
     public Goods getGood() {
         return good;
     }
-
-    public String getGoodCode() {
-        return good.getCode();
-    }
-
-    public int getGoodPrice() {
-        Game game = Game.getInstance();
-        return good.getPrice(game.getTech());
-    }
-
+    
+    /**
+     * setQuantity method - sets the new quantity of a type of cargo good, used
+     * predominantly after selling and buying items.
+     *
+     * @param n the new quantity of a cargo item
+     */
     public void setQuantity(int n) {
         this.quantity = n;
     }

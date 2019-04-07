@@ -2,7 +2,15 @@ package cs2340.spacetraders.Model;
 
 import java.io.Serializable;
 
-public enum PoliticalSystem {
+/**
+ * PoliticalSystems.java
+ * Enum of political systems of the solar systems.
+ *
+ * @author  Sanghavi Gaddam, Ermelinda Izihirwe, Taofikat Bishi,
+ *          Aditya Tapshalkar, Chisomebi Obed
+ * @version 1.0
+ */
+public enum PoliticalSystem implements Serializable {
 
     ANARCHY("Anarchy"),                     //0
     CAPITALIST("Capitalist State"),         //1

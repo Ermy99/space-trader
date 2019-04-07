@@ -2,7 +2,15 @@ package cs2340.spacetraders.Model;
 
 import java.io.Serializable;
 
-public enum TechLevel {
+/**
+ * TechLevel.java
+ * Enum of tech levels for the solar systems.
+ *
+ * @author  Sanghavi Gaddam, Ermelinda Izihirwe, Taofikat Bishi,
+ *          Aditya Tapshalkar, Chisomebi Obed
+ * @version 1.0
+ */
+public enum TechLevel implements Serializable {
     
     PREAGRICULTURAL("Pre-Agricultural"),        //0
     AGRICULTURAL("Agricultural"),               //1

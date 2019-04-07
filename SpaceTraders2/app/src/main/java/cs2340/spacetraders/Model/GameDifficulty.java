@@ -3,7 +3,15 @@ package cs2340.spacetraders.Model;
 
 import java.io.Serializable;
 
-public enum GameDifficulty {
+/**
+ * GameDifficulty.java
+ * Enum for game difficulties.
+ *
+ * @author  Sanghavi Gaddam, Ermelinda Izihirwe, Taofikat Bishi,
+ *          Aditya Tapshalkar, Chisomebi Obed
+ * @version 1.0
+ */
+public enum GameDifficulty implements Serializable {
     BEGINNER("Beginner"),
     EASY("Easy"),
     NORMAL("Normal"),
