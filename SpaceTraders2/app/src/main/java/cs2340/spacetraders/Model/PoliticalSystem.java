@@ -10,7 +10,7 @@ import java.io.Serializable;
  *          Aditya Tapshalkar, Chisomebi Obed
  * @version 1.0
  */
-public enum PoliticalSystem implements Serializable {
+public enum PoliticalSystem {
 
     ANARCHY("Anarchy"),                     //0
     CAPITALIST("Capitalist State"),         //1

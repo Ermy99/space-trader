@@ -13,8 +13,8 @@ import java.util.List;
  */
 public class Ship implements Serializable {
     private final Cargo cargo;
-    public ShipType shipType;
-    public int Fuel;
+    private ShipType shipType;
+    private int Fuel;
     //int cargoSize;
     //int cargoCapacity;
 
@@ -23,7 +23,7 @@ public class Ship implements Serializable {
      *
      */
     Ship() {
-        this.shipType = shipType.GNAT;
+        this.shipType = ShipType.GNAT;
         this.cargo = new Cargo(15);
     }
 

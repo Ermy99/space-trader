@@ -21,7 +21,7 @@ public class Player implements Serializable {
     private int credits;
     private final Ship ship;
     SolarSystems solarSystems;
-    ShipType shipType = ShipType.GNAT;
+    final ShipType shipType = ShipType.GNAT;
     private int Fuel = 1000;
 
     /**

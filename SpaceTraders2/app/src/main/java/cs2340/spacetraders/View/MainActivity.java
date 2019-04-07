@@ -30,9 +30,9 @@ import cs2340.spacetraders.R;
  */
 public class MainActivity extends AppCompatActivity {
 
-    SimpleItemRecyclerViewAdapter adapter;
+    private SimpleItemRecyclerViewAdapter adapter;
 
-    Game game;
+    private Game game;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,11 +41,11 @@ public class MainActivity extends AppCompatActivity {
 
         game = new Game();
         adapter = new SimpleItemRecyclerViewAdapter(
-                game.getPlayer().getName(),
-                game.getPlayer().getPilotPoints(),
-                game.getPlayer().getEngineeringPoints(),
-                game.getPlayer().getFighterPoints(),
-                game.getPlayer().getTraderPoints()
+                game.player.getName(),
+                game.player.getPilotPoints(),
+                game.player.getEngineeringPoints(),
+                game.player.getFighterPoints(),
+                game.player.getTraderPoints()
         );
 
         //This code sets up our button at bottom of screen to start game
@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
         private int fighterPoints;
         private int traderPoints;
 
-        private List<Object> list;
+        private final List<Object> list;
 
         /**
          * SimpleItemRecyclerViewAdapter Constructor - creates a recycler-view
@@ -100,11 +100,11 @@ public class MainActivity extends AppCompatActivity {
          * @param fighterPoints the fighter points the player input
          * @param traderPoints the trader points the player input
          */
-        public SimpleItemRecyclerViewAdapter(String name,
-                                             int pilotPoints,
-                                             int engineeringPoints,
-                                             int fighterPoints,
-                                             int traderPoints) {
+        SimpleItemRecyclerViewAdapter(String name,
+                                      int pilotPoints,
+                                      int engineeringPoints,
+                                      int fighterPoints,
+                                      int traderPoints) {
 
             list = new ArrayList<Object>();
             list.add(name);
@@ -174,21 +174,21 @@ public class MainActivity extends AppCompatActivity {
         }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
-            public final View mView;
-            public final TextView mIdView;
-            public final TextView mContentView;
-            public Object mItem;
+            final View mView;
+            final TextView mIdView;
+            final TextView mContentView;
+            Object mItem;
 
             /**
              * ViewHolder Constructor - constructing a new view
              *
              * @param view the current screen on the phone
              */
-            public ViewHolder(View view) {
+            ViewHolder(View view) {
                 super(view);
                 mView = view;
-                mIdView = (TextView) view.findViewById(R.id.id);
-                mContentView = (TextView) view.findViewById(R.id.content);
+                mIdView = view.findViewById(R.id.id);
+                mContentView = view.findViewById(R.id.content);
             }
 
             @Override

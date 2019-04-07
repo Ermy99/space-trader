@@ -13,7 +13,7 @@ import java.util.List;
  *          Aditya Tapshalkar, Chisomebi Obed
  * @version 1.0
  */
-public enum Goods implements Serializable {
+public enum Goods {
     Water("Water", 0, 0, 2, 30, 3),
     Furs("Furs", 0, 0, 0, 250, 10),
     Food("Foods", 1, 0, 1, 100, 5),
@@ -104,7 +104,7 @@ public enum Goods implements Serializable {
      * @param quantityToBuy the number of goods to buy
      */
     public void buy(Goods good, int quantityToBuy) {
-        Game game = Game.getInstance();
+        //Game game = Game.getInstance();
         if (canBuy(good, quantityToBuy)) {
             for (CargoItem c: Game.getInstance().player.getShipCargo()) {
                 Goods goods = c.getGood();

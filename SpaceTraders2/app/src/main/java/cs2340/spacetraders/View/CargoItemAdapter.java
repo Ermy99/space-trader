@@ -43,11 +43,11 @@ public class CargoItemAdapter extends RecyclerView.Adapter<CargoItemAdapter.Carg
     @Override
     public void onBindViewHolder(@NonNull CargoItemViewHolder holder, int position) {
         CargoItem cargoItem = cargoList.get(position);
-        Goods good = cargoItem.getGood();
+        //Goods good = cargoItem.getGood();
         int quantity = cargoItem.getQuantity();
         holder.cargoItemName.setText(cargoItem.getGoodCode());
-        Player player = Game.getInstance().player;
-        Game game = Game.getInstance();
+        //Player player = Game.getInstance().player;
+        //Game game = Game.getInstance();
         holder.cargoItemPrice.setText(Integer.toString(cargoItem.getGoodPrice()));
         holder.cargoItemQuantity.setText(Integer.toString(quantity));
 

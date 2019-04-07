@@ -57,7 +57,6 @@ public class BuyActivity extends AppCompatActivity {
 //        amountToBuy = (Integer) amountSpinner.getSelectedItem();
         //amountSpinner.setSelection(amountToBuy);
 
-        //noinspection ChainedMethodCall
         good = (Goods) getIntent().getSerializableExtra(GOOD_NAME);
         //Log.d("good", good.getCode());
         goodName.setText(good.getCode());

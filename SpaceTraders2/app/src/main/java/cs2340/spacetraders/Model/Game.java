@@ -121,7 +121,7 @@ public class Game implements Serializable {
      */
 
     public void setGame(Game g) {
-        this.instance = g;
+        instance = g;
     }
 
 

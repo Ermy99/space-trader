@@ -10,7 +10,7 @@ import java.io.Serializable;
  *          Aditya Tapshalkar, Chisomebi Obed
  * @version 1.0
  */
-public enum Resource implements Serializable {
+public enum Resource {
     
     NO_SPECIAL_RESOURCES("No special resources"),   //0
     MINERAL_RICH("Mineral-rich"),                   //1

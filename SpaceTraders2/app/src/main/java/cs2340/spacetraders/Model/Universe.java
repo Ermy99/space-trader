@@ -14,7 +14,7 @@ import java.util.List;
  *          Aditya Tapshalkar, Chisomebi Obed
  * @version 1.0
  */
-public class Universe implements Serializable {
+class Universe implements Serializable {
     List<SolarSystems> solarSystems;
 
     /**

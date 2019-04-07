@@ -5,8 +5,8 @@ import java.util.ArrayList;
 
 import java.util.Random;
 
-@SuppressWarnings("ALL")
-public enum SolarSystems implements Serializable {
+@SuppressWarnings("SpellCheckingInspection")
+public enum SolarSystems {
     
     SOMEBI("Somebi"),               //0
     GHAVI("Ghavi"),                 //1
@@ -88,25 +88,24 @@ public enum SolarSystems implements Serializable {
     public boolean canTravel(SolarSystems solarSystems) {
         Game game = Game.getInstance();
         int Distance = Distance(solarSystems);
-        SolarSystems currentLocation = game.getPlayer().getSolarSystems();
+        SolarSystems currentLocation = game.player.getSolarSystems();
 
         return Distance < game.getPlayer().getFuel();
     }
 
     public int Distance(SolarSystems solarSystems) {
         Game game = Game.getInstance();
-        SolarSystems desiredLocation = solarSystems;
-        SolarSystems currentLocation = game.getPlayer().getSolarSystems();
-        return (int) Math.round(Math.pow((Math.pow((desiredLocation.x - currentLocation.x), 2)
-                + Math.pow((desiredLocation.y - currentLocation.y),2)), 0.5));
+        SolarSystems currentLocation = game.player.getSolarSystems();
+        return (int) Math.round(Math.pow((Math.pow((solarSystems.x - currentLocation.x), 2)
+                + Math.pow((solarSystems.y - currentLocation.y),2)), 0.5));
     }
 
     public void changeLocation (SolarSystems solarSystems) {
         if (canTravel(solarSystems)) {
             int fuelToTravel = Distance(solarSystems);
-            int currentFuel = Game.getInstance().getPlayer().getFuel();
-            Game.getInstance().getPlayer().setFuel(currentFuel - fuelToTravel);
-            Game.getInstance().getPlayer().setSolarSystems(solarSystems);
+            int currentFuel = Game.getInstance().player.getFuel();
+            Game.getInstance().player.setFuel(currentFuel - fuelToTravel);
+            Game.getInstance().player.setSolarSystems(solarSystems);
         }
     }
 
@@ -116,12 +115,11 @@ public enum SolarSystems implements Serializable {
 
 
     public String toString(){
-        String planetToString = String.format(
+        return String.format(
                 "%s at (%d, %d) with %s resources and " +
                 "%s tech level, with an %s government.",
                 name, x, y, resource.toString(),
                 tech.toString(), government.toString());
-        return  planetToString;
     }
     
     
