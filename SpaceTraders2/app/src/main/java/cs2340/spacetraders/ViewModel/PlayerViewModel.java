@@ -25,10 +25,9 @@ import cs2340.spacetraders.Model.SolarSystems;
  * @version 1.0
  */
 public class PlayerViewModel extends AndroidViewModel {
+    private Game game;
+    private Player player;
 
-    Game game;
-    Player player;
-    
     /**
      * PlayerViewModel Constructor - creates a new PlayerViewModel
      *
@@ -38,7 +37,7 @@ public class PlayerViewModel extends AndroidViewModel {
         super(application);
 
     }
-    
+
     /**
      * createPlayer method - creates a new player from the configuration data.
      *
@@ -53,11 +52,11 @@ public class PlayerViewModel extends AndroidViewModel {
                              int engineeringPoints,
                              int traderPoints,
                              int fighterPoints) {
-        
+
         player = new Player(name, pilotPoints, engineeringPoints,
                 traderPoints, fighterPoints, SolarSystems.SOMEBI);
     }
-    
+
     /**
      * getPlayer method - returns the player.
      *
@@ -80,7 +79,7 @@ public class PlayerViewModel extends AndroidViewModel {
         //game.setGameDifficulty(gameDifficulty);
         //game.universe = new Universe();
     }
-    
+
     /**
      * saveGame method - saves the game.
      *
@@ -101,7 +100,7 @@ public class PlayerViewModel extends AndroidViewModel {
 
         return success;
     }
-    
+
     /**
      * loadSavedGame method - loads the saved game.
      *
@@ -122,7 +121,7 @@ public class PlayerViewModel extends AndroidViewModel {
         }
         return success;
     }
-    
+
     /**
      * onOK method - saves configuration data to Player object.
      *
@@ -138,13 +137,11 @@ public class PlayerViewModel extends AndroidViewModel {
                                int engineeringPoints,
                                int traderPoints,
                                int fighterPoints) {
-        
-        int totalpoints = pilotPoints
-                          + engineeringPoints
-                          + traderPoints
-                          + fighterPoints;
-        
-        return name != null && name.length() > 0 && totalpoints == 16;
+
+        int totalpoints = pilotPoints + engineeringPoints + traderPoints + fighterPoints;
+        return (name != null) && (name.length() > 0) && (totalpoints == 16);
+
+
     }
 
 

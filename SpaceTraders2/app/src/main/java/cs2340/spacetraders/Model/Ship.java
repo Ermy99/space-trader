@@ -1,6 +1,7 @@
 package cs2340.spacetraders.Model;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Ship.java
@@ -11,21 +12,21 @@ import java.io.Serializable;
  * @version 1.0
  */
 public class Ship implements Serializable {
-    public final Cargo cargo;
-    public ShipType shipType;
-    public int Fuel;
+    private final Cargo cargo;
+    private ShipType shipType;
+    private int Fuel;
     //int cargoSize;
     //int cargoCapacity;
-    
+
     /**
      * Ship constructor - creates a default ship when the game starts up.
      *
      */
     Ship() {
-        this.shipType = shipType.GNAT;
+        this.shipType = ShipType.GNAT;
         this.cargo = new Cargo(15);
     }
-    
+
     /**
      * getshipType method - returns the ship type that the player has.
      *
@@ -34,7 +35,7 @@ public class Ship implements Serializable {
     public ShipType getshipType() {
         return shipType;
     }
-    
+
     /**
      * setshipType method - sets a new ship as the player's ship.
      *
@@ -61,7 +62,7 @@ public class Ship implements Serializable {
 //    public int getCargoSize() {
 //        return cargo.getCargoSize();
 //    }
-    
+
     /**
      * getCargo method - returns the cargo object of the ship.
      *
@@ -69,6 +70,22 @@ public class Ship implements Serializable {
      */
     public Cargo getCargo() {
         return cargo;
+    }
+
+    public int getCargoCapacity() {
+        return cargo.getCargoCapacity();
+    }
+
+    public int getCargoSize() {
+        return cargo.getCargoSize();
+    }
+
+    public List<CargoItem> getShipCargo() {
+        return cargo.getShipCargo();
+    }
+
+    public void setFuel(int fuelChange) {
+        this.Fuel += fuelChange;
     }
 
 

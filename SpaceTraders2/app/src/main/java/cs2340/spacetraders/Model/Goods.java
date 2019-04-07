@@ -13,7 +13,7 @@ import java.util.List;
  *          Aditya Tapshalkar, Chisomebi Obed
  * @version 1.0
  */
-public enum Goods implements Serializable {
+public enum Goods {
     Water("Water", 0, 0, 2, 30, 3),
     Furs("Furs", 0, 0, 0, 250, 10),
     Food("Foods", 1, 0, 1, 100, 5),
@@ -27,6 +27,8 @@ public enum Goods implements Serializable {
 
     private final String code;
     private final int minTechLevelToProd;
+    private final int minTechLevelToUse;
+    private final int techLevel;
     private final int basePrice;
     private final int priceInc;
     
@@ -43,9 +45,9 @@ public enum Goods implements Serializable {
     Goods(String code, int minTechLevelToProd, int minTechLevelToUse, int techLevel,
           int basePrice, int priceInc) {
         this.code = code;
+        this.minTechLevelToUse = minTechLevelToUse;
+        this.techLevel = techLevel;
         this.minTechLevelToProd = minTechLevelToProd;
-        int minTechLevelToUse1 = minTechLevelToUse;
-        int techLevel1 = techLevel;
         this.basePrice = basePrice;
         this.priceInc = priceInc;
     }
@@ -58,7 +60,7 @@ public enum Goods implements Serializable {
      * @return the price of the good
      */
     public int getPrice(int level) {
-        return Math.abs(basePrice + 3 * 2 * priceInc * (level - minTechLevelToProd));
+        return Math.abs(basePrice + (3 * 2 * priceInc * (level - minTechLevelToProd)));
     }
     
     /**
@@ -70,9 +72,10 @@ public enum Goods implements Serializable {
      * @return whether the player can or cannot sell the good(s)
      */
     public boolean canSell(Goods good, int quantityToSell) {
-
-        for (CargoItem c: Game.getInstance().player.getShip().getCargo().getShipCargo()) {
-            if (c.getGood().equals(good) && quantityToSell <= c.getQuantity()) {
+        Game game = Game.getInstance();
+        for (CargoItem c: game.player.getShipCargo()) {
+            Goods goods = c.getGood();
+            if (goods.equals(good) && (quantityToSell <= c.getQuantity())) {
                 return true;
             }
         }
@@ -89,10 +92,11 @@ public enum Goods implements Serializable {
      * @return whether the player can or cannot buy the good(s)
      */
     public boolean canBuy(Goods good, int quantityToBuy) {
-        return Game.getInstance().player.getCredits() > (good.getPrice(Game.getInstance().player.getSolarSystems().getTech().ordinal()) * quantityToBuy) &&
-                Game.getInstance().player.getShip().getCargo().getCargoSize() + quantityToBuy <=  Game.getInstance().player.getShip().getCargo().getCargoCapacity();
+        Game game = Game.getInstance();
+        return (Game.getInstance().player.getCredits() > (good.getPrice(game.getTech()) * quantityToBuy)) &&
+                ((game.getCargoSize() + quantityToBuy) <= game.getCargoCapacity());
     }
-    
+
     /**
      * buy method - executes the action of buying a number of goods.
      *
@@ -100,9 +104,11 @@ public enum Goods implements Serializable {
      * @param quantityToBuy the number of goods to buy
      */
     public void buy(Goods good, int quantityToBuy) {
+        //Game game = Game.getInstance();
         if (canBuy(good, quantityToBuy)) {
-            for (CargoItem c: Game.getInstance().player.getShip().getCargo().getShipCargo()) {
-                if (c.getGood().equals(good)) {
+            for (CargoItem c: Game.getInstance().player.getShipCargo()) {
+                Goods goods = c.getGood();
+                if (goods.equals(good)) {
                     //c.quantity += quantityToBuy;
                     //Log.d("Add", Integer.toString(quantityToBuy));
                     c.quantity = c.quantity + quantityToBuy;
@@ -113,12 +119,12 @@ public enum Goods implements Serializable {
 
             int playerCredits = Game.getInstance().player.getCredits();
             Game.getInstance().player.setCredits(playerCredits -
-                    good.getPrice(Game.getInstance().solarSystemLevel) * quantityToBuy);
+                    (good.getPrice(Game.getInstance().solarSystemLevel) * quantityToBuy));
             Log.d("edit", Integer.toString(Game.getInstance().player.getCredits()));
         }
 
     }
-    
+
     /**
      * sell method - executes the action of selling a number of goods.
      *
@@ -126,12 +132,14 @@ public enum Goods implements Serializable {
      * @param quantityToSell the number of goods to sell
      */
     public void sell(Goods good, int quantityToSell) {
+        Game game = Game.getInstance();
         if (canSell(good, quantityToSell)) {
-            for (CargoItem c : Game.getInstance().player.getShip().getCargo().getShipCargo()) {
-                if (c.getGood().equals(good)) {
+            for (CargoItem c : game.player.getShipCargo()) {
+                Goods goods = c.getGood();
+                if (goods.equals(good)) {
                     c.quantity -= quantityToSell;
-                    int currentCredits = Game.getInstance().getPlayer().getCredits();
-                    Game.getInstance().getPlayer().setCredits(currentCredits + good.getPrice(Game.getInstance().solarSystemLevel));
+                    int currentCredits = game.getCredits();
+                    game.player.setCredits(currentCredits + good.getPrice(game.solarSystemLevel));
                 }
             }
         }
@@ -143,7 +151,8 @@ public enum Goods implements Serializable {
      *
      */
     public static void pirateAttack() {
-        List<CargoItem> cargo = Game.getInstance().player.getShip().getCargo().getShipCargo();
+        Game game = Game.getInstance();
+        List<CargoItem> cargo = game.player.getShipCargo();
         for (CargoItem c: cargo) {
             c.setQuantity(0);
         }

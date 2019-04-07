@@ -14,9 +14,9 @@ import java.util.List;
  *          Aditya Tapshalkar, Chisomebi Obed
  * @version 1.0
  */
-public class Universe implements Serializable {
+class Universe implements Serializable {
     List<SolarSystems> solarSystems;
-    
+
     /**
      * Universe Constructor - creates a list of solar systems
      *
@@ -29,7 +29,7 @@ public class Universe implements Serializable {
             Log.d("Planet Added: ", SolarSystems.values()[i].toString());
         }
     }
-    
+
     /**
      * getPlanets method - returns the list of solar systems
      *
@@ -38,7 +38,7 @@ public class Universe implements Serializable {
     public List<SolarSystems> getPlanets() {
         return solarSystems;
     }
-    
+
     /**
      * setPlanets method - sets the list of planets to a new list of planets
      *

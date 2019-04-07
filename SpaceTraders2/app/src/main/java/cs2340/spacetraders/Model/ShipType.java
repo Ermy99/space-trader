@@ -1,7 +1,5 @@
 package cs2340.spacetraders.Model;
 
-import java.io.Serializable;
-
 /**
  * ShipType.java
  * Enum of various ship types player can purchase in the game.
@@ -10,7 +8,7 @@ import java.io.Serializable;
  *          Aditya Tapshalkar, Chisomebi Obed
  * @version 1.0
  */
-public enum ShipType implements Serializable {
+public enum ShipType {
     FLEA("Flea", 10, 20),
     GNAT("Gnat", 15, 14),
     FIREFLY("Firefly", 20, 17),
@@ -21,17 +19,17 @@ public enum ShipType implements Serializable {
     GRASSHOPPER("Grasshopper", 30, 15),
     TERMITE("Termite", 60, 13),
     WASP("Wasp", 35, 14);
-    
+
     final String name;
     final int cargoSize;
     final int parsecs;
-    
+
     ShipType(String name, int cargoSize, int parsecs) {
         this.name = name;
         this.cargoSize = cargoSize;
         this.parsecs = parsecs;
     }
-    
+
     /**
      * getName method - returns the name of the ship type.
      *
@@ -40,5 +38,12 @@ public enum ShipType implements Serializable {
     public String getName() {
         return name;
     }
-    
+
+    public int getCargoSize() {
+        return cargoSize;
+    }
+
+    public int getParsecs() {
+        return parsecs;
+    }
 }

@@ -1,6 +1,7 @@
 package cs2340.spacetraders.Model;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * Player.java
@@ -19,9 +20,10 @@ public class Player implements Serializable {
     private final int fighterPoints;
     private int credits;
     private final Ship ship;
-    private SolarSystems solarSystems;
+    SolarSystems solarSystems;
+    final ShipType shipType = ShipType.GNAT;
     private int Fuel = 1000;
-    
+
     /**
      * Player Constructor - creates a new player from configuration data.
      *
@@ -43,7 +45,7 @@ public class Player implements Serializable {
         this.ship = new Ship();
         this.solarSystems = solarSystems;
     }
-    
+
     /**
      * getSolarSystems method - returns the solar systems and their coordinates.
      *
@@ -52,7 +54,12 @@ public class Player implements Serializable {
     public SolarSystems getSolarSystems() {
         return solarSystems;
     }
-    
+
+    public String getSolarSystemName() {
+        return solarSystems.getName();
+    }
+
+
     /**
      * setSolarSystems method - sets a new solar system to replace the existing
      *                          one.
@@ -62,7 +69,7 @@ public class Player implements Serializable {
     public void setSolarSystems(SolarSystems solarSystems) {
         this.solarSystems = solarSystems;
     }
-    
+
     /**
      * getName method - returns player's name.
      *
@@ -72,12 +79,28 @@ public class Player implements Serializable {
         return name;
     }
 
+    public List<CargoItem> getShipCargo() {
+        return ship.getShipCargo();
+    }
+
+    public Cargo getCargo() {
+        return ship.getCargo();
+    }
+
+    public int getCargoCapacity() {
+        return ship.getCargoCapacity();
+    }
+
+    public int getCargoSize() {
+        return ship.getCargoSize();
+    }
+
 // --Commented out by Inspection START (4/5/2019 8:25 PM):
 //    public void setName(String name) {
 //        this.name = name;
 //    }
 // --Commented out by Inspection STOP (4/5/2019 8:25 PM)
-    
+
     /**
      * getPilotPoints method - returns player's pilot points.
      *
@@ -92,7 +115,7 @@ public class Player implements Serializable {
 //        this.pilotPoints = pilotPoints;
 //    }
 // --Commented out by Inspection STOP (4/5/2019 8:25 PM)
-    
+
     /**
      * getEngineeringPoints method - returns player's engineering points.
      *
@@ -107,7 +130,7 @@ public class Player implements Serializable {
 //        this.engineeringPoints = engineeringPoints;
 //    }
 // --Commented out by Inspection STOP (4/5/2019 8:25 PM)
-    
+
     /**
      * getTraderPoints method - returns player's trader points.
      *
@@ -122,7 +145,7 @@ public class Player implements Serializable {
 //        this.traderPoints = traderPoints;
 //    }
 // --Commented out by Inspection STOP (4/5/2019 8:25 PM)
-    
+
     /**
      * getFighterPoints method - returns player's fighter points.
      *
@@ -137,7 +160,7 @@ public class Player implements Serializable {
 //        this.fighterPoints = fighterPoints;
 //    }
 // --Commented out by Inspection STOP (4/5/2019 8:25 PM)
-    
+
     /**
      * getCredits method - returns the player's number of credits.
      *
@@ -146,7 +169,7 @@ public class Player implements Serializable {
     public int getCredits() {
         return credits;
     }
-    
+
     /**
      * setCredits method - sets the player's credits to a new amount.
      *
@@ -155,7 +178,7 @@ public class Player implements Serializable {
     public void setCredits(int credits) {
         this.credits = credits;
     }
-    
+
     /**
      * getShip method - returns the player's ship.
      *
@@ -164,7 +187,7 @@ public class Player implements Serializable {
     public Ship getShip() {
         return ship;
     }
-    
+
     /**
      * setFuel method - sets a new value to the fuel in the player's ship.
      *
@@ -173,7 +196,7 @@ public class Player implements Serializable {
     public void setFuel(int fuel) {
         this.Fuel = fuel;
     }
-    
+
     /**
      * getFuel method - returns the amount of fuel in the player's ship.
      *

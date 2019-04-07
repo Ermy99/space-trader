@@ -22,7 +22,7 @@ public class CargoActivity extends AppCompatActivity {
     private CargoItemAdapter adapter;
 
     /** a key for passing data */
-    public static final String CARGO_NAME = "CARGO_NAME";
+    private static final String CARGO_NAME = "CARGO_NAME";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

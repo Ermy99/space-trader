@@ -3,6 +3,7 @@ package cs2340.spacetraders.View;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -24,8 +25,8 @@ import cs2340.spacetraders.ViewModel.MarketViewModel;
 public class BuyActivity extends AppCompatActivity {
 
     private Goods good;
-    public MarketViewModel marketViewModel;
-    public static final String GOOD_NAME = "GOOD_NAME";
+    private MarketViewModel marketViewModel;
+    private static final String GOOD_NAME = "GOOD_NAME";
     // --Commented out by Inspection (4/5/2019 8:23 PM):public Game game = Game.getInstance();
 
 
@@ -71,7 +72,8 @@ public class BuyActivity extends AppCompatActivity {
      */
     public void onBuy(View view) {
         EditText amount = findViewById(R.id.amount_to_buy);
-        int amountToBuy = Integer.parseInt(amount.getText().toString());
+        Editable amountText = amount.getText();
+        int amountToBuy = Integer.parseInt(amountText.toString());
         if (marketViewModel.canBuy(good, amountToBuy)) {
             Log.d("goods bought", Integer.toString(amountToBuy));
             marketViewModel.buyGood(good, amountToBuy);

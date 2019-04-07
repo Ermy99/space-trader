@@ -11,21 +11,22 @@ import java.io.Serializable;
  * @version 1.0
  */
 public class CargoItem implements Serializable {
-    
+
     public int quantity;
-    public final Goods good;
-    
+    private final Goods good;
+
     /**
      * CargoItem constructor - Creates a cargo item object.
      *
      * @param quantity the number of cargo items to create and store
      * @param good the type of good to create.
      */
+
     public CargoItem(int quantity, Goods good) {
         this.good = good;
         this.quantity = quantity;
     }
-    
+
     /**
      * getQuantity method - returns the quantity of the cargo good.
      *
@@ -34,7 +35,7 @@ public class CargoItem implements Serializable {
     public int getQuantity() {
         return quantity;
     }
-    
+
     /**
      * getGood method - returns the actual good
      *
@@ -43,14 +44,26 @@ public class CargoItem implements Serializable {
     public Goods getGood() {
         return good;
     }
-    
+
     /**
      * setQuantity method - sets the new quantity of a type of cargo good, used
      * predominantly after selling and buying items.
      *
      * @param n the new quantity of a cargo item
      */
+
     public void setQuantity(int n) {
         this.quantity = n;
     }
+
+    public String getGoodCode() {
+        return good.getCode();
+    }
+
+    public int getGoodPrice() {
+        Game game = Game.getInstance();
+        return good.getPrice(game.getTech());
+    }
+
+
 }

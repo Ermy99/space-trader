@@ -10,7 +10,7 @@ import java.io.Serializable;
  *          Aditya Tapshalkar, Chisomebi Obed
  * @version 1.0
  */
-public enum TechLevel implements Serializable {
+public enum TechLevel {
     
     PREAGRICULTURAL("Pre-Agricultural"),        //0
     AGRICULTURAL("Agricultural"),               //1

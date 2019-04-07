@@ -22,8 +22,8 @@ import cs2340.spacetraders.ViewModel.MarketViewModel;
 public class SellActivity extends AppCompatActivity {
 
     private Goods good;
-    public MarketViewModel marketViewModel;
-    public static final String CARGO_NAME = "CARGO_NAME";
+    private MarketViewModel marketViewModel;
+    private static final String CARGO_NAME = "CARGO_NAME";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

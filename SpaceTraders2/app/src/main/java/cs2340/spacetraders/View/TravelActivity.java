@@ -28,7 +28,7 @@ public class TravelActivity extends AppCompatActivity {
 
 
     private SolarSystemAdapter adapter;
-    public TravelViewModel travelViewModel;
+    private TravelViewModel travelViewModel;
 
     /** a key for passing data */
     public static final String SOLAR_SYSTEM_NAME = "SOLAR_SYSTEM_NAME";
@@ -83,8 +83,9 @@ public class TravelActivity extends AppCompatActivity {
                 
                 if (travelViewModel.canTravel(solarSystem)) {
                     travelViewModel.travel(solarSystem);
-                    Log.d("current location", Game.getInstance().getPlayer().getSolarSystems().toString());
-                    Log.d("fuel", Integer.toString(Game.getInstance().getPlayer().getFuel()));
+                    Game game = Game.getInstance();
+                    Log.d("current location", game.getSolarSystemName());
+                    Log.d("fuel", Integer.toString(Game.getInstance().player.getFuel()));
 
                 } else {
                     Toast.makeText(TravelActivity.this, "You don't have enough fuel to travel there!", Toast.LENGTH_SHORT).show();

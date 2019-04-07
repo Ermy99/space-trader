@@ -30,22 +30,22 @@ import cs2340.spacetraders.R;
  */
 public class MainActivity extends AppCompatActivity {
 
-    SimpleItemRecyclerViewAdapter adapter;
-    
-    Game game;
-    
+    private SimpleItemRecyclerViewAdapter adapter;
+
+    private Game game;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
+
         game = new Game();
         adapter = new SimpleItemRecyclerViewAdapter(
-                game.getPlayer().getName(),
-                game.getPlayer().getPilotPoints(),
-                game.getPlayer().getEngineeringPoints(),
-                game.getPlayer().getFighterPoints(),
-                game.getPlayer().getTraderPoints()
+                game.player.getName(),
+                game.player.getPilotPoints(),
+                game.player.getEngineeringPoints(),
+                game.player.getFighterPoints(),
+                game.player.getTraderPoints()
         );
 
         //This code sets up our button at bottom of screen to start game
@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
     }
-    
+
     /* grab the resume state so we can reshow the data in the list since we most likely just came from
    adding a new student.
  */
@@ -67,9 +67,9 @@ public class MainActivity extends AppCompatActivity {
     public void onResume() {
         super.onResume();
         adapter.notifyDataSetChanged();
-        
+
     }
-    
+
     /* Next two methods handle the menu options */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -77,18 +77,18 @@ public class MainActivity extends AppCompatActivity {
         inflater.inflate(R.menu.main_menu, menu);
         return true;
     }
-    
+
     public class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
-    
+
         private String name;
         private int pilotPoints;
         private int engineeringPoints;
         private int fighterPoints;
         private int traderPoints;
-    
-        private List<Object> list;
-    
+
+        private final List<Object> list;
+
         /**
          * SimpleItemRecyclerViewAdapter Constructor - creates a recycler-view
          *                                             adapter using user
@@ -100,21 +100,21 @@ public class MainActivity extends AppCompatActivity {
          * @param fighterPoints the fighter points the player input
          * @param traderPoints the trader points the player input
          */
-        public SimpleItemRecyclerViewAdapter(String name,
-                                             int pilotPoints,
-                                             int engineeringPoints,
-                                             int fighterPoints,
-                                             int traderPoints) {
-        
+        SimpleItemRecyclerViewAdapter(String name,
+                                      int pilotPoints,
+                                      int engineeringPoints,
+                                      int fighterPoints,
+                                      int traderPoints) {
+
             list = new ArrayList<Object>();
             list.add(name);
             list.add(pilotPoints);
             list.add(engineeringPoints);
             list.add(fighterPoints);
             list.add(traderPoints);
-        
+
         }
-    
+
         /**
          * updateList method - updates the player configuration info.
          *
@@ -129,78 +129,78 @@ public class MainActivity extends AppCompatActivity {
                                int engineeringPoints,
                                int fighterPoints,
                                int traderPoints) {
-        
+
             list.set(0, name);
             list.set(1, pilotPoints);
             list.set(2, engineeringPoints);
             list.set(3, fighterPoints);
             list.set(4, traderPoints);
-        
+
             notifyDataSetChanged();
-        
+
         }
-    
+
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.game_list_content, parent, false);
             return new ViewHolder(view);
         }
-    
+
         @Override
         public void onBindViewHolder(final ViewHolder holder, int position) {
             holder.mItem = list.get(position);
             holder.mIdView.setText(list.get(position).toString());
             holder.mContentView.setText(list.get(position).toString());
-        
+
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-    
+
                     Log.d("MY APPLICATION", holder.mItem.toString());
                     Context context = v.getContext();
                     //Intent intent = new Intent(MainActivity.this, StudentDetailActivity.class);
                     //intent.putExtra(StudentDetailFragment.ARG_ITEM_ID, holder.mItem.toString());
 
                     //context.startActivity(intent);
-    
+
                 }
             });
         }
-    
+
         @Override
         public int getItemCount() {
             return list.size();
         }
-    
+
         public class ViewHolder extends RecyclerView.ViewHolder {
-            public final View mView;
-            public final TextView mIdView;
-            public final TextView mContentView;
-            public Object mItem;
-    
+            final View mView;
+            final TextView mIdView;
+            final TextView mContentView;
+            Object mItem;
+
             /**
              * ViewHolder Constructor - constructing a new view
              *
              * @param view the current screen on the phone
              */
-            public ViewHolder(View view) {
+            ViewHolder(View view) {
                 super(view);
                 mView = view;
-                mIdView = (TextView) view.findViewById(R.id.id);
-                mContentView = (TextView) view.findViewById(R.id.content);
+                mIdView = view.findViewById(R.id.id);
+                mContentView = view.findViewById(R.id.content);
             }
-        
+
             @Override
             public String toString() {
                 return super.toString() + " '" + mContentView.getText() + "'";
             }
         }
-        
-        
+
+
     }
-    
-    
-    
-    
+
+
+
+
 }
