@@ -33,7 +33,6 @@ public class PlayerViewModel extends AndroidViewModel {
      *
      * @param application the application passed in
      */
->>>>>>>>> Temporary merge branch 2
     public PlayerViewModel(@NonNull Application application) {
         super(application);
 

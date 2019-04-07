@@ -92,7 +92,7 @@ public class Game implements Serializable {
     }
 
     public String getShipName() {
-        return player.shiptype.getName();
+        return player.shipType.getName();
     }
 
     public int getCargoCapacity() {
@@ -119,7 +119,7 @@ public class Game implements Serializable {
      *
      * @param g the new game object to replace the existing instance of game
      */
->>>>>>>>> Temporary merge branch 2
+
     public void setGame(Game g) {
         this.instance = g;
     }
