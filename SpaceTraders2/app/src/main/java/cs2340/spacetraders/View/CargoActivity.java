@@ -53,7 +53,8 @@ public class CargoActivity extends AppCompatActivity {
             @Override
             public void onCargoItemClicked(CargoItem cargoItem) {
                 Intent intent = new Intent(CargoActivity.this, SellActivity.class);
-                intent.putExtra(CARGO_NAME, cargoItem.getGood()); //// can only pass in good for some reason
+                intent.putExtra(CARGO_NAME, cargoItem.getGood());
+                //// can only pass in good for some reason
                 startActivity(intent);
             }
         });

@@ -28,7 +28,8 @@ public class Game implements Serializable {
     public List<CargoItem> shipCargo;
 
 
-    public static final List<GameDifficulty> gameDifficulties = Arrays.asList(GameDifficulty.BEGINNER,
+    public static final List<GameDifficulty> gameDifficulties = Arrays.asList(
+            GameDifficulty.BEGINNER,
             GameDifficulty.EASY, GameDifficulty.NORMAL, GameDifficulty.HARD,
             GameDifficulty.IMPOSSIBLE);
 
@@ -38,7 +39,8 @@ public class Game implements Serializable {
      */
     public Game() {
         //Log.d("Edit",this.toString());
-        this.player = new Player(null,0,0,0,0,null);
+        this.player = new Player(null,0,0,0,0,
+                null);
         //this.gameDifficulty = GameDifficulty.BEGINNER;
         //this.universe = new Universe();
         this.solarSystemLevel = 1;

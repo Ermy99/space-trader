@@ -24,7 +24,8 @@ import cs2340.spacetraders.R;
  *          Aditya Tapshalkar, Chisomebi Obed
  * @version 1.0
  */
-public class SolarSystemAdapter extends RecyclerView.Adapter<SolarSystemAdapter.SolarSystemViewHolder> {
+public class SolarSystemAdapter extends
+        RecyclerView.Adapter<SolarSystemAdapter.SolarSystemViewHolder> {
 
     private List<SolarSystems> solarSystemList = Arrays.asList(SolarSystems.values());
 
@@ -51,7 +52,8 @@ public class SolarSystemAdapter extends RecyclerView.Adapter<SolarSystemAdapter.
         Player player = game.getPlayer();
         //SolarSystems solarSystems = player.getSolarSystems();
 
-        holder.solarSystemDistance.setText(Integer.toString(solarSystem.getDistance(solarSystem))); //fix logic
+        holder.solarSystemDistance.setText(Integer.toString(solarSystem.getDistance(solarSystem)));
+        //fix logic
     }
 
     @Override

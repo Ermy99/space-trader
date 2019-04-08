@@ -51,7 +51,8 @@ public class BuyActivity extends AppCompatActivity {
 //        quantities.add(4);
 //        quantities.add(5);
 //
-//        ArrayAdapter<Integer> adapterQuantities = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, quantities);
+//        ArrayAdapter<Integer> adapterQuantities = new ArrayAdapter<>
+// (this, android.R.layout.simple_spinner_item, quantities);
 //        adapterQuantities.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 //        amountSpinner.setAdapter(adapterQuantities);
 //        amountToBuy = (Integer) amountSpinner.getSelectedItem();

@@ -70,7 +70,8 @@ public class TravelActivity extends AppCompatActivity {
                     //this is a pirateAttack
                     Log.d("ATTACK", "PIRATE");
                     builder.setTitle("Random Encounter");
-                    builder.setMessage("Arrr! You have encountered a pirate! They took all your things :)");
+                    builder.setMessage("Arrr! You have encountered a pirate! " +
+                            "They took all your things :)");
                     builder.show();
 
                 } else if (n == 1) {
@@ -88,7 +89,8 @@ public class TravelActivity extends AppCompatActivity {
                     Log.d("fuel", Integer.toString(Game.getInstance().player.getFuel()));
 
                 } else {
-                    Toast.makeText(TravelActivity.this, "You don't have enough fuel to travel there!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(TravelActivity.this, "You don't have enough fuel to " +
+                            "travel there!", Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -60,7 +60,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    /* grab the resume state so we can reshow the data in the list since we most likely just came from
+    /* grab the resume state so we can reshow the data in the list since we most likely just came
+    from
    adding a new student.
  */
     @Override

@@ -93,7 +93,8 @@ public enum Goods {
      */
     public boolean canBuy(Goods good, int quantityToBuy) {
         Game game = Game.getInstance();
-        return (Game.getInstance().player.getCredits() > (good.getPrice(game.getTech()) * quantityToBuy)) &&
+        return (Game.getInstance().player.getCredits() > (good.getPrice(game.getTech())
+                * quantityToBuy)) &&
                 ((game.getCargoSize() + quantityToBuy) <= game.getCargoCapacity());
     }
 

@@ -52,13 +52,16 @@ public class ConfigurationActivity extends AppCompatActivity {
       traderPoints = findViewById(R.id.trade_points);
       fighterPoints= findViewById(R.id.fighter_points);
       difficultyLevel = findViewById(R.id.difficulty);
-      ArrayAdapter<GameDifficulty> adapterGameDifficulty = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, Game.gameDifficulties);
+      ArrayAdapter<GameDifficulty> adapterGameDifficulty = new ArrayAdapter<>
+              (this, android.R.layout.simple_spinner_item, Game.gameDifficulties);
       adapterGameDifficulty.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
       difficultyLevel.setAdapter(adapterGameDifficulty);
      // playerViewModel = ViewModelProviders.of(this).get(PlayerViewModel.class);
 
-//        PlayerViewModel.onOK(name.getText().toString(), Integer.parseInt(pilotPoints.getText().toString()),
-//                Integer.parseInt(engineeringPoints.getText().toString()), Integer.parseInt(traderPoints.getText().toString()),
+//        PlayerViewModel.onOK(name.getText().toString(), Integer.parseInt
+// (pilotPoints.getText().toString()),
+//                Integer.parseInt(engineeringPoints.getText().toString()),
+// Integer.parseInt(traderPoints.getText().toString()),
 //                Integer.parseInt(fighterPoints.getText().toString()));
 
       Button loadGame = findViewById(R.id.loadGame_button);
@@ -67,7 +70,8 @@ public class ConfigurationActivity extends AppCompatActivity {
           public void onClick(View v) {
               playerViewModel = new PlayerViewModel(getApplication());
               playerViewModel.loadSavedGame();
-              Intent configIntent = new Intent(ConfigurationActivity.this, GameActivity.class);
+              Intent configIntent = new Intent(ConfigurationActivity.this,
+                      GameActivity.class);
               startActivity(configIntent);
           }
       });
@@ -84,7 +88,8 @@ public class ConfigurationActivity extends AppCompatActivity {
       Intent configIntent = new Intent(ConfigurationActivity.this, GameActivity.class);
       playerViewModel = ViewModelProviders.of(this).get(PlayerViewModel.class);
 
-      if (PlayerViewModel.onOK(name.getText().toString(), Integer.parseInt(pilotPoints.getText().toString()),
+      if (PlayerViewModel.onOK(name.getText().toString(), Integer.parseInt(pilotPoints.getText()
+                      .toString()),
             Integer.parseInt(engineeringPoints.getText().toString()),
             Integer.parseInt(traderPoints.getText().toString()),
             Integer.parseInt(fighterPoints.getText().toString()))) {
@@ -94,11 +99,13 @@ public class ConfigurationActivity extends AppCompatActivity {
               Integer.parseInt(engineeringPoints.getText().toString()),
               Integer.parseInt(traderPoints.getText().toString()),
               Integer.parseInt(fighterPoints.getText().toString()));
-      playerViewModel.createGame(playerViewModel.getPlayer(), (GameDifficulty) difficultyLevel.getSelectedItem());
+      playerViewModel.createGame(playerViewModel.getPlayer(), (GameDifficulty) difficultyLevel
+              .getSelectedItem());
       startActivity(configIntent);
 
       } else {
-          Toast.makeText(ConfigurationActivity.this, "Invalid inputs", Toast.LENGTH_SHORT).show();
+          Toast.makeText(ConfigurationActivity.this, "Invalid inputs",
+                  Toast.LENGTH_SHORT).show();
       }
 
   }

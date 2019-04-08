@@ -89,7 +89,8 @@ public class PlayerViewModel extends AndroidViewModel {
         boolean success = true;
         try {
             Log.d("APP" , "saving game");
-            FileOutputStream outputStreamFile = getApplication().openFileOutput("spacetradersgame.ser", Context.MODE_PRIVATE);
+            FileOutputStream outputStreamFile = getApplication().openFileOutput(
+                    "spacetradersgame.ser", Context.MODE_PRIVATE);
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStreamFile);
             objectOutputStream.writeObject(Game.getInstance());
             objectOutputStream.close();

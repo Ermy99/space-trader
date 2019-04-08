@@ -35,7 +35,8 @@ public class SellActivity extends AppCompatActivity {
         good = (Goods) getIntent().getSerializableExtra(CARGO_NAME);
         cargoName.setText(good.getCode());
 
-//        ArrayAdapter<Integer> adapterQuantities = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, quantities);
+//        ArrayAdapter<Integer> adapterQuantities = new ArrayAdapter<>(this,
+// android.R.layout.simple_spinner_item, quantities);
 //        adapterQuantities.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 //        amountSpinner.setAdapter(adapterQuantities);
 //        amountToSell = (Integer) amountSpinner.getSelectedItem();
