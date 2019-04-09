@@ -1,32 +1,22 @@
 package cs2340.spacetraders.View;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+
 import android.widget.TextView;
-
-import java.util.Arrays;
-
 import cs2340.spacetraders.Model.Game;
-import cs2340.spacetraders.Model.Goods;
 import cs2340.spacetraders.R;
-import cs2340.spacetraders.ViewModel.MarketViewModel;
 import cs2340.spacetraders.ViewModel.PlayerViewModel;
 
-/*
-The screen with the buy and sell buttons
+/**
+ * StatusActivity.java
+ * Displays player's statistics.
+ *
+ * @author  Sanghavi Gaddam, Ermelinda Izihirwe, Taofikat Bishi,
+ *          Aditya Tapshalkar, Chisomebi Obed
+ * @version 1.0
  */
 public class StatusActivity extends AppCompatActivity {
-
-    private TextView playerName;
-    private TextView points;
-    private TextView location;
-    private TextView ship;
-    private TextView cargoSpace;
-    private TextView fuel;
 
     public PlayerViewModel playerViewModel;
 
@@ -36,22 +26,22 @@ public class StatusActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_status);
 
+        Game game = Game.getInstance();
 
-        playerName = findViewById(R.id.player_name);
-        location = findViewById(R.id.location);
-        points = findViewById(R.id.points);
-        ship = findViewById(R.id.ship);
-        cargoSpace = findViewById(R.id.cargo_space);
-        fuel = findViewById(R.id.fuel);
+        TextView playerName = findViewById(R.id.player_name);
+        TextView location = findViewById(R.id.location);
+        TextView points = findViewById(R.id.points);
+        TextView ship = findViewById(R.id.ship);
+        TextView cargoSpace = findViewById(R.id.cargo_space);
+        TextView fuel = findViewById(R.id.fuel);
 
-        playerName.setText(Game.getInstance().getPlayer().getName());
-        points.setText(Integer.toString(Game.getInstance().getPlayer().getCredits()));
-        location.setText(Game.getInstance().getPlayer().getSolarSystems().getName());
-        ship.setText(Game.getInstance().getPlayer().getShip().getShiptype().getName());
-        //Log.d("APP", "jjbhjjhbnh" + Game.getInstance().getPlayer().getShip().getShiptype().getName());
-        cargoSpace.setText(Integer.toString(Game.getInstance().getPlayer().getShip().getCargo().getCargoCapacity()
-                - Game.getInstance().getPlayer().getShip().getCargo().getCargoSize()));
-        fuel.setText(Integer.toString(Game.getInstance().getPlayer().getFuel()));
+        playerName.setText(game.player.getName());
+        points.setText(Integer.toString(game.getCredits()));
+        location.setText(game.getSolarSystemName());
+        ship.setText(game.getShipName());
+        cargoSpace.setText(Integer.toString(game.getCargoCapacity()
+                - game.getCargoSize()));
+        fuel.setText(Integer.toString(game.player.getFuel()));
 
 
 

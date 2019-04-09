@@ -3,31 +3,27 @@ package cs2340.spacetraders.View;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import java.util.ArrayList;
-
-import cs2340.spacetraders.Model.CargoItem;
 import cs2340.spacetraders.Model.Goods;
 import cs2340.spacetraders.R;
 import cs2340.spacetraders.ViewModel.MarketViewModel;
 
+/**
+ * SellActivity.java
+ * Creates the sell screen in the game.
+ *
+ * @author  Sanghavi Gaddam, Ermelinda Izihirwe, Taofikat Bishi,
+ *          Aditya Tapshalkar, Chisomebi Obed
+ * @version 1.0
+ */
 public class SellActivity extends AppCompatActivity {
 
     private Goods good;
-    public MarketViewModel marketViewModel;
-    public static final String CARGO_NAME = "CARGO_NAME";
-
-    private TextView cargoName;
-    private EditText amount;
-    //private Spinner amountSpinner;
-    private int amountToSell;
+    private MarketViewModel marketViewModel;
+    private static final String CARGO_NAME = "CARGO_NAME";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,18 +31,12 @@ public class SellActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sell);
         //amountSpinner = findViewById(R.id.amount_spinner);
 
-        cargoName = findViewById(R.id.cargo_item_name);
+        TextView cargoName = findViewById(R.id.cargo_item_name);
         good = (Goods) getIntent().getSerializableExtra(CARGO_NAME);
         cargoName.setText(good.getCode());
 
-        ArrayList<Integer> quantities = new ArrayList<>();
-        quantities.add(0,1);
-        quantities.add(1,2);
-        quantities.add(2, 3);
-        quantities.add(3,4);
-        quantities.add(4, 5);
-
-//        ArrayAdapter<Integer> adapterQuantities = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, quantities);
+//        ArrayAdapter<Integer> adapterQuantities = new ArrayAdapter<>(this,
+// android.R.layout.simple_spinner_item, quantities);
 //        adapterQuantities.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 //        amountSpinner.setAdapter(adapterQuantities);
 //        amountToSell = (Integer) amountSpinner.getSelectedItem();
@@ -54,12 +44,18 @@ public class SellActivity extends AppCompatActivity {
 
         marketViewModel = ViewModelProviders.of(this).get(MarketViewModel.class);
     }
-
+    
+    /**
+     * onSell method - sells a good that the player chooses to sell.
+     *
+     * @param view the current screen
+     */
     public void onSell(View view) {
 //        Log.d("good", good.getCode());
 //        Log.d("Amount", String.valueOf(amountToSell));
-        amount = findViewById(R.id.amount_to_sell);
-        amountToSell = Integer.parseInt(amount.getText().toString());
+        EditText amount = findViewById(R.id.amount_to_sell);
+        //private Spinner amountSpinner;
+        int amountToSell = Integer.parseInt(amount.getText().toString());
         if (marketViewModel.canSell(good, amountToSell)) {
             marketViewModel.sellGood(good, amountToSell);
         } else {

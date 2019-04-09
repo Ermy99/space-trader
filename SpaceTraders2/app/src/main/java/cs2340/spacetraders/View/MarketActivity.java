@@ -10,15 +10,20 @@ import java.util.Arrays;
 
 import cs2340.spacetraders.Model.Goods;
 import cs2340.spacetraders.R;
-/*
-The screen with the buy and sell buttons
+/**
+ * MarketActivity.java
+ * The screen with the buy/sell buttons.
+ *
+ * @author  Sanghavi Gaddam, Ermelinda Izihirwe, Taofikat Bishi,
+ *          Aditya Tapshalkar, Chisomebi Obed
+ * @version 1.0
  */
 public class MarketActivity extends AppCompatActivity {
 
     private GoodAdapter adapter;
 
     /** a key for passing data */
-    public static final String GOOD_NAME = "GOOD_NAME";
+    private static final String GOOD_NAME = "GOOD_NAME";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

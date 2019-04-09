@@ -3,38 +3,32 @@ package cs2340.spacetraders.View;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
 import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-
-import cs2340.spacetraders.Model.Game;
-import cs2340.spacetraders.Model.GameDifficulty;
 import cs2340.spacetraders.Model.Goods;
 import cs2340.spacetraders.R;
 import cs2340.spacetraders.ViewModel.MarketViewModel;
-import cs2340.spacetraders.ViewModel.PlayerViewModel;
 
+/**
+ * BuyActivity.java
+ * Represents the 'buy' screen in Activity
+ *
+ * @author  Sanghavi Gaddam, Ermelinda Izihirwe, Taofikat Bishi,
+ *          Aditya Tapshalkar, Chisomebi Obed
+ * @version 1.0
+ */
 public class BuyActivity extends AppCompatActivity {
 
     private Goods good;
-    public MarketViewModel marketViewModel;
-    public static final String GOOD_NAME = "GOOD_NAME";
-    public Game game = Game.getInstance();
+    private MarketViewModel marketViewModel;
+    private static final String GOOD_NAME = "GOOD_NAME";
+    // --Commented out by Inspection (4/5/2019 8:23 PM):public Game game = Game.getInstance();
 
-
-    /*
-        Views
-     */
-    private TextView goodName;
-    private Spinner amountSpinner;
-    private int amountToBuy;
-    private EditText amount;
 
 
     @Override
@@ -43,7 +37,10 @@ public class BuyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_buy);
 
 
-        goodName = findViewById(R.id.good_name);
+        /*
+        Views
+     */
+        TextView goodName = findViewById(R.id.good_name);
         //amountSpinner = findViewById(R.id.amount_spinner);
 
 
@@ -54,7 +51,8 @@ public class BuyActivity extends AppCompatActivity {
 //        quantities.add(4);
 //        quantities.add(5);
 //
-//        ArrayAdapter<Integer> adapterQuantities = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, quantities);
+//        ArrayAdapter<Integer> adapterQuantities = new ArrayAdapter<>
+// (this, android.R.layout.simple_spinner_item, quantities);
 //        adapterQuantities.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 //        amountSpinner.setAdapter(adapterQuantities);
 //        amountToBuy = (Integer) amountSpinner.getSelectedItem();
@@ -66,11 +64,17 @@ public class BuyActivity extends AppCompatActivity {
         marketViewModel = ViewModelProviders.of(this).get(MarketViewModel.class);
 
     }
-
-
+    
+    /**
+     * onBuy method - Method called when attempting to buy an item, then buys
+     *                the item if player canBuy
+     *
+     * @param view The 'buy' screen
+     */
     public void onBuy(View view) {
-        amount = findViewById(R.id.amount_to_buy);
-        amountToBuy = Integer.parseInt(amount.getText().toString());
+        EditText amount = findViewById(R.id.amount_to_buy);
+        Editable amountText = amount.getText();
+        int amountToBuy = Integer.parseInt(amountText.toString());
         if (marketViewModel.canBuy(good, amountToBuy)) {
             Log.d("goods bought", Integer.toString(amountToBuy));
             marketViewModel.buyGood(good, amountToBuy);

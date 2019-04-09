@@ -1,34 +1,34 @@
 package cs2340.spacetraders.View;
 
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
 
 import java.util.Arrays;
 
 import cs2340.spacetraders.Model.Game;
-import cs2340.spacetraders.Model.Goods;
 import cs2340.spacetraders.Model.SolarSystems;
 import cs2340.spacetraders.R;
-import cs2340.spacetraders.ViewModel.MarketViewModel;
-import cs2340.spacetraders.ViewModel.PlayerViewModel;
 import cs2340.spacetraders.ViewModel.TravelViewModel;
 
-/*
-The screen with the buy and sell buttons
+/**
+ * TravelActivity.java
+ * Creates a screen where the player can choose a new destination.
+ *
+ * @author  Sanghavi Gaddam, Ermelinda Izihirwe, Taofikat Bishi,
+ *          Aditya Tapshalkar, Chisomebi Obed
+ * @version 1.0
  */
 public class TravelActivity extends AppCompatActivity {
 
 
     private SolarSystemAdapter adapter;
-    public TravelViewModel travelViewModel;
+    private TravelViewModel travelViewModel;
 
     /** a key for passing data */
     public static final String SOLAR_SYSTEM_NAME = "SOLAR_SYSTEM_NAME";
@@ -70,24 +70,27 @@ public class TravelActivity extends AppCompatActivity {
                     //this is a pirateAttack
                     Log.d("ATTACK", "PIRATE");
                     builder.setTitle("Random Encounter");
-                    builder.setMessage("Arrr! You have encountered a pirate! They took all your things :)");
+                    builder.setMessage("Arrr! You have encountered a pirate! " +
+                            "They took all your things :)");
                     builder.show();
 
                 } else if (n == 1) {
                     //this is a magician event
                     Log.d("ATTACK", "MAGICIAN");
                     builder.setTitle("Random Encounter");
-                    builder.setMessage("Oh woow! A magician just gave you some points!!");
+                    builder.setMessage("Oh wow! A magician just gave you some points!!");
                     builder.show();
                 }
                 
                 if (travelViewModel.canTravel(solarSystem)) {
                     travelViewModel.travel(solarSystem);
-                    Log.d("current location", Game.getInstance().getPlayer().getSolarSystems().toString());
-                    Log.d("fuel", Integer.toString(Game.getInstance().getPlayer().getFuel()));
+                    Game game = Game.getInstance();
+                    Log.d("current location", game.getSolarSystemName());
+                    Log.d("fuel", Integer.toString(Game.getInstance().player.getFuel()));
 
                 } else {
-                    Toast.makeText(TravelActivity.this, "You don't have enough fuel to travel there!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(TravelActivity.this, "You don't have enough fuel to " +
+                            "travel there!", Toast.LENGTH_SHORT).show();
                 }
             }
         });
