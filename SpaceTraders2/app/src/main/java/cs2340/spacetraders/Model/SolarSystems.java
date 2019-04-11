@@ -206,5 +206,4 @@ public enum SolarSystems {
                 tech.toString(), government.toString());
     }
 
-
 }

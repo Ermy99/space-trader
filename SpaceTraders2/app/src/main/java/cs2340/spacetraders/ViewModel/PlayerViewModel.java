@@ -27,6 +27,8 @@ import cs2340.spacetraders.Model.SolarSystems;
 public class PlayerViewModel extends AndroidViewModel {
     private Game game;
     private Player player;
+    private static final float MAX_POINTS = 16;
+
 
     /**
      * PlayerViewModel Constructor - creates a new PlayerViewModel
@@ -140,7 +142,7 @@ public class PlayerViewModel extends AndroidViewModel {
                                int fighterPoints) {
 
         int totalpoints = pilotPoints + engineeringPoints + traderPoints + fighterPoints;
-        return (name != null) && (name.length() > 0) && (totalpoints == 16);
+        return (name != null) && (name.length() > 0) && (totalpoints == MAX_POINTS);
 
 
     }
