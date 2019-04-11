@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 import cs2340.spacetraders.Model.Game;
 import cs2340.spacetraders.R;
-import cs2340.spacetraders.ViewModel.PlayerViewModel;
 
 /**
  * StatusActivity.java
@@ -18,7 +17,7 @@ import cs2340.spacetraders.ViewModel.PlayerViewModel;
  */
 public class StatusActivity extends AppCompatActivity {
 
-    public PlayerViewModel playerViewModel;
+
 
 
     @Override

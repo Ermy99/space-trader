@@ -30,9 +30,6 @@ public class TravelActivity extends AppCompatActivity {
     private SolarSystemAdapter adapter;
     private TravelViewModel travelViewModel;
 
-    /** a key for passing data */
-    public static final String SOLAR_SYSTEM_NAME = "SOLAR_SYSTEM_NAME";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

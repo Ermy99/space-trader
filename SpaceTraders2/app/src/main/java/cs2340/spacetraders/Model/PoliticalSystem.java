@@ -1,7 +1,5 @@
 package cs2340.spacetraders.Model;
 
-import java.io.Serializable;
-
 /**
  * PoliticalSystems.java
  * Enum of political systems of the solar systems.

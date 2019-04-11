@@ -1,8 +1,6 @@
 package cs2340.spacetraders.Model;
 
 
-import java.io.Serializable;
-
 /**
  * GameDifficulty.java
  * Enum for game difficulties.

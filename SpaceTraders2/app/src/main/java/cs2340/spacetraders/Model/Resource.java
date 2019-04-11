@@ -1,7 +1,5 @@
 package cs2340.spacetraders.Model;
 
-import java.io.Serializable;
-
 /**
  * Resource.java
  * Enum of resources of the solar systems.

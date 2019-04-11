@@ -141,14 +141,14 @@ public class Game implements Serializable {
         return techLevel.ordinal();
     }
     
-    /**
-     * getSolarSystemsName method - returns the solar system's name.
-     *
-     * @return player's location solar system
-     */
-    public String getSolarSystemsName() {
-        return player.getSolarSystemName();
-    }
+//    /**
+//     * getSolarSystemsName method - returns the solar system's name.
+//     *
+//     * @return player's location solar system
+//     */
+//    public String getSolarSystemsName() {
+//        return player.getSolarSystemName();
+//    }
 
 
     /**

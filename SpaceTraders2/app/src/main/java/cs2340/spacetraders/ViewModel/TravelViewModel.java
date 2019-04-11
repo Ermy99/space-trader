@@ -19,7 +19,6 @@ import cs2340.spacetraders.Model.SolarSystems;
  * @version 1.0
  */
 public class TravelViewModel extends AndroidViewModel {
-    private final Game game;
 
     /**
      * TravelViewModel Constructor - creates a new viewModel for travelling.

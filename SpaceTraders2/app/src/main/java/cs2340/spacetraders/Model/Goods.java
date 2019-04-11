@@ -2,7 +2,6 @@ package cs2340.spacetraders.Model;
 
 import android.util.Log;
 
-import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -27,8 +26,8 @@ public enum Goods {
 
     private final String code;
     private final int minTechLevelToProd;
-    private final int minTechLevelToUse;
-    private final int techLevel;
+//    private final int minTechLevelToUse;
+//    private final int techLevel;
     private final int basePrice;
     private final int priceInc;
     

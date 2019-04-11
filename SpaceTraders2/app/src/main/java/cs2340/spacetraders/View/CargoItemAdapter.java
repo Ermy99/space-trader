@@ -10,8 +10,6 @@ import java.util.List;
 
 import cs2340.spacetraders.Model.CargoItem;
 import cs2340.spacetraders.Model.Game;
-import cs2340.spacetraders.Model.Goods;
-import cs2340.spacetraders.Model.Player;
 import cs2340.spacetraders.R;
 
 /**

@@ -1,6 +1,5 @@
 package cs2340.spacetraders.View;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -159,7 +158,7 @@ public class MainActivity extends AppCompatActivity {
                 public void onClick(View v) {
 
                     Log.d("MY APPLICATION", holder.mItem.toString());
-                    Context context = v.getContext();
+//                    Context context = v.getContext();
                     //Intent intent = new Intent(MainActivity.this, StudentDetailActivity.class);
                     //intent.putExtra(StudentDetailFragment.ARG_ITEM_ID, holder.mItem.toString());
 

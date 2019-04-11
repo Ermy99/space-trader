@@ -15,7 +15,7 @@ import java.util.List;
  * @version 1.0
  */
 class Universe implements Serializable {
-    List<SolarSystems> solarSystems;
+    private List<SolarSystems> solarSystems;
 
     /**
      * Universe Constructor - creates a list of solar systems

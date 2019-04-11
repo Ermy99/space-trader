@@ -1,7 +1,5 @@
 package cs2340.spacetraders.Model;
 
-import java.io.Serializable;
-
 /**
  * TechLevel.java
  * Enum of tech levels for the solar systems.

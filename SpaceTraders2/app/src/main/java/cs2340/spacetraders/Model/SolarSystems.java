@@ -1,6 +1,5 @@
 package cs2340.spacetraders.Model;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 import java.util.Random;
@@ -31,10 +30,10 @@ public enum SolarSystems {
     private int y;
     private Resource resource;
     private TechLevel tech;
-    private PoliticalSystem government;
+    private final PoliticalSystem government;
     private String name;
-    private ArrayList<Integer> xVals = new ArrayList<>(150);
-    private ArrayList<Integer> yVals = new ArrayList<>(100);
+    private final ArrayList<Integer> xVals = new ArrayList<>(150);
+    private final ArrayList<Integer> yVals = new ArrayList<>(100);
     Double distance;
 
 

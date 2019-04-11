@@ -12,7 +12,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import cs2340.spacetraders.Model.Game;
-import cs2340.spacetraders.Model.Player;
 import cs2340.spacetraders.Model.SolarSystems;
 import cs2340.spacetraders.R;
 
@@ -49,7 +48,6 @@ public class SolarSystemAdapter extends
     public void onBindViewHolder(@NonNull SolarSystemViewHolder holder, int position) {
         SolarSystems solarSystem = solarSystemList.get(position);
         holder.solarSystemName.setText(solarSystem.getName());
-        Player player = game.getPlayer();
         //SolarSystems solarSystems = player.getSolarSystems();
 
         holder.solarSystemDistance.setText(Integer.toString(solarSystem.getDistance(solarSystem)));
