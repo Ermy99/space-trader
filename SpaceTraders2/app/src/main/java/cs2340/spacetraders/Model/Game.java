@@ -1,9 +1,11 @@
 package cs2340.spacetraders.Model;
 
 import android.annotation.SuppressLint;
+import android.support.annotation.NonNull;
 
 import java.io.Serializable;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -14,18 +16,17 @@ import java.util.List;
  *          Aditya Tapshalkar, Chisomebi Obed
  * @version 1.0
  */
-public class Game implements Serializable {
+public final class Game implements Serializable {
 
     private static Game instance = new Game();
-    public Player player;
+    private Player player;
     // --Commented out by Inspection (4/5/2019 8:23 PM):public GameDifficulty gameDifficulty;
     // --Commented out by Inspection (4/5/2019 8:22 PM):public Universe universe;
 
-    private SolarSystems solarSystems;
-    public int solarSystemLevel;
+    private int solarSystemLevel;
     private Ship ship;
     private Cargo cargo;
-    public List<CargoItem> shipCargo;
+    private List<CargoItem> shipCargo;
 
 
     public static final List<GameDifficulty> gameDifficulties = Arrays.asList(
@@ -37,7 +38,7 @@ public class Game implements Serializable {
      * Game constructor - creates a new game from the inputted user config.
      *
      */
-    public Game() {
+    private Game() {
         //Log.d("Edit",this.toString());
         this.player = new Player(null,0,0,0,0,
                 null);
@@ -70,6 +71,15 @@ public class Game implements Serializable {
     }
 
     /**
+     * getShipCargo method - returns the items in the player's cargo.
+     *
+     * @return player's goods
+     */
+    public List<CargoItem> getShipCargo() {
+        return Collections.unmodifiableList(shipCargo);
+    }
+
+    /**
      * setPlayer method - sets a new player to be associated with
      *                    the game object, and associates new statistics with
      *                    the player object
@@ -78,7 +88,7 @@ public class Game implements Serializable {
      */
     public void setPlayer(Player player) {
         this.player = player;
-        this.solarSystems = player.solarSystems;
+        SolarSystems solarSystems = player.solarSystems;
         this.solarSystemLevel = solarSystems.ordinal();
         this.ship = player.getShip();
         this.cargo = ship.getCargo();
@@ -94,6 +104,13 @@ public class Game implements Serializable {
     public int getCredits() {
         return player.getCredits();
     }
+
+    /**
+     * getSolarSystemLevel method - returns the level of a solar system.
+     *
+     * @return solar system level.
+     */
+    public int getSolarSystemLevel() { return this.solarSystemLevel; }
     
     /**
      * getSolarSystemName method - returns the solar system name
@@ -163,6 +180,7 @@ public class Game implements Serializable {
     }
 
 
+    @NonNull
     @SuppressLint("DefaultLocale")
     @Override
     public String toString() {

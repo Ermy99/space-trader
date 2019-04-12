@@ -1,6 +1,8 @@
 package cs2340.spacetraders.Model;
 
 
+import android.support.annotation.NonNull;
+
 /**
  * GameDifficulty.java
  * Enum for game difficulties.
@@ -29,6 +31,7 @@ public enum GameDifficulty {
 //    }
 // --Commented out by Inspection STOP (4/5/2019 8:23 PM)
 
+    @NonNull
     @Override
     public String toString() {
         return gameDifficulty;

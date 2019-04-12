@@ -1,5 +1,7 @@
 package cs2340.spacetraders.Model;
 
+import android.support.annotation.NonNull;
+
 /**
  * Resource.java
  * Enum of resources of the solar systems.
@@ -31,6 +33,7 @@ public enum Resource {
         this.resource = resource;
     }
 
+    @NonNull
     public String toString() {
         return resource;
     }

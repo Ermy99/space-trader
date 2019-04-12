@@ -25,7 +25,6 @@ import cs2340.spacetraders.Model.SolarSystems;
  * @version 1.0
  */
 public class PlayerViewModel extends AndroidViewModel {
-    private Game game;
     private Player player;
     private static final float MAX_POINTS = 16;
 
@@ -76,24 +75,22 @@ public class PlayerViewModel extends AndroidViewModel {
      * @param gameDifficulty the game difficulty entered
      */
     public void createGame(Player player, GameDifficulty gameDifficulty) {
-        game = Game.getInstance();
+        Game game = Game.getInstance();
         game.setPlayer(player);
         //game.setGameDifficulty(gameDifficulty);
         //game.universe = new Universe();
     }
 
     /**
-     * saveGame method - saves the game.
-     *
-     * @return whether the game is saved
+     * saveGame method - saves the game
      */
-    public boolean saveGame() {
+    public void saveGame() {
         boolean success = true;
         try {
             Log.d("APP" , "saving game");
             FileOutputStream outputStreamFile = getApplication().openFileOutput(
                     "spacetradersgame.ser", Context.MODE_PRIVATE);
-            ObjectOutputStream objectOutputStream = new ObjectOutputStream(outputStreamFile);
+            java.io.ObjectOutput objectOutputStream = new ObjectOutputStream(outputStreamFile);
             objectOutputStream.writeObject(Game.getInstance());
             objectOutputStream.close();
             outputStreamFile.close();
@@ -101,15 +98,13 @@ public class PlayerViewModel extends AndroidViewModel {
             success = false;
         }
 
-        return success;
     }
 
     /**
      * loadSavedGame method - loads the saved game.
      *
-     * @return whether the game loaded correctly.
      */
-    public boolean loadSavedGame() {
+    public void loadSavedGame() {
         boolean success = true;
         try {
             FileInputStream file = getApplication().openFileInput("spacetradersgame.ser");
@@ -122,7 +117,6 @@ public class PlayerViewModel extends AndroidViewModel {
             Log.d("APP", "No game was loaded");
 
         }
-        return success;
     }
 
     /**

@@ -1,5 +1,7 @@
 package cs2340.spacetraders.Model;
 
+import android.support.annotation.NonNull;
+
 /**
  * TechLevel.java
  * Enum of tech levels for the solar systems.
@@ -25,6 +27,7 @@ public enum TechLevel {
         TechLevel = techLevel;
     }
 
+    @NonNull
     public String toString() {
         return TechLevel;
     }

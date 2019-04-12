@@ -2,6 +2,7 @@ package cs2340.spacetraders.Model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -75,7 +76,7 @@ public class Cargo implements Serializable {
      * @return the cargo object
      */
     public List<CargoItem> getShipCargo() {
-        return shipCargo;
+        return Collections.unmodifiableList(shipCargo);
     }
 
 }

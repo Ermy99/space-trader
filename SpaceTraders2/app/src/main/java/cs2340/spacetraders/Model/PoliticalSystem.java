@@ -1,5 +1,7 @@
 package cs2340.spacetraders.Model;
 
+import android.support.annotation.NonNull;
+
 /**
  * PoliticalSystems.java
  * Enum of political systems of the solar systems.
@@ -34,6 +36,7 @@ public enum PoliticalSystem {
         this.govName = govName;
     }
     
+    @NonNull
     public String toString() {
         return govName;
     }

@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.GameActivity">
+    tools:context="cs2340.spacetraders.View.GameActivity">
 
     <Button
         android:id="@+id/market_button"

@@ -19,7 +19,6 @@ import cs2340.spacetraders.Model.SolarSystems;
  * @version 1.0
  */
 public class TravelViewModel extends AndroidViewModel {
-    private final Game game;
 
     /**
      * TravelViewModel Constructor - creates a new viewModel for travelling.
@@ -28,7 +27,7 @@ public class TravelViewModel extends AndroidViewModel {
      */
     public TravelViewModel(Application application) {
         super(application);
-        this.game = Game.getInstance();
+        Game game = Game.getInstance();
     }
 
     /**
@@ -65,7 +64,7 @@ public class TravelViewModel extends AndroidViewModel {
             Goods.pirateAttack();
         } else if (randNum == 1) {
             //this is the Magician event where you get more credits
-            Player player = Game.getInstance().player;
+            Player player = Game.getInstance().getPlayer();
             int credits = player.getCredits();
             player.setCredits(credits + rand.nextInt(1000));
         }

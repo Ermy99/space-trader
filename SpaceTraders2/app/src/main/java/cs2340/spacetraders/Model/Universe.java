@@ -4,6 +4,7 @@ import android.util.Log;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -36,7 +37,7 @@ class Universe implements Serializable {
      * @return the list of planets
      */
     public List<SolarSystems> getPlanets() {
-        return solarSystems;
+        return Collections.unmodifiableList(solarSystems);
     }
 
     /**
