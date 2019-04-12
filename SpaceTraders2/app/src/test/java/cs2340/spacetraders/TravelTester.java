@@ -75,7 +75,10 @@ public class TravelTester {
         
         SolarSystems.ADI.changeLocation(SolarSystems.SHALKA);
         
+        // Tests the player's current fuel.
         assertEquals(100, player.getFuel());
+        
+        // Tests the player's current location after travel.
         assertEquals(SolarSystems.SHALKA, player.getSolarSystems());
         
     }
@@ -93,7 +96,10 @@ public class TravelTester {
     
         SolarSystems.ADI.changeLocation(SolarSystems.SHALKA);
         
+        // Tests the player's current fuel.
         assertEquals(1, player.getFuel());
+        
+        // Tests the player's current location.
         assertEquals(SolarSystems.ADI, player.getSolarSystems());
     
     }
