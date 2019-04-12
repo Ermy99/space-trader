@@ -1,6 +1,6 @@
 package cs2340.spacetraders.Model;
 
-import java.io.Serializable;
+import android.support.annotation.NonNull;
 
 /**
  * Resource.java
@@ -33,6 +33,7 @@ public enum Resource {
         this.resource = resource;
     }
 
+    @NonNull
     public String toString() {
         return resource;
     }

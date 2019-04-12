@@ -10,8 +10,6 @@ import java.util.List;
 
 import cs2340.spacetraders.Model.CargoItem;
 import cs2340.spacetraders.Model.Game;
-import cs2340.spacetraders.Model.Goods;
-import cs2340.spacetraders.Model.Player;
 import cs2340.spacetraders.R;
 
 /**
@@ -24,7 +22,7 @@ import cs2340.spacetraders.R;
  */
 public class CargoItemAdapter extends RecyclerView.Adapter<CargoItemAdapter.CargoItemViewHolder> {
 
-    private List<CargoItem> cargoList = Game.getInstance().shipCargo;
+    private List<CargoItem> cargoList = Game.getInstance().getShipCargo();
 
     private OnCargoItemClickListener listener;
 

@@ -1,8 +1,8 @@
 package cs2340.spacetraders.Model;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
+import java.util.Locale;
 import java.util.Random;
 
 /**
@@ -13,7 +13,6 @@ import java.util.Random;
  *          Aditya Tapshalkar, Chisomebi Obed
  * @version 1.0
  */
-@SuppressWarnings("SpellCheckingInspection")
 public enum SolarSystems {
     ADDAM("Addam"), //7
     ADI("Adi"), //2
@@ -31,11 +30,13 @@ public enum SolarSystems {
     private int y;
     private Resource resource;
     private TechLevel tech;
-    private PoliticalSystem government;
+    private final PoliticalSystem government;
     private String name;
-    private ArrayList<Integer> xVals = new ArrayList<>(150);
-    private ArrayList<Integer> yVals = new ArrayList<>(100);
+    private final ArrayList<Integer> xVals = new ArrayList<>(150);
+    private final ArrayList<Integer> yVals = new ArrayList<>(100);
     Double distance;
+    //private final int NUM_TECH = 0.5;
+
 
 
     SolarSystems(String name) {
@@ -46,7 +47,8 @@ public enum SolarSystems {
         this.name = name;
         this.x = coordinates.getxVals().get(ordinal());
         this.y = coordinates.getyVals().get(ordinal());
-        this.resource = Resource.values()[rng.nextInt(13)];
+        int NUM_RESOURCES = 13;
+        this.resource = Resource.values()[rng.nextInt(NUM_RESOURCES)];
         this.tech = TechLevel.values()[rng.nextInt(8)];
         this.government = PoliticalSystem.values()[rng.nextInt(17)];
 
@@ -153,9 +155,8 @@ public enum SolarSystems {
     public boolean canTravel(SolarSystems solarSystems) {
         Game game = Game.getInstance();
         int Distance = Distance(solarSystems);
-        SolarSystems currentLocation = game.player.getSolarSystems();
 
-        return Distance < game.getPlayer().getFuel();
+        return Distance <= game.getPlayer().getFuel();
     }
 
     /**
@@ -165,9 +166,9 @@ public enum SolarSystems {
      * @param solarSystems the destination solar system
      * @return the distance between the two systems
      */
-    public int Distance(SolarSystems solarSystems) {
+    private int Distance(SolarSystems solarSystems) {
         Game game = Game.getInstance();
-        SolarSystems currentLocation = game.player.getSolarSystems();
+        SolarSystems currentLocation = game.getPlayer().getSolarSystems();
         return (int) Math.round(Math.pow((Math.pow((solarSystems.x - currentLocation.x), 2)
                 + Math.pow((solarSystems.y - currentLocation.y), 2)), 0.5));
     }
@@ -181,9 +182,9 @@ public enum SolarSystems {
     public void changeLocation(SolarSystems solarSystems) {
         if (canTravel(solarSystems)) {
             int fuelToTravel = Distance(solarSystems);
-            int currentFuel = Game.getInstance().player.getFuel();
-            Game.getInstance().player.setFuel(currentFuel - fuelToTravel);
-            Game.getInstance().player.setSolarSystems(solarSystems);
+            int currentFuel = Game.getInstance().getPlayer().getFuel();
+            Game.getInstance().getPlayer().setFuel(currentFuel - fuelToTravel);
+            Game.getInstance().getPlayer().setSolarSystems(solarSystems);
         }
     }
 
@@ -200,12 +201,11 @@ public enum SolarSystems {
 
 
     public String toString() {
-        return String.format(
+        return String.format(Locale.ENGLISH,
                 "%s at (%d, %d) with %s resources and " +
                         "%s tech level, with an %s government.",
                 name, x, y, resource.toString(),
                 tech.toString(), government.toString());
     }
-
 
 }

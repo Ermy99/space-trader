@@ -1,6 +1,6 @@
 package cs2340.spacetraders.Model;
 
-import java.io.Serializable;
+import android.support.annotation.NonNull;
 
 /**
  * TechLevel.java
@@ -27,6 +27,7 @@ public enum TechLevel {
         TechLevel = techLevel;
     }
 
+    @NonNull
     public String toString() {
         return TechLevel;
     }

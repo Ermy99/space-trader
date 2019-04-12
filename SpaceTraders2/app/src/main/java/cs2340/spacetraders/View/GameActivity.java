@@ -19,7 +19,6 @@ import cs2340.spacetraders.ViewModel.PlayerViewModel;
  * @version 1.0
  */
 public class GameActivity extends AppCompatActivity {
-    private Button saveButton;
     //public static final String SHARED_PREFS = "sharedPrefs";
     //public static final String GAME = "game";
     private PlayerViewModel playerViewModel;
@@ -68,7 +67,7 @@ public class GameActivity extends AppCompatActivity {
             }
         });
 
-        saveButton = findViewById(R.id.save_button);
+        Button saveButton = findViewById(R.id.save_button);
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
