@@ -87,6 +87,18 @@ public enum SolarSystems {
     public void setY(int y) {
         this.y = y;
     }
+    
+    /**
+     * setXY method - sets new values for the x and y coordinates of the solar
+     *                system.
+     *
+     * @param x the new x coordinate
+     * @param y the new y coordinate
+     */
+    public void setXY(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
 
     /**
      * getResource method - returns the resource most abundant in the solar

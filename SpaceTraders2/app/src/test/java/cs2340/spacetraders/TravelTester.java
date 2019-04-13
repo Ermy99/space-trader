@@ -1,6 +1,9 @@
 package cs2340.spacetraders;
 
+import org.junit.FixMethodOrder;
 import org.junit.Test;
+import org.junit.runners.MethodSorters;
+
 import cs2340.spacetraders.Model.Game;
 import cs2340.spacetraders.Model.Player;
 import cs2340.spacetraders.Model.SolarSystems;
@@ -14,9 +17,9 @@ import static org.junit.Assert.*;
  * @author Aditya Tapshalkar
  * @version 1.0
  */
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TravelTester {
     
-    private Game game = Game.getInstance();
     private Player player = new Player("Test", 4, 4, 4, 4, SolarSystems.ADI);
     
     /**
@@ -24,26 +27,46 @@ public class TravelTester {
      *
      * @param fuel currentFuel level to assign to player
      */
-    private void setup(int fuel) {
+    private void setup(int fuel, int scenario) throws IllegalArgumentException {
         
         // Creating a reference to an already-existing instance of game
         // (if it exists)
-        game = Game.getInstance();
+        Game game = Game.getInstance();
         
         // Creating a test player
         player = new Player("Test", 4, 4, 4, 4, SolarSystems.ADI);
         game.setPlayer(player);
     
-        // Setting ADI to (10,10)
-        SolarSystems.ADI.setX(10);
-        SolarSystems.ADI.setY(10);
-    
-        // Setting SHALKA to (40,50)
-        SolarSystems.SHALKA.setX(40);
-        SolarSystems.SHALKA.setY(50);
-        
         // Setting the player's current fuel
         player.setFuel(fuel);
+        
+        switch (scenario) {
+            case 1:
+                
+                // Setting ADI to (37,49)
+                SolarSystems.ADI.setXY(37, 49);
+    
+                // Setting SHALKA to (25,44)
+                SolarSystems.SHALKA.setXY(25, 44);
+                
+                break;
+                
+            case 2:
+                
+                player.setSolarSystems(SolarSystems.ERMIL);
+                
+                // Setting ERMIL to (109,9)
+                SolarSystems.ERMIL.setXY(109, 9);
+                
+                // Setting SHIBI to (79, 137)
+                SolarSystems.SHIBI.setXY(79, 137);
+                
+                break;
+                
+            default:
+                throw new IllegalArgumentException("Input a valid scenario.");
+                
+        }
         
     }
     
@@ -55,7 +78,7 @@ public class TravelTester {
     @Test
     public void test_CurrentLocation() {
     
-        setup(150);
+        setup(154, 1);
         
         // Tests the player's current location.
         assertEquals(SolarSystems.ADI, player.getSolarSystems());
@@ -71,15 +94,29 @@ public class TravelTester {
     @Test
     public void test_SuccessfulTravel() {
         
-        setup(150);
+        // Test 1: Setting up planets with a pythagorean triplet
+        setup(154, 1);
         
         SolarSystems.ADI.changeLocation(SolarSystems.SHALKA);
         
         // Tests the player's current fuel.
-        assertEquals(100, player.getFuel());
+        assertEquals(141, player.getFuel());
         
         // Tests the player's current location after travel.
         assertEquals(SolarSystems.SHALKA, player.getSolarSystems());
+        
+        //----------------------------------------------------------------------
+        
+        // Test 2: Setting up coordinates with a random triangle
+        setup(777, 2);
+        
+        SolarSystems.ERMIL.changeLocation(SolarSystems.SHIBI);
+        
+        // Tests the player's current fuel.
+        assertEquals(646, player.getFuel());
+        
+        // Tests the player's current location after travel.
+        assertEquals(SolarSystems.SHIBI, player.getSolarSystems());
         
     }
     
@@ -92,7 +129,7 @@ public class TravelTester {
     @Test
     public void test_UnsuccessfulTravel() {
     
-        setup(1);
+        setup(1, 1);
     
         SolarSystems.ADI.changeLocation(SolarSystems.SHALKA);
         
