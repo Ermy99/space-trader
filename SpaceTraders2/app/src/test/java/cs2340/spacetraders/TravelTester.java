@@ -26,6 +26,7 @@ public class TravelTester {
      * setup method - sets up specific conditions for this JUnit.
      *
      * @param fuel currentFuel level to assign to player
+     * @param scenario the scenario of JUnit to test
      */
     private void setup(int fuel, int scenario) throws IllegalArgumentException {
         
