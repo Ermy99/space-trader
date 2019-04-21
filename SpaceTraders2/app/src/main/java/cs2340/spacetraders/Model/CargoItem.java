@@ -12,7 +12,7 @@ import java.io.Serializable;
  */
 public class CargoItem implements Serializable {
 
-    public int quantity;
+    private int quantity;
     private final Goods good;
 
     /**

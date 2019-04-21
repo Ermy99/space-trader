@@ -1,7 +1,7 @@
 package cs2340.spacetraders.Model;
 
 
-import java.io.Serializable;
+import android.support.annotation.NonNull;
 
 /**
  * GameDifficulty.java
@@ -31,6 +31,7 @@ public enum GameDifficulty {
 //    }
 // --Commented out by Inspection STOP (4/5/2019 8:23 PM)
 
+    @NonNull
     @Override
     public String toString() {
         return gameDifficulty;

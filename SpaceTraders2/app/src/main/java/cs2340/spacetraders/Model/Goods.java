@@ -2,7 +2,6 @@ package cs2340.spacetraders.Model;
 
 import android.util.Log;
 
-import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -14,21 +13,19 @@ import java.util.List;
  * @version 1.0
  */
 public enum Goods {
-    Water("Water", 0, 0, 2, 30, 3),
-    Furs("Furs", 0, 0, 0, 250, 10),
-    Food("Foods", 1, 0, 1, 100, 5),
-    Ore("Ore", 2, 2, 3, 350, 20),
-    Games("Games", 3, 1, 6, 250, -10),
-    Firearms("Firearms", 3, 1, 5, 1250, -75),
-    Medicine("Medicine", 4, 1, 6, 650, -20),
-    Machines("Machines", 4, 3, 5, 900, -30),
-    Narcotics("Narcotics",5, 0, 5, 3500, -125),
-    Robots("Robots", 6, 4, 7, 5000, -150);
+    Water("Water", 0, 30, 3),
+    Furs("Furs", 0, 250, 10),
+    Food("Foods", 1, 100, 5),
+    Ore("Ore", 2, 350, 20),
+    Games("Games", 3, 250, -10),
+    Firearms("Firearms", 3, 1250, -75),
+    Medicine("Medicine", 4, 650, -20),
+    Machines("Machines", 4, 900, -30),
+    Narcotics("Narcotics",5, 3500, -125),
+    Robots("Robots", 6, 5000, -150);
 
     private final String code;
     private final int minTechLevelToProd;
-    private final int minTechLevelToUse;
-    private final int techLevel;
     private final int basePrice;
     private final int priceInc;
     
@@ -37,16 +34,11 @@ public enum Goods {
      *
      * @param code the name of the good
      * @param minTechLevelToProd minimum tech level to produce the good
-     * @param minTechLevelToUse minimum tech level to use the good
-     * @param techLevel the current tech level
      * @param basePrice the base price of the good
      * @param priceInc price increase of the good
      */
-    Goods(String code, int minTechLevelToProd, int minTechLevelToUse, int techLevel,
-          int basePrice, int priceInc) {
+    Goods(String code, int minTechLevelToProd, int basePrice, int priceInc) {
         this.code = code;
-        this.minTechLevelToUse = minTechLevelToUse;
-        this.techLevel = techLevel;
         this.minTechLevelToProd = minTechLevelToProd;
         this.basePrice = basePrice;
         this.priceInc = priceInc;
@@ -62,7 +54,7 @@ public enum Goods {
     public int getPrice(int level) {
         return Math.abs(basePrice + (3 * 2 * priceInc * (level - minTechLevelToProd)));
     }
-    
+
     /**
      * canSell method - determines if you can sell a number of goods given the
      *                  player's cargo.
@@ -73,7 +65,7 @@ public enum Goods {
      */
     public boolean canSell(Goods good, int quantityToSell) {
         Game game = Game.getInstance();
-        for (CargoItem c: game.player.getShipCargo()) {
+        for (CargoItem c: game.getPlayer().getShipCargo()) {
             Goods goods = c.getGood();
             if (goods.equals(good) && (quantityToSell <= c.getQuantity())) {
                 return true;
@@ -93,7 +85,7 @@ public enum Goods {
      */
     public boolean canBuy(Goods good, int quantityToBuy) {
         Game game = Game.getInstance();
-        return (Game.getInstance().player.getCredits() > (good.getPrice(game.getTech())
+        return (Game.getInstance().getPlayer().getCredits() > (good.getPrice(game.getTech())
                 * quantityToBuy)) &&
                 ((game.getCargoSize() + quantityToBuy) <= game.getCargoCapacity());
     }
@@ -107,21 +99,21 @@ public enum Goods {
     public void buy(Goods good, int quantityToBuy) {
         //Game game = Game.getInstance();
         if (canBuy(good, quantityToBuy)) {
-            for (CargoItem c: Game.getInstance().player.getShipCargo()) {
+            for (CargoItem c: Game.getInstance().getPlayer().getShipCargo()) {
                 Goods goods = c.getGood();
                 if (goods.equals(good)) {
                     //c.quantity += quantityToBuy;
                     //Log.d("Add", Integer.toString(quantityToBuy));
-                    c.quantity = c.quantity + quantityToBuy;
+                    c.setQuantity(c.getQuantity() + quantityToBuy); ;
                     //Log.d("Add", c.good.getCode());
                    // Log.d("Add", Integer.toString(c.quantity));
                 }
             }
 
-            int playerCredits = Game.getInstance().player.getCredits();
-            Game.getInstance().player.setCredits(playerCredits -
-                    (good.getPrice(Game.getInstance().solarSystemLevel) * quantityToBuy));
-            Log.d("edit", Integer.toString(Game.getInstance().player.getCredits()));
+            int playerCredits = Game.getInstance().getPlayer().getCredits();
+            Game.getInstance().getPlayer().setCredits(playerCredits -
+                    (good.getPrice(Game.getInstance().getSolarSystemLevel()) * quantityToBuy));
+            Log.d("edit", Integer.toString(Game.getInstance().getPlayer().getCredits()));
         }
 
     }
@@ -135,12 +127,13 @@ public enum Goods {
     public void sell(Goods good, int quantityToSell) {
         Game game = Game.getInstance();
         if (canSell(good, quantityToSell)) {
-            for (CargoItem c : game.player.getShipCargo()) {
+            for (CargoItem c : game.getPlayer().getShipCargo()) {
                 Goods goods = c.getGood();
                 if (goods.equals(good)) {
-                    c.quantity -= quantityToSell;
+                    c.setQuantity(c.getQuantity() - quantityToSell);
                     int currentCredits = game.getCredits();
-                    game.player.setCredits(currentCredits + good.getPrice(game.solarSystemLevel));
+                    game.getPlayer().setCredits(currentCredits +
+                            good.getPrice(game.getSolarSystemLevel()));
                 }
             }
         }
@@ -153,7 +146,7 @@ public enum Goods {
      */
     public static void pirateAttack() {
         Game game = Game.getInstance();
-        List<CargoItem> cargo = game.player.getShipCargo();
+        List<CargoItem> cargo = game.getPlayer().getShipCargo();
         for (CargoItem c: cargo) {
             c.setQuantity(0);
         }

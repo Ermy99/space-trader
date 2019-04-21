@@ -30,9 +30,6 @@ public class TravelActivity extends AppCompatActivity {
     private SolarSystemAdapter adapter;
     private TravelViewModel travelViewModel;
 
-    /** a key for passing data */
-    public static final String SOLAR_SYSTEM_NAME = "SOLAR_SYSTEM_NAME";
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,7 +83,7 @@ public class TravelActivity extends AppCompatActivity {
                     travelViewModel.travel(solarSystem);
                     Game game = Game.getInstance();
                     Log.d("current location", game.getSolarSystemName());
-                    Log.d("fuel", Integer.toString(Game.getInstance().player.getFuel()));
+                    Log.d("fuel", Integer.toString(Game.getInstance().getPlayer().getFuel()));
 
                 } else {
                     Toast.makeText(TravelActivity.this, "You don't have enough fuel to " +

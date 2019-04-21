@@ -1,6 +1,6 @@
 package cs2340.spacetraders.Model;
 
-import java.io.Serializable;
+import android.support.annotation.NonNull;
 
 /**
  * PoliticalSystems.java
@@ -36,6 +36,7 @@ public enum PoliticalSystem {
         this.govName = govName;
     }
     
+    @NonNull
     public String toString() {
         return govName;
     }
