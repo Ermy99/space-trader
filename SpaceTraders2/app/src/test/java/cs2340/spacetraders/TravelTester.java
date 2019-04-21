@@ -12,8 +12,8 @@ import static org.junit.Assert.*;
 
 /**
  * TravelTester.java
- *
  * JUnit test for the 'travel' method (along with associated methods).
+ *
  * @author Aditya Tapshalkar
  * @version 1.0
  */
