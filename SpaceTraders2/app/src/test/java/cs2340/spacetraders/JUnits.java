@@ -6,6 +6,8 @@ import org.junit.experimental.runners.Enclosed;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 
+import cs2340.spacetraders.Model.Cargo;
+import cs2340.spacetraders.Model.CargoItem;
 import cs2340.spacetraders.Model.Game;
 import cs2340.spacetraders.Model.Goods;
 import cs2340.spacetraders.Model.Player;
@@ -17,11 +19,11 @@ import static org.junit.Assert.*;
  * JUnits.java
  * Comprehensive JUnit Testing
  *
- * @author  Aditya Tapshalkar (TravelTester),
- *          Sanghavi Gaddam (SanghaviJUnitTest),
- *          Emerlinda Izihirwe (canTravelTest),
- *          Chisomebi Obed,
- *          Taofikat Bishi
+ * @author  Aditya Tapshalkar   (TravelTester) - travel(),
+ *          Sanghavi Gaddam     (SanghaviJUnitTest) - canBuy(),
+ *          Emerlinda Izihirwe  (canTravelTest) - canTravel(),
+ *          Chisomebi Obed      (ChisomebiUnitTest) - sell(),
+ *          Taofikat Bishi      (canSellTest) - canSell().
  * @version 1.0
  */
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
@@ -162,7 +164,7 @@ public class JUnits {
     }
     
     /**
-     * CanTravelTest.java
+     * canTravelTest.java
      * Test for the canTravel() method in SolarSystems
      * @author Ermelinda Izihirwe
      * @version 1.0
@@ -229,6 +231,96 @@ public class JUnits {
         
     }
     
+    public static class CanSellTest {
+        @Test
+        /**
+         * checks when cargo is empty, and rejects selling
+         */
+        public void checkCreditsEmptyCargo(){
+            Game.getInstance().setPlayer(new Player("Test", 4, 4, 4, 4, SolarSystems.ADI));
+            assertFalse(Goods.Water.canSell(Goods.Water, 1));
+        }
+        @Test
+        /**
+         * checks when cargo is not empty and the player is able to sell
+         */
+        public void checkCreditsCargo(){
+            Game.getInstance().getPlayer().setSolarSystems(SolarSystems.ADDAM);
+            Game.getInstance().getPlayer().setCredits(10000);
+            Goods.Water.buy(Goods.Water, 2);
+            assertTrue(Goods.Water.canSell(Goods.Water, 2));
+        }
+        @Test
+        /**
+         * checks when the player is not able to sell what he didn't buy / isn't in cargo
+         */
+        public void checkCreditsCargo2(){
+            Game.getInstance().getPlayer().setSolarSystems(SolarSystems.ADDAM);
+            Goods.Water.buy(Goods.Water, 2);
+            assertFalse(Goods.Water.canSell(Goods.Food, 2));
+        }
+    }
     
+    public static class ChisomebiUnitTest {
+        
+        /**
+         * tests to see if it sells, gives true if there is enough product and credits
+         */
+        @Test
+        public void testSell() {
+            Game game = Game.getInstance();
+            Player player = new Player("Chisom", 2, 2, 2,
+                    2, SolarSystems.SOMEBI);
+            game.setPlayer(player);
+            game.getPlayer().getShip().getShipCargo().add(new CargoItem(2, Goods.Water));
+            game.getPlayer().getShip().getShipCargo().add(new CargoItem(1, Goods.Food));
+            game.getPlayer().getShip().getShipCargo().add(new CargoItem(1, Goods.Furs));
+            CargoItem good = game.getPlayer().getShip().getShipCargo().get(2);
+            good.getGood().sell(good.getGood(), 1);
+            CargoItem water = game.getPlayer().getShip().getShipCargo().get(0);
+            water.setQuantity(2);
+            CargoItem food = game.getPlayer().getShip().getShipCargo().get(1);
+            food.setQuantity(1);
+            good.setQuantity(0);
+            int P = good.getGood().getPrice(1);
+            int total = game.getPlayer().getCredits();
+            boolean quan = water.getQuantity() == 2 && food.getQuantity() == 1 && good.getQuantity() == 0;
+            boolean check = water.getQuantity() == 2;
+            System.out.print(total);
+            assertTrue(quan && total == 1560);
+            //assertEquals(true, quan && total == 1560);
+        }
+        
+        /**
+         * tests if you want to sell an item that wasn't in the cargo
+         */
+        @Test
+        public void notSell() {
+            Game game = Game.getInstance();
+            Player player = new Player("ED", 4, 4, 4,
+                    4, SolarSystems.GHAVI);
+            game.setPlayer(player);
+            game.getPlayer().getShip().getShipCargo().add(new CargoItem(2, Goods.Water));
+            game.getPlayer().getShip().getShipCargo().add(new CargoItem(1, Goods.Food));
+            game.getPlayer().getShip().getShipCargo().add(new CargoItem(0, Goods.Furs));
+            CargoItem good = game.getPlayer().getShip().getShipCargo().get(2);
+            
+            int oldCredits = game.getPlayer().getCredits();
+            good.getGood().sell(good.getGood(), 1);
+            
+            CargoItem water = game.getPlayer().getShip().getShipCargo().get(0);
+            CargoItem food = game.getPlayer().getShip().getShipCargo().get(1);
+            water.setQuantity(2);
+            food.setQuantity(1);
+            good.setQuantity(0);
+            //int P = good.getGood().getPrice(1);
+            int curr = game.getPlayer().getCredits();
+            //boolean qn = water.getQuantity() == 2 && food.getQuantity() == 1 && good.getQuantity() == 0;
+            boolean check = water.getQuantity() == 2;
+            System.out.print(curr);
+            assertEquals(curr, oldCredits);
+        }
+        
+    }
     
 }

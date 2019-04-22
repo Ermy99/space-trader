@@ -75,7 +75,10 @@ public enum Goods {
         Game game = Game.getInstance();
         for (CargoItem c: game.player.getShipCargo()) {
             Goods goods = c.getGood();
-            if (goods.equals(good) && (quantityToSell <= c.getQuantity())) {
+            if (goods.equals(good)
+                && (quantityToSell <= c.getQuantity())
+                && c.getQuantity() > 0
+                && quantityToSell > 0) {
                 return true;
             }
         }
@@ -121,7 +124,7 @@ public enum Goods {
             int playerCredits = Game.getInstance().player.getCredits();
             Game.getInstance().player.setCredits(playerCredits -
                     (good.getPrice(Game.getInstance().solarSystemLevel) * quantityToBuy));
-            Log.d("edit", Integer.toString(Game.getInstance().player.getCredits()));
+//            Log.d("edit", Integer.toString(Game.getInstance().player.getCredits()));
         }
 
     }
