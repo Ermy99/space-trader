@@ -113,18 +113,16 @@ public enum Goods {
             for (CargoItem c: Game.getInstance().player.getShipCargo()) {
                 Goods goods = c.getGood();
                 if (goods.equals(good)) {
-                    //c.quantity += quantityToBuy;
-                    //Log.d("Add", Integer.toString(quantityToBuy));
+
                     c.quantity = c.quantity + quantityToBuy;
-                    //Log.d("Add", c.good.getCode());
-                   // Log.d("Add", Integer.toString(c.quantity));
+
                 }
             }
 
             int playerCredits = Game.getInstance().player.getCredits();
             Game.getInstance().player.setCredits(playerCredits -
                     (good.getPrice(Game.getInstance().solarSystemLevel) * quantityToBuy));
-//            Log.d("edit", Integer.toString(Game.getInstance().player.getCredits()));
+
         }
 
     }

@@ -19,7 +19,8 @@ import static org.junit.Assert.*;
  * JUnits.java
  * Comprehensive JUnit Testing
  *
- * @author  Aditya Tapshalkar   (TravelTester) - travel(),
+ * @author  Aditya Tapshalkar   (TravelTester) - travel()
+ *                           && (additionalJUnits),
  *          Sanghavi Gaddam     (SanghaviJUnitTest) - canBuy(),
  *          Emerlinda Izihirwe  (canTravelTest) - canTravel(),
  *          Chisomebi Obed      (ChisomebiUnitTest) - sell(),
@@ -321,6 +322,36 @@ public class JUnits {
             assertEquals(curr, oldCredits);
         }
         
+    }
+    
+    public static class additionalJUnits {
+    
+        @Test
+        public void test_SuccessfulBuy() {
+        
+            Game game = Game.getInstance();
+            Player player = new Player("Test", 4, 4, 4, 4, SolarSystems.ADI);
+            game.setPlayer(player);
+            player.setCredits(1000);
+            Goods goods = Goods.Water;
+            goods.buy(goods, 1);
+            assertEquals(1000 - (goods.getPrice(1)), player.getCredits());
+            
+        }
+        
+        @Test
+        public void test_UnsuccessfulBuy() {
+            
+            Game game = Game.getInstance();
+            Player player = new Player("Test2", 4, 4, 4, 4, SolarSystems.SHALKA);
+            game.setPlayer(player);
+            player.setCredits(5);
+            Goods goods = Goods.Water;
+            goods.buy(goods, 1);
+            assertEquals(5, player.getCredits());
+            
+        }
+    
     }
     
 }

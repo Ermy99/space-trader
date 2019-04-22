@@ -110,7 +110,7 @@ public class Game implements Serializable {
      * @return ship name
      */
     public String getShipName() {
-        return player.shipType.getName();
+        return player.shipType.getShipName();
     }
     
     /**
