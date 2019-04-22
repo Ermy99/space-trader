@@ -41,11 +41,11 @@ public class MainActivity extends AppCompatActivity {
 
         game = new Game();
         adapter = new SimpleItemRecyclerViewAdapter(
-                game.player.getName(),
-                game.player.getPilotPoints(),
-                game.player.getEngineeringPoints(),
-                game.player.getFighterPoints(),
-                game.player.getTraderPoints()
+                game.getPlayer().getName(),
+                game.getPlayer().getPilotPoints(),
+                game.getPlayer().getEngineeringPoints(),
+                game.getPlayer().getFighterPoints(),
+                game.getPlayer().getTraderPoints()
         );
 
         //This code sets up our button at bottom of screen to start game

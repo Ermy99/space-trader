@@ -62,10 +62,10 @@ public class TravelViewModel extends AndroidViewModel {
         Random rand = new Random();
         int randNum = rand.nextInt(3);
         if (randNum == 0) {
-            Goods.pirateAttack();
+            Goods.Companion.pirateAttack();
         } else if (randNum == 1) {
             //this is the Magician event where you get more credits
-            Player player = Game.getInstance().player;
+            Player player = Game.getInstance().getPlayer();
             int credits = player.getCredits();
             player.setCredits(credits + rand.nextInt(1000));
         }

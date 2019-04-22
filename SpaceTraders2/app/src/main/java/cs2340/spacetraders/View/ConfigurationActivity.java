@@ -53,7 +53,7 @@ public class ConfigurationActivity extends AppCompatActivity {
       fighterPoints= findViewById(R.id.fighter_points);
       difficultyLevel = findViewById(R.id.difficulty);
       ArrayAdapter<GameDifficulty> adapterGameDifficulty = new ArrayAdapter<>
-              (this, android.R.layout.simple_spinner_item, Game.gameDifficulties);
+              (this, android.R.layout.simple_spinner_item, Game.Companion.getGameDifficulties());
       adapterGameDifficulty.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
       difficultyLevel.setAdapter(adapterGameDifficulty);
      // playerViewModel = ViewModelProviders.of(this).get(PlayerViewModel.class);

@@ -48,7 +48,7 @@ public class SolarSystemAdapter extends
     @Override
     public void onBindViewHolder(@NonNull SolarSystemViewHolder holder, int position) {
         SolarSystems solarSystem = solarSystemList.get(position);
-        holder.solarSystemName.setText(solarSystem.getName());
+        holder.solarSystemName.setText(solarSystem.getSolarSystemName());
         Player player = game.getPlayer();
         //SolarSystems solarSystems = player.getSolarSystems();
 

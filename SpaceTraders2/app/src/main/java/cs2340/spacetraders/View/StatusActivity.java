@@ -35,13 +35,13 @@ public class StatusActivity extends AppCompatActivity {
         TextView cargoSpace = findViewById(R.id.cargo_space);
         TextView fuel = findViewById(R.id.fuel);
 
-        playerName.setText(game.player.getName());
+        playerName.setText(game.getPlayer().getName());
         points.setText(Integer.toString(game.getCredits()));
         location.setText(game.getSolarSystemName());
         ship.setText(game.getShipName());
         cargoSpace.setText(Integer.toString(game.getCargoCapacity()
                 - game.getCargoSize()));
-        fuel.setText(Integer.toString(game.player.getFuel()));
+        fuel.setText(Integer.toString(game.getPlayer().getFuel()));
 
 
 
