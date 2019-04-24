@@ -2,6 +2,7 @@ package cs2340.spacetraders.View;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     private SimpleItemRecyclerViewAdapter adapter;
 
     private Game game;
+    MediaPlayer song;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent mainIntent = new Intent(MainActivity.this, ConfigurationActivity.class);
                 startActivity(mainIntent);
+                song = MediaPlayer.create(getApplicationContext(), R.raw.spacetradersintro);
+                song.start();
             }
         });
 

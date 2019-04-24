@@ -1,6 +1,7 @@
 package cs2340.spacetraders.View;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -15,11 +16,13 @@ import cs2340.spacetraders.R;
  * @version 1.0
  */
 public class SplashActivity extends AppCompatActivity {
+    MediaPlayer song;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_splash);
+
     int SPLASH_TIME_OUT = 4000;
     new Handler().postDelayed(new Runnable() {
       @Override

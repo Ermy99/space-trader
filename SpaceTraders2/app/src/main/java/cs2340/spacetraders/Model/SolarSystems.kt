@@ -125,7 +125,7 @@ enum class SolarSystems private constructor(
     fun canTravel(solarSystems: SolarSystems): Boolean {
         val game = Game.instance
         val Distance = Distance(solarSystems)
-        val currentLocation = game.getPlayer().solarSystems
+        //val currentLocation = game.getPlayer().solarSystems
 
         return Distance < game.getPlayer().fuel
     }
